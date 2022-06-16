@@ -1,0 +1,10 @@
+.file_input{
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    border: 1px solid var(--falcon-input-border-color) !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border-radius: 0.25rem !important;
+    padding: 7px !important;
+}
