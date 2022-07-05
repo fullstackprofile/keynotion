@@ -4,7 +4,7 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost',
+    'url' => 'http://localhost:8000',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
@@ -371,9 +371,19 @@
       array (
         'driver' => 'local',
         'root' => 'C:\\OpenServer\\domains\\keynotion\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'url' => 'http://localhost:8000/storage',
         'visibility' => 'public',
         'throw' => false,
+      ),
+      'disks' => 
+      array (
+        'media' => 
+        array (
+          'driver' => 'local',
+          'root' => 'C:\\OpenServer\\domains\\keynotion\\storage\\app/public/media',
+          'url' => 'http://localhost:8000/storage/media',
+          'visibility' => 'public',
+        ),
       ),
       's3' => 
       array (
@@ -557,6 +567,95 @@
       ),
     ),
   ),
+  'media-library' => 
+  array (
+    'disk_name' => 'public',
+    'max_file_size' => 10485760,
+    'queue_name' => '',
+    'queue_conversions_by_default' => true,
+    'media_model' => 'Spatie\\MediaLibrary\\MediaCollections\\Models\\Media',
+    'temporary_upload_model' => 'Spatie\\MediaLibraryPro\\Models\\TemporaryUpload',
+    'enable_temporary_uploads_session_affinity' => true,
+    'generate_thumbnails_for_temporary_uploads' => true,
+    'file_namer' => 'Spatie\\MediaLibrary\\Support\\FileNamer\\DefaultFileNamer',
+    'path_generator' => 'Spatie\\MediaLibrary\\Support\\PathGenerator\\DefaultPathGenerator',
+    'custom_path_generators' => 
+    array (
+    ),
+    'url_generator' => 'Spatie\\MediaLibrary\\Support\\UrlGenerator\\DefaultUrlGenerator',
+    'moves_media_on_update' => false,
+    'version_urls' => false,
+    'image_optimizers' => 
+    array (
+      'Spatie\\ImageOptimizer\\Optimizers\\Jpegoptim' => 
+      array (
+        0 => '-m85',
+        1 => '--force',
+        2 => '--strip-all',
+        3 => '--all-progressive',
+      ),
+      'Spatie\\ImageOptimizer\\Optimizers\\Pngquant' => 
+      array (
+        0 => '--force',
+      ),
+      'Spatie\\ImageOptimizer\\Optimizers\\Optipng' => 
+      array (
+        0 => '-i0',
+        1 => '-o2',
+        2 => '-quiet',
+      ),
+      'Spatie\\ImageOptimizer\\Optimizers\\Svgo' => 
+      array (
+        0 => '--disable=cleanupIDs',
+      ),
+      'Spatie\\ImageOptimizer\\Optimizers\\Gifsicle' => 
+      array (
+        0 => '-b',
+        1 => '-O3',
+      ),
+      'Spatie\\ImageOptimizer\\Optimizers\\Cwebp' => 
+      array (
+        0 => '-m 6',
+        1 => '-pass 10',
+        2 => '-mt',
+        3 => '-q 90',
+      ),
+    ),
+    'image_generators' => 
+    array (
+      0 => 'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Image',
+      1 => 'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Webp',
+      2 => 'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Pdf',
+      3 => 'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Svg',
+      4 => 'Spatie\\MediaLibrary\\Conversions\\ImageGenerators\\Video',
+    ),
+    'temporary_directory_path' => NULL,
+    'image_driver' => 'gd',
+    'ffmpeg_path' => '/usr/bin/ffmpeg',
+    'ffprobe_path' => '/usr/bin/ffprobe',
+    'jobs' => 
+    array (
+      'perform_conversions' => 'Spatie\\MediaLibrary\\Conversions\\Jobs\\PerformConversionsJob',
+      'generate_responsive_images' => 'Spatie\\MediaLibrary\\ResponsiveImages\\Jobs\\GenerateResponsiveImagesJob',
+    ),
+    'media_downloader' => 'Spatie\\MediaLibrary\\Downloaders\\DefaultDownloader',
+    'remote' => 
+    array (
+      'extra_headers' => 
+      array (
+        'CacheControl' => 'max-age=604800',
+      ),
+    ),
+    'responsive_images' => 
+    array (
+      'width_calculator' => 'Spatie\\MediaLibrary\\ResponsiveImages\\WidthCalculator\\FileSizeOptimizedWidthCalculator',
+      'use_tiny_placeholders' => true,
+      'tiny_placeholder_generator' => 'Spatie\\MediaLibrary\\ResponsiveImages\\TinyPlaceholderGenerator\\Blurred',
+    ),
+    'enable_vapor_uploads' => false,
+    'default_loading_attribute_value' => NULL,
+    'prefix' => '',
+  ),
   'queue' => 
   array (
     'default' => 'sync',
@@ -620,7 +719,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'localhost',
+      5 => 'localhost:8000',
     ),
     'guard' => 
     array (
@@ -683,6 +782,10 @@
     ),
     'compiled' => 'C:\\OpenServer\\domains\\keynotion\\storage\\framework\\views',
   ),
+  'image' => 
+  array (
+    'driver' => 'gd',
+  ),
   'flare' => 
   array (
     'key' => NULL,
@@ -712,6 +815,7 @@
         'censor_fields' => 
         array (
           0 => 'password',
+          1 => 'password_confirmation',
         ),
       ),
       'Spatie\\FlareClient\\FlareMiddleware\\CensorRequestHeaders' => 
@@ -746,9 +850,10 @@
       11 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingColumnSolutionProvider',
       12 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UnknownValidationSolutionProvider',
       13 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingMixManifestSolutionProvider',
-      14 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingLivewireComponentSolutionProvider',
-      15 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UndefinedViewVariableSolutionProvider',
-      16 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\GenericLaravelExceptionSolutionProvider',
+      14 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingViteManifestSolutionProvider',
+      15 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingLivewireComponentSolutionProvider',
+      16 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UndefinedViewVariableSolutionProvider',
+      17 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\GenericLaravelExceptionSolutionProvider',
     ),
     'ignored_solution_providers' => 
     array (
@@ -758,6 +863,68 @@
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',
+  ),
+  'ide-helper' => 
+  array (
+    'filename' => '_ide_helper.php',
+    'models_filename' => '_ide_helper_models.php',
+    'meta_filename' => '.phpstorm.meta.php',
+    'include_fluent' => false,
+    'include_factory_builders' => false,
+    'write_model_magic_where' => true,
+    'write_model_external_builder_methods' => true,
+    'write_model_relation_count_properties' => true,
+    'write_eloquent_model_mixins' => false,
+    'include_helpers' => false,
+    'helper_files' => 
+    array (
+      0 => 'C:\\OpenServer\\domains\\keynotion/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+    ),
+    'model_locations' => 
+    array (
+      0 => 'app',
+    ),
+    'ignored_models' => 
+    array (
+    ),
+    'model_hooks' => 
+    array (
+    ),
+    'extra' => 
+    array (
+      'Eloquent' => 
+      array (
+        0 => 'Illuminate\\Database\\Eloquent\\Builder',
+        1 => 'Illuminate\\Database\\Query\\Builder',
+      ),
+      'Session' => 
+      array (
+        0 => 'Illuminate\\Session\\Store',
+      ),
+    ),
+    'magic' => 
+    array (
+    ),
+    'interfaces' => 
+    array (
+    ),
+    'custom_db_types' => 
+    array (
+    ),
+    'model_camel_case_properties' => false,
+    'type_overrides' => 
+    array (
+      'integer' => 'int',
+      'boolean' => 'bool',
+    ),
+    'include_class_docblocks' => false,
+    'force_fqn' => false,
+    'additional_relation_types' => 
+    array (
+    ),
+    'post_migrate' => 
+    array (
+    ),
   ),
   'tinker' => 
   array (

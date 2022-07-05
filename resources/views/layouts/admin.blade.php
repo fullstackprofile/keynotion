@@ -98,9 +98,8 @@
                                     <div class="col ps-0">
                                         <hr class="mb-0 navbar-vertical-divider" />
                                     </div>
-                                </div><!-- parent pages--><a class="nav-link" href="{{route('calendar')}}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-calendar-alt"></span></span><span class="nav-link-text ps-1">Calendar</span></div>
-                                </a><!-- parent pages--><a class="nav-link dropdown-indicator" href="#email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                                </div><!-- parent pages-->
+                                <a class="nav-link dropdown-indicator" href="#email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text ps-1">Email</span></div>
                                 </a>
                                 <ul class="nav collapse" id="email">
@@ -117,19 +116,6 @@
                                         </a><!-- more inner pages-->
                                     </li>
                                 </ul><!-- parent pages-->
-                                <a class="nav-link dropdown-indicator collapsed" href="#tables" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="tables">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><svg class="svg-inline--fa fa-table fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 416H64v-96h160v96zm0-160H64v-96h160v96zm224 160H288v-96h160v96zm0-160H288v-96h160v96z"></path></svg><!-- <span class="fas fa-table"></span> Font Awesome fontawesome.com --></span><span class="nav-link-text ps-1">Event's Categories</span></div>
-                                </a>
-                                <ul class="nav collapse" id="tables" style="">
-                                    <li class="nav-item"><a class="nav-link" href="{{route('category.create')}}" data-bs-toggle="" aria-expanded="false">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create a category</span></div>
-                                        </a><!-- more inner pages-->
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="{{route('category.index')}}" data-bs-toggle="" aria-expanded="false">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Categories list</span></div>
-                                        </a><!-- more inner pages-->
-                                    </li>
-                                </ul>
                                 <a class="nav-link dropdown-indicator" href="#events" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="events">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-calendar-day"></span></span><span class="nav-link-text ps-1">Events</span></div>
                                 </a>
@@ -142,7 +128,116 @@
                                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event list</span></div>
                                         </a><!-- more inner pages-->
                                     </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#category" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event's Categories</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="category" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('category.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create  Category</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('category.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1"> Categories Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#place" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event's Places</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="place" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('place.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create  The Venue</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('place.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1"> Places Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
+                                <a class="nav-link dropdown-indicator" href="#ticket" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-ticket-alt"></span></span><span class="nav-link-text ps-1">Tickets</span></div>
+                                </a>
+                                <ul class="nav collapse" id="ticket">
+                                    <li class="nav-item"><a class="nav-link" href="{{route('ticket.create')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Ticket</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('ticket.index')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Tickets List</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Ticket Items</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="item" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('item.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create </span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('item.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#types" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Ticket Types</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="types" style="">
+                                            <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#first_type" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Ticket First Type</span></div>
+                                                </a><!-- more inner pages-->
+                                                <ul class="nav collapse" id="first_type" style="">
+                                                    <li class="nav-item"><a class="nav-link" href="{{route('type.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="nav-link-text ps-1">Create </span>
+                                                            </div>
+                                                        </a><!-- more inner pages-->
+                                                    </li>
+                                                    <li class="nav-item"><a class="nav-link" href="{{route('type.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="nav-link-text ps-1"> Listing</span>
+                                                            </div>
+                                                        </a><!-- more inner pages-->
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#second_type" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                                    <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Ticket Second Type</span></div>
+                                                </a><!-- more inner pages-->
+                                                <ul class="nav collapse" id="second_type" style="">
+                                                    <li class="nav-item"><a class="nav-link" href="{{route('other_type.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="nav-link-text ps-1">Create </span>
+                                                            </div>
+                                                        </a><!-- more inner pages-->
+                                                    </li>
+                                                    <li class="nav-item"><a class="nav-link" href="{{route('other_type.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="nav-link-text ps-1"> Listing</span>
+                                                            </div>
+                                                        </a><!-- more inner pages-->
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul><!-- parent pages-->
 
                                 <a class="nav-link dropdown-indicator" href="#user" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="user">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-user"></span></span><span class="nav-link-text ps-1">User management</span></div>
@@ -170,7 +265,93 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#attender" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Attenders</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="attender" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('attender.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create Attender</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('attender.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Attender Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
+
+                                <a class="nav-link dropdown-indicator" href="#sponsors_partners" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="events">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="far fa-handshake"></span></span><span class="nav-link-text ps-1">Sponsors and Partners</span></div>
+                                </a>
+                                <ul class="nav collapse" id="sponsors_partners">
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#sponsor" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event's Sponsors</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="sponsor" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('sponsor.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create  Sponsor</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('sponsor.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1"> Sponsors Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#partner" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Event's Media Partners</span></div>
+                                        </a><!-- more inner pages-->
+                                        <ul class="nav collapse" id="partner" style="">
+                                            <li class="nav-item"><a class="nav-link" href="{{route('partner.create')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1">Create  Media Partner</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="{{route('partner.index')}}" data-bs-toggle="" aria-expanded="false">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="nav-link-text ps-1"> Media Partners Listing</span>
+                                                    </div>
+                                                </a><!-- more inner pages-->
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a class="nav-link dropdown-indicator" href="#vacancy" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-toolbox"></span></span><span class="nav-link-text ps-1">Vacancies</span></div>
+                                </a>
+                                <ul class="nav collapse" id="vacancy">
+                                    <li class="nav-item"><a class="nav-link" href="{{route('vacancy.create')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('vacancy.index')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Listing</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                </ul><!-- parent pages-->
+                                <a class="nav-link dropdown-indicator" href="#news" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="far fa-newspaper"></span></span><span class="nav-link-text ps-1">News</span></div>
+                                </a>
+                                <ul class="nav collapse" id="news">
+                                    <li class="nav-item"><a class="nav-link" href="{{route('news.create')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('news.index')}}" data-bs-toggle="" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Listing</span></div>
+                                        </a><!-- more inner pages-->
+                                    </li>
+                                </ul><!-- parent pages-->
                             </li>
                         </ul>
                     </div>
@@ -185,11 +366,6 @@
 
                     <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
 
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dashboards">App</a>
-                            <div class="dropdown-menu dropdown-caret dropdown-menu-card border-0 mt-0" aria-labelledby="dashboards">
-                                <div class="bg-white dark__bg-1000 rounded-3 py-2"><a class="dropdown-item link-600 fw-medium" href="{{route('calendar')}}">Calendar</a></div>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="pagess">Email</a>
                             <div class="dropdown-menu dropdown-caret dropdown-menu-card border-0 mt-0" aria-labelledby="pagess">
                                 <div class="card navbar-card-pages shadow-none dark__bg-1000">
@@ -848,7 +1024,7 @@
 <script src="/vendors/echarts/echarts.min.js"></script>
 <script src="/vendors/fontawesome/all.min.js"></script>
 <script src="/vendors/lodash/lodash.min.js"></script>
-<script src="/polyfill.io/v3/polyfill.min58be.js?features=window.scroll"></script>
+{{--<script src="/polyfill.io/v3/polyfill.min58be.js?features=window.scroll"></script>--}}
 <script src="/vendors/list.js/list.min.js"></script>
 <script src="/assets/js/theme.js"></script>
 <script src="/assets/js/admin.js"></script>

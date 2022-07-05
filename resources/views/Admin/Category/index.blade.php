@@ -6,6 +6,11 @@
             <div class="row flex-between-end">
             </div>
         </div>
+        @if (session('success'))
+            <div class="alert alert-danger" role="alert">
+                <h4><i class="icon fa fa-check"></i>{{ session('success') }}</h4>
+            </div>
+        @endif
         <div class="card-body pt-0">
             <div class="tab-content">
                 <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-ec5bc8c3-3ef8-4246-a5ef-f111374005e5" id="dom-ec5bc8c3-3ef8-4246-a5ef-f111374005e5">

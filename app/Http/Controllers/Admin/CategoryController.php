@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\CategoryStoreRequest;
+use App\Http\Requests\Category\CategoryUpdateRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $category=Category::orderBy('created_at','asc')->get();
+        $category=Category::orderBy('id','asc')->get();
         return view('Admin.Category.index',[
             'categories'=>$category
         ]);
@@ -25,14 +25,10 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request): mixed
     {
-        $new_category=new Category();
-        $new_category->title=$request->title;
-        $new_category->slug = Str::random(11);
-        $new_category->save();
-
-        return redirect()->back()->withSuccess("Nice Job! You're category has been successfully created :) !");
+        $category = Category::create($request->validated());
+        return redirect()->route('category.index')->withSuccess("Nice Job! You're category has been successfully created :) !");
     }
 
 
@@ -49,11 +45,12 @@ class CategoryController extends Controller
     }
 
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category->title = $request->title;
-        $category->save();
-        return redirect()->back()->withSuccess("Nice Job! You're category has been successfully updated :) !");
+        $category->update([
+            'title'=>$request->title,
+        ]);
+        return redirect()->route('category.index')->withSuccess("Nice Job! You're category has been successfully updated :) !");
     }
 
 

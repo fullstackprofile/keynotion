@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OtherType;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,13 +13,24 @@ class UserController extends Controller
 
     public function index()
     {
-        $user=User::orderBy('created_at','desc')->get();
+        $user=User::orderBy('created_at','desc')->paginate(15);
 
         return view('Admin.Users.index',[
             'users'=>$user
         ]);
     }
 
+    public function search(Request $request):View
+    {
+        $search = $request->input('search','NULL');
+
+        $users = User::query()
+            ->where('first_name', 'LIKE', "%{$search}%")
+            ->orWhere('last_name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->paginate(15);
+        return view('Admin.Users.index')->with(array('users'=>$users));
+    }
 
     public function change_role(Request $request)
     {

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create speaker')
+@section('title', 'Admin - edit speaker')
 @section('content')
     <style>
         .file_input{
@@ -16,7 +16,7 @@
     </style>
     <div class="card mb-3">
         <div class="card-header">
-            <h5 class="mb-0">Create Key Speaker</h5>
+            <h5 class="mb-0">Update Key Speaker</h5>
         </div>
         @if (session('success'))
             <div class="alert alert-danger" role="alert">
@@ -30,10 +30,10 @@
                 @method('PUT')
                 <div class="card cover-image mb-3 col-lg-12" style="width: 250px;height: 210px;position: relative">
                     <label>Speaker's Image</label>
-                    <img id="file-ip-1-preview" class="card-img-top" src="{{$speakers['avatar']}}" alt="" style="width: 100% ; height: 100%;position:absolute;object-fit: cover">
+                    <img id="file-ip-1-preview" class="card-img-top" src="{{$speakers->getFirstMediaUrl('speaker_avatar')}}" alt="" style="width: 100% ; height: 100%;position:absolute;object-fit: cover">
                 </div>
 
-                <input  name="avatar" type="file" id="upload-cover-image" value="{{$speakers['avatar']}}" accept="image/*" onchange="showPreview(event);" >
+                <input  name="avatar" type="file" id="upload-cover-image" value="" accept="image/*" onchange="showPreview(event);" >
 
                 <div class="col-lg-12">
                     <label class="form-label" for="full-name">Full Name</label>
@@ -45,14 +45,17 @@
                     <input class="form-control" id="company" type="text" value="{{$speakers['company']}}" name="company">
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-3">
                     <label class="form-label" for="profession">Heading</label>
                     <input class="form-control" id="profession" name="profession" value="{{$speakers['profession']}}" type="text" >
                 </div>
-                <div class="col-lg-12 file_input">
-                    <label>Speaker's Company Logo</label>
-                    <input  name="company_logo" type="file" id="upload-cover-image1" value="{{$speakers['company_logo']}}" accept="image/*"  >
+                <label class="mb-3">Speaker's Company Logo</label>
+                <div class="card cover-image mb-3 col-lg-12" style="width: 250px;height: 100px;position: relative">
+                    <img id="file-ip-1-preview" class="card-img-top" src="{{$speakers->getFirstMediaUrl('company_logo')}}" alt="" style="width: 100% ; height: 100%;position:absolute;">
                 </div>
+
+                <input class="mb-3" name="company_logo" type="file" id="upload-cover-image" value="" accept="image/*" >
+
                 <div class="col-4">
                     <button type="submit" class="btn btn-danger">Update Speaker</button>
                 </div>
@@ -68,7 +71,6 @@
                 preview.src = src;
                 preview.style.display = "block";
             }
-
         }
     </script>
 @endsection

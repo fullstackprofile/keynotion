@@ -10,12 +10,10 @@ return new class extends Migration
     {
         Schema::create('speakers', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('full_name');
             $table->string('profession');
             $table->string('company');
-            $table->string('company_logo');
-            $table->string('avatar');
             $table->timestamps();
         });
     }

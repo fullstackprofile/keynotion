@@ -3,59 +3,56 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Speaker\SpeakerStoreRequest;
+use App\Http\Requests\Speaker\SpeakerUpdateRequest;
 use App\Models\Speaker;
+use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class SpeakerController extends Controller
 {
 
     public function index()
     {
-        $speaker=Speaker::orderBy('created_at','asc')->get();
-        return view('Admin.Speaker.index',[
-            'speakers'=>$speaker
+        $speaker = Speaker::orderBy('id', 'asc')->paginate(9);
+        return view('Admin.Speaker.index', [
+            'speakers' => $speaker
         ]);
     }
 
+    public function search(Request $request):View
+    {
+        $search = $request->input('search','NULL');
+
+        $speakers = Speaker::query()
+            ->where('full_name', 'LIKE', "%{$search}%")
+            ->orWhere('company', 'LIKE', "%{$search}%")
+            ->orWhere('profession', 'LIKE', "%{$search}%")
+            ->paginate(9);
+        return view('Admin.Speaker.index')->with(array('speakers'=>$speakers));
+    }
 
     public function create()
     {
+
         return view('Admin.Speaker.create');
     }
 
-
-    public function store(Request $request)
+    /**
+     * @param SpeakerStoreRequest $request
+     * @return mixed
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    public function store(SpeakerStoreRequest $request): mixed
     {
-        $new_speaker=new Speaker();
-
-        $new_speaker->full_name=$request->full_name;
-        $new_speaker->slug = Str::random(11);
-
-        /*-------------------------------Speaker image-----------------------------*/
-
-        $new_speaker_img = "/speaker_img/" . time() . Str::random(25) . '.' . $request->file('avatar')->getClientOriginalExtension();
-        $path = public_path('/speaker_img/');
-        $request->file('avatar')->move($path, $new_speaker_img);
-        $new_speaker->avatar=$new_speaker_img;
-
-        /*-------------------------------Speaker Company Logo-----------------------------*/
-
-        $new_speaker_logo = "/speaker_company_logo/" . time() . Str::random(25) . '.' . $request->file('company_logo')->getClientOriginalExtension();
-        $path = public_path('/speaker_company_logo/');
-        $request->file('company_logo')->move($path, $new_speaker_logo);
-        $new_speaker->company_logo=$new_speaker_logo;
-
-        /*--------------------------------------------------------------------------------*/
-
-        $new_speaker->profession=$request->profession;
-        $new_speaker->company=$request->company;
-
-        $new_speaker->save();
-
-
-
-        return redirect()->back()->withSuccess("Nice Job! You're speaker has been successfully created :) !");
+            $speaker = Speaker::create($request->validated());
+            $speaker->addMedia($request->file('avatar'))->toMediaCollection('speaker_avatar');
+            $speaker->addMedia($request->file('company_logo'))->toMediaCollection('company_logo');
+        return redirect()->route('speaker.index')->withSuccess("Nice Job! You're speaker has been successfully created :) !");
     }
 
 
@@ -64,69 +61,38 @@ class SpeakerController extends Controller
         //
     }
 
-
     public function edit(Speaker $speaker)
     {
-        return view('Admin.Speaker.edit',[
-            'speakers'=>$speaker
+        return view('Admin.Speaker.edit', [
+            'speakers' => $speaker
         ]);
     }
 
 
-    public function update(Request $request, Speaker $speaker)
+    /**
+     * @param SpeakerUpdateRequest $request
+     * @param Speaker $speaker
+     * @return mixed
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    public function update(SpeakerUpdateRequest $request, Speaker $speaker)
     {
-        if($request->hasFile('avatar')) {
-            $speaker->full_name=$request->full_name;
+        $speaker->update($request->validated());
 
-            $path_avatar = $_SERVER['DOCUMENT_ROOT'] . $speaker->avatar;
-            if(file_exists($path_avatar)){
-                !unlink($path_avatar);
-            }
-            $new_speaker_img = "/speaker_img/" . time() . Str::random(25) . '.' . $request->file('avatar')->getClientOriginalExtension();
-            $path = public_path('/speaker_img/');
-            $request->file('avatar')->move($path, $new_speaker_img);
-            $speaker->avatar=$new_speaker_img;
-
-            $speaker->profession=$request->profession;
-            $speaker->company=$request->company;
+        if ($request->hasFile('avatar')) {
+            $speaker->addMedia($request->file('avatar'))->toMediaCollection('speaker_avatar');
+        } elseif ($request->hasFile('company_logo')) {
+            $speaker->addMedia($request->file('company_logo'))->toMediaCollection('company_logo');
         }
-        if($request->hasFile('company_logo')) {
-            $speaker->full_name=$request->full_name;
 
-            $path_logo = $_SERVER['DOCUMENT_ROOT'] . $speaker->company_logo;
-            if(file_exists($path_logo)){
-                !unlink($path_logo);
-            }
-            $new_speaker_logo = "/speaker_company_logo/" . time() . Str::random(25) . '.' . $request->file('company_logo')->getClientOriginalExtension();
-            $path = public_path('/speaker_company_logo/');
-            $request->file('company_logo')->move($path, $new_speaker_logo);
-            $speaker->company_logo=$new_speaker_logo;
-
-            $speaker->profession=$request->profession;
-            $speaker->company=$request->company;
-        }else{
-            $speaker->full_name=$request->full_name;
-            $speaker->profession=$request->profession;
-            $speaker->company=$request->company;
-        }
-        $speaker->save();
-        return redirect()->back()->withSuccess("Nice Job! You're speaker has been successfully updated :) !");
+        return redirect()->route('speaker.index')->withSuccess("Nice Job! You're speaker has been successfully updated :) !");
 
     }
 
 
-
     public function destroy(Speaker $speaker)
     {
-        $path_avatar = $_SERVER['DOCUMENT_ROOT'] . $speaker->avatar;
-        if(file_exists($path_avatar)){
-            !unlink($path_avatar);
-        }
-
-        $path_logo = $_SERVER['DOCUMENT_ROOT'] . $speaker->company_logo;
-        if(file_exists($path_logo)){
-            !unlink($path_logo);
-        }
         $speaker->events()->detach();
         $speaker->delete();
         return redirect()->back()->withSuccess("You're speaker has been successfully deleted !");

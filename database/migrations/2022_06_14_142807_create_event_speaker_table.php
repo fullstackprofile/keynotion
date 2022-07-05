@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('event_speaker', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->foreignId('speaker_id')->constrained();
+            $table->foreignId('event_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('speaker_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

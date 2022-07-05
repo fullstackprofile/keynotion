@@ -1,19 +1,30 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\TicketController;
+use App\Http\Controllers\Api\VacancyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\EventController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function () {
+    return 'Its API';
+});
+
+
+Route::apiResources(['events' => EventController::class]);
+Route::apiResources(['tickets' => TicketController::class]);
+Route::apiResources(['vacancies' => VacancyController::class]);
+Route::apiResources(['news' => NewsController::class]);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index']);
+});
+
+Route::middleware('guest')->group(function () {
+    Route::post('/register', [AuthController::class, 'storeRegister']);
+    Route::post('/login', [AuthController::class, 'storeLogin']);
 });
