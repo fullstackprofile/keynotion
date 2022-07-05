@@ -10,4 +10,4 @@ Steps
 - ```php artisan migrate:fresh --seed```
 - ```Admin login-password in AdminSeeder (login from *path (/login))```
 - ```php artisan serve```
-
+- ```php artisan ide-helper:models -M```
