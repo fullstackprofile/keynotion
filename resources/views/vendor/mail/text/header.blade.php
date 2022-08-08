@@ -1,0 +1,1 @@
+[{{ $slot == 'Key-notion' }}]({{ $url }})

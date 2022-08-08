@@ -1,0 +1,1 @@
+{{ $slot == 'Regards Key-notion' }}

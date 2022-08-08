@@ -3975,7 +3975,7 @@ var Droppable = function (_Draggable) {
     /**
      * Returns closest dropzone element for even target
      * @private
-     * @param {HTMLElement} target - Event target
+     * @param {HTMLElement} target - event target
      * @return {HTMLElement|null}
      */
 
@@ -4781,8 +4781,8 @@ var Draggable = function () {
 
     /**
      * Adds listener for draggable events
-     * @param {String} type - Event name
-     * @param {...Function} callbacks - Event callbacks
+     * @param {String} type - event name
+     * @param {...Function} callbacks - event callbacks
      * @return {Draggable}
      * @example draggable.on('drag:start', (dragEvent) => dragEvent.cancel());
      */
@@ -4802,8 +4802,8 @@ var Draggable = function () {
 
     /**
      * Removes listener from draggable
-     * @param {String} type - Event name
-     * @param {Function} callback - Event callback
+     * @param {String} type - event name
+     * @param {Function} callback - event callback
      * @return {Draggable}
      * @example draggable.off('drag:start', handlerFunction);
      */
@@ -4817,7 +4817,7 @@ var Draggable = function () {
 
     /**
      * Triggers draggable event
-     * @param {AbstractEvent} event - Event instance
+     * @param {AbstractEvent} event - event instance
      * @return {Draggable}
      * @example draggable.trigger(event);
      */
@@ -11650,11 +11650,11 @@ var AbstractEvent = function () {
   /**
    * AbstractEvent constructor.
    * @constructs AbstractEvent
-   * @param {object} data - Event data
+   * @param {object} data - event data
    */
 
   /**
-   * Event type
+   * event type
    * @static
    * @abstract
    * @property type
@@ -11675,7 +11675,7 @@ var AbstractEvent = function () {
 
 
   /**
-   * Event cancelable
+   * event cancelable
    * @static
    * @abstract
    * @property cancelable

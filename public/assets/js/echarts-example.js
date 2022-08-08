@@ -4506,7 +4506,7 @@ var echartsLineShareDatasetChartInit = function echartsLineShareDatasetChartInit
 };
 /* -------------------------------------------------------------------------- */
 
-/*                                Session By Country Map                      */
+/*                                Session By country Map                      */
 
 /* -------------------------------------------------------------------------- */
 
@@ -5327,7 +5327,7 @@ var echartsRadarChartInit = function echartsRadarChartInit() {
             name: 'Marketing',
             max: 6500
           }, {
-            name: 'Admin',
+            name: 'admin',
             max: 16000
           }, {
             name: 'Tech',
@@ -5382,7 +5382,7 @@ var echartsRadarCustomizedChartInit = function echartsRadarCustomizedChartInit()
   var $radarChartEl = document.querySelector('.echart-radar-customized-chart');
 
   function getFormatter(params) {
-    var indicators = [['Marketing', 'Sales', 'Dev', 'Support', 'Tech', 'Admin'], ['Language', 'Math', 'English', 'Physics', 'Chemistry', 'Biology']];
+    var indicators = [['Marketing', 'Sales', 'Dev', 'Support', 'Tech', 'admin'], ['Language', 'Math', 'English', 'Physics', 'Chemistry', 'Biology']];
     var num = params.seriesIndex;
     return "<strong > ".concat(params.name, " </strong>\n    <div class=\"fs--1 text-600\">\n      <strong >").concat(indicators[params.seriesIndex][0], "</strong>: ").concat(params.value[0], "  <br>\n      <strong>").concat(indicators[num][1], "</strong>: ").concat(params.value[1], "  <br>\n      <strong>").concat(indicators[num][2], "</strong>: ").concat(params.value[2], "  <br>\n      <strong>").concat(indicators[num][3], "</strong>: ").concat(params.value[3], "  <br>\n      <strong>").concat(indicators[num][4], "</strong>: ").concat(params.value[4], "  <br>\n      <strong>").concat(indicators[num][5], "</strong>: ").concat(params.value[5], "  <br>\n    </div>");
   }
@@ -5423,7 +5423,7 @@ var echartsRadarCustomizedChartInit = function echartsRadarCustomizedChartInit()
           shape: 'circle',
           center: window.innerWidth < 992 ? ['50%', '30%'] : ['25%', '50%'],
           indicator: [{
-            name: 'Admin',
+            name: 'admin',
             max: 6500
           }, {
             name: 'Tech',
