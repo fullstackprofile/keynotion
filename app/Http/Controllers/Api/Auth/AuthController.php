@@ -38,8 +38,7 @@ class AuthController extends BaseController
             $token = $user->createToken('web');
 
             if ($request->has('cart_id')) {
-                $cart = Cart::copyCart($request->cart_id);
-                dd($cart);
+                Cart::copyCart($request->cart_id);
             }
 
             return response()->json(['token' => $token->plainTextToken]);

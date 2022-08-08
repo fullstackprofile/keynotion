@@ -2,7 +2,6 @@
 
 namespace App\Services\Order;
 
-use App\Models\ticket;
 use App\Models\User;
 use Cache;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -60,7 +59,7 @@ class CartService
     public function addItem(int $productId, float $quantity)
     {
         $this->updateCurrentCart($this->getCurrentCart()->put($productId, [
-            'product_id' => $productId,
+            'ticket_id' => $productId,
             'quantity' => $quantity,
         ]));
     }
@@ -74,7 +73,6 @@ class CartService
         if (!empty($this->customKey)) {
             return $this->customKey;
         }
-
         if ($this->getUser()) {
             return 'cart_' . $this->getUser()->id;
         }

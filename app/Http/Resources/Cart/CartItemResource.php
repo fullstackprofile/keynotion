@@ -17,7 +17,7 @@ class CartItemResource extends JsonResource
     {
         return [
             //temporary delete below line
-            'product_id' => $this->product_id,
+            'ticket_id' => $this->ticket_id,
 
             'quantity' => $this->quantity,
             //todo fix
