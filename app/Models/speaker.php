@@ -11,7 +11,7 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
- * @mixin IdeHelperSpeaker
+ * @mixin IdeHelperspeaker
  */
 class speaker extends Model implements HasMedia
 {

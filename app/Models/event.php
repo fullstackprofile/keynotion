@@ -12,7 +12,7 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
- * @mixin IdeHelperEvent
+ * @mixin IdeHelperevent
  */
 class event extends Model implements HasMedia
 {

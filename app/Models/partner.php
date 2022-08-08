@@ -11,7 +11,7 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
- * @mixin IdeHelperPartner
+ * @mixin IdeHelperpartner
  */
 class partner extends Model implements HasMedia
 {

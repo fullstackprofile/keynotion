@@ -12,6 +12,119 @@
 
 namespace App\Models{
 /**
+ * App\Models\Order
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ */
+	class IdeHelperOrder {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\OrderItem
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
+ */
+	class IdeHelperOrderItem {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\User
+ *
+ * @property int $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string $phone
+ * @property string $country
+ * @property string $role
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ */
+	class IdeHelperUser {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\appliedSpeaker
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $surname
+ * @property string|null $company_name
+ * @property string|null $job_title
+ * @property string|null $phone
+ * @property string|null $corporate_email
+ * @property string|null $country
+ * @property string|null $summit_name
+ * @property string|null $presentation_proposal
+ * @property string|null $learn
+ * @property string|null $other
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker query()
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereCorporateEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereJobTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereLearn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereOther($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker wherePresentationProposal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereSummitName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereSurname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|appliedSpeaker whereUpdatedAt($value)
+ */
+	class IdeHelperappliedSpeaker {}
+}
+
+namespace App\Models{
+/**
  * App\Models\attender
  *
  * @property int $id
@@ -30,7 +143,46 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|attender whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|attender whereUpdatedAt($value)
  */
-	class IdeHelperAttender {}
+	class IdeHelperattender {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\brochure
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $surname
+ * @property string|null $company_name
+ * @property string|null $job_title
+ * @property string|null $phone
+ * @property string|null $corporate_email
+ * @property string|null $country
+ * @property string|null $summit_name
+ * @property string|null $comment
+ * @property string|null $learn
+ * @property string|null $other
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure query()
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereCorporateEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereJobTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereLearn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereOther($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereSummitName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereSurname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|brochure whereUpdatedAt($value)
+ */
+	class IdeHelperbrochure {}
 }
 
 namespace App\Models{
@@ -53,7 +205,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|category whereUpdatedAt($value)
  */
-	class IdeHelperCategory {}
+	class IdeHelpercategory {}
 }
 
 namespace App\Models{
@@ -77,7 +229,37 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|city whereStateId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|city whereUpdatedAt($value)
  */
-	class IdeHelperCity {}
+	class IdeHelpercity {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\comment
+ *
+ * @property int $id
+ * @property int|null $news_id
+ * @property string|null $comment
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $website
+ * @property int $approve
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\news|null $news
+ * @method static \Illuminate\Database\Eloquent\Builder|comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereApprove($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereNewsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|comment whereWebsite($value)
+ */
+	class IdeHelpercomment {}
 }
 
 namespace App\Models{
@@ -104,7 +286,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|country wherePhonecode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|country whereUpdatedAt($value)
  */
-	class IdeHelperCountry {}
+	class IdeHelpercountry {}
 }
 
 namespace App\Models{
@@ -167,7 +349,32 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|event whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|event whereVipTour($value)
  */
-	class IdeHelperEvent {}
+	class IdeHelperevent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\eventQuestion
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $tel
+ * @property string $message
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion query()
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereTel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereUpdatedAt($value)
+ */
+	class IdeHelpereventQuestion {}
 }
 
 namespace App\Models{
@@ -190,12 +397,69 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|item whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|item whereUpdatedAt($value)
  */
-	class IdeHelperItem {}
+	class IdeHelperitem {}
 }
 
 namespace App\Models{
 /**
- * App\Models\othertype
+ * App\Models\news
+ *
+ * @property int $id
+ * @property string $slug
+ * @property string $title
+ * @property int|null $news_category_id
+ * @property string $description
+ * @property string $date
+ * @property array $item
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
+ * @property-read \App\Models\newsCategory|null $news_category
+ * @method static \Illuminate\Database\Eloquent\Builder|news newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|news newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|news query()
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereItem($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereNewsCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|news whereUpdatedAt($value)
+ */
+	class IdeHelpernews {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\newsCategory
+ *
+ * @property int $id
+ * @property string $slug
+ * @property string $title
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\news[] $news
+ * @property-read int|null $news_count
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|newsCategory whereUpdatedAt($value)
+ */
+	class IdeHelpernewsCategory {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\otherType
  *
  * @property int $id
  * @property string $slug
@@ -213,7 +477,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|otherType whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|otherType whereUpdatedAt($value)
  */
-	class IdeHelperOtherType {}
+	class IdeHelperotherType {}
 }
 
 namespace App\Models{
@@ -238,7 +502,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|partner whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|partner whereUpdatedAt($value)
  */
-	class IdeHelperPartner {}
+	class IdeHelperpartner {}
 }
 
 namespace App\Models{
@@ -267,7 +531,38 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|place whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereUpdatedAt($value)
  */
-	class IdeHelperPlace {}
+	class IdeHelperplace {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\question
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property string $company
+ * @property string $interested
+ * @property string $event
+ * @property string $question
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|question newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|question newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|question query()
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereCompany($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereEvent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereInterested($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|question whereUpdatedAt($value)
+ */
+	class IdeHelperquestion {}
 }
 
 namespace App\Models{
@@ -279,6 +574,7 @@ namespace App\Models{
  * @property string $full_name
  * @property string $profession
  * @property string $company
+ * @property string $linkedin
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\event[] $events
@@ -292,11 +588,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereFullName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|speaker whereLinkedin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereProfession($value)
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|speaker whereUpdatedAt($value)
  */
-	class IdeHelperSpeaker {}
+	class IdeHelperspeaker {}
 }
 
 namespace App\Models{
@@ -321,7 +618,44 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|sponsor whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsor whereUpdatedAt($value)
  */
-	class IdeHelperSponsor {}
+	class IdeHelpersponsor {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\sponsorship
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $surname
+ * @property string|null $company_name
+ * @property string|null $job_title
+ * @property string|null $phone
+ * @property string|null $corporate_email
+ * @property string|null $country
+ * @property string|null $summit_name
+ * @property string|null $comments
+ * @property string|null $package
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship query()
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereComments($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereCorporateEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereJobTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePackage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereSummitName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereSurname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereUpdatedAt($value)
+ */
+	class IdeHelpersponsorship {}
 }
 
 namespace App\Models{
@@ -347,7 +681,59 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|state whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|state whereUpdatedAt($value)
  */
-	class IdeHelperState {}
+	class IdeHelperstate {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\subscriber
+ *
+ * @property int $id
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber query()
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|subscriber whereUpdatedAt($value)
+ */
+	class IdeHelpersubscriber {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\testimonial
+ *
+ * @property int $id
+ * @property float $star
+ * @property string $testimonial
+ * @property string $full_name
+ * @property string $heading
+ * @property string|null $profession
+ * @property string $company
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial query()
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereCompany($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereHeading($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereProfession($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereStar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereTestimonial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|testimonial whereUpdatedAt($value)
+ */
+	class IdeHelpertestimonial {}
 }
 
 namespace App\Models{
@@ -362,6 +748,7 @@ namespace App\Models{
  * @property float|null $price
  * @property float|null $sale
  * @property string|null $currency
+ * @property int $attractive
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\event|null $event
@@ -372,6 +759,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ticket newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ticket newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ticket query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ticket whereAttractive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ticket whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ticket whereCurrency($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ticket whereEventId($value)
@@ -383,7 +771,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ticket whereTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ticket whereUpdatedAt($value)
  */
-	class IdeHelperTicket {}
+	class IdeHelperticket {}
 }
 
 namespace App\Models{
@@ -406,46 +794,35 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|type whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|type whereUpdatedAt($value)
  */
-	class IdeHelperType {}
+	class IdeHelpertype {}
 }
 
 namespace App\Models{
 /**
- * App\Models\user
+ * App\Models\vacancy
  *
  * @property int $id
- * @property string $first_name
- * @property string $last_name
- * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
- * @property int $phone
- * @property string $country
- * @property string $role
- * @property string|null $remember_token
+ * @property string|null $slug
+ * @property string|null $title
+ * @property string|null $job_description
+ * @property array|null $about_role
+ * @property array|null $looking_for
+ * @property array|null $benefits
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
- * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|user newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|user newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|user query()
- * @method static \Illuminate\Database\Eloquent\Builder|user whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereRole($value)
- * @method static \Illuminate\Database\Eloquent\Builder|user whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy query()
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereAboutRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereBenefits($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereJobDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereLookingFor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|vacancy whereUpdatedAt($value)
  */
-	class IdeHelperUser {}
+	class IdeHelpervacancy {}
 }
 

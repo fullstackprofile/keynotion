@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * @mixin IdeHelperOtherType
+ * @mixin IdeHelperotherType
  */
 class otherType extends Model
 {

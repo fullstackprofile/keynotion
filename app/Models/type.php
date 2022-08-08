@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * @mixin IdeHelperType
+ * @mixin IdeHelpertype
  */
 class type extends Model
 {

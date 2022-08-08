@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 /**
- * @mixin IdeHelperTicket
+ * @mixin IdeHelperticket
  */
 class ticket extends Model
 {
