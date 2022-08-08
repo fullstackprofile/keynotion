@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * @mixin IdeHelperPlace
  */
-class Place extends Model implements HasMedia
+class place extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
@@ -26,7 +26,7 @@ class Place extends Model implements HasMedia
     ];
 
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
     public function registerMediaCollections(): void
     {

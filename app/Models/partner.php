@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * @mixin IdeHelperPartner
  */
-class Partner extends Model implements HasMedia
+class partner extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
     protected $fillable = [
@@ -21,7 +21,7 @@ class Partner extends Model implements HasMedia
         'slug',
     ];
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 
     public function registerMediaCollections(): void

@@ -13,7 +13,7 @@ class PlaceStoreRequest extends FormRequest
         return [
             'title' => 'required|unique:places|max:255',
             'address'=>'required:places|max:255',
-            'cover'=>'required',
+            'cover'=>'required|file',
             'logo'=>'required|file',
             'latitude'=>'required',
             'longitude'=>'required',

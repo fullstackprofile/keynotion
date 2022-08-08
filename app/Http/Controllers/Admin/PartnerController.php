@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Partner\PartnerStoreRequest;
 use App\Http\Requests\Partner\PartnerUpdateRequest;
-use App\Models\Partner;
-use App\Models\Sponsor;
+use App\Models\partner;
+use App\Models\sponsor;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -15,8 +15,8 @@ class PartnerController extends Controller
 
     public function index()
     {
-        $partner=Partner::orderBy('id','asc')->paginate(12);
-        return view('Admin.Partner.index',[
+        $partner=partner::orderBy('id','asc')->paginate(12);
+        return view('admin.partner.index',[
             'partners'=>$partner
         ]);
     }
@@ -25,16 +25,16 @@ class PartnerController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $partners = Partner::query()
+        $partners = partner::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->paginate(12);
-        return view('Admin.Partner.index')->with(array('partners'=>$partners));
+        return view('admin.partner.index')->with(array('partners'=>$partners));
     }
 
 
     public function create()
     {
-       return view('Admin.Partner.create');
+       return view('admin.partner.create');
     }
 
 
@@ -44,20 +44,20 @@ class PartnerController extends Controller
      */
     public function store(PartnerStoreRequest $request)
     {
-        $partner = Partner::create($request->validated());
+        $partner = partner::create($request->validated());
         $partner->addMedia($request->file('logo'))->toMediaCollection('partner_logo');
         return redirect()->route('partner.index')->withSuccess("Nice Job! You're partner has been successfully created :) !");
     }
 
-    public function show(Partner $partner)
+    public function show(partner $partner)
     {
         //
     }
 
 
-    public function edit(Partner $partner)
+    public function edit(partner $partner)
     {
-        return view('Admin.Partner.edit',[
+        return view('admin.partner.edit',[
             'partners'=>$partner
         ]);
     }
@@ -67,7 +67,7 @@ class PartnerController extends Controller
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      */
-    public function update(PartnerUpdateRequest $request, Partner $partner)
+    public function update(PartnerUpdateRequest $request, partner $partner)
     {
         $partner->update($request->validated());
 
@@ -78,7 +78,7 @@ class PartnerController extends Controller
     }
 
 
-    public function destroy(Partner $partner)
+    public function destroy(partner $partner)
     {
         $partner->events()->detach();
         $partner->delete();

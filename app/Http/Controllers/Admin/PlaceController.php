@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Place\PlaceStoreRequest;
 use App\Http\Requests\Place\PlaceUpdateRequest;
-use App\Models\Partner;
-use App\Models\Place;
+use App\Models\partner;
+use App\Models\place;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
 
-    public function index()
+    /**
+     * @return View
+     */
+    public function index(): View
     {
-        $place=Place::orderBy('id','asc')->paginate(12);
-        return view('Admin.Place.index',[
+        $place=place::orderBy('id','asc')->paginate(12);
+        return view('admin.place.index',[
             'places'=>$place
         ]);
     }
@@ -25,15 +28,18 @@ class PlaceController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $places = Place::query()
+        $places = place::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->paginate(12);
-        return view('Admin.Place.index')->with(array('places'=>$places));
+        return view('admin.place.index')->with(array('places'=>$places));
     }
 
-    public function create()
+    /**
+     * @return View
+     */
+    public function create(): View
     {
-        return view('Admin.Place.create');
+        return view('admin.place.create');
     }
 
 
@@ -43,43 +49,50 @@ class PlaceController extends Controller
      */
     public function store(PlaceStoreRequest $request)
     {
-        $place = Place::create($request->validated());
-        foreach ($request->file('cover') as $cover) {
-            $place->addMedia($cover)->toMediaCollection('place_cover');
-        }
+        $place = place::create($request->validated());
+        $place->addMedia($request->file('cover'))->toMediaCollection('place_cover');
         $place->addMedia($request->file('logo'))->toMediaCollection('place_logo');
 
         return redirect()->route('place.index')->withSuccess("Nice Job! You're Venue has been successfully created :) !");
     }
 
 
-    public function show(Place $place)
+    public function show(place $place)
     {
         //
     }
 
 
-    public function edit(Place $place)
+    /**
+     * @param place $place
+     * @return View
+     */
+    public function edit(place $place): View
     {
-        return view('Admin.Place.edit',[
+        return view('admin.place.edit',[
             'places'=>$place
         ]);
     }
 
 
-    public function update(PlaceUpdateRequest $request, Place $place)
+    /**
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
+    public function update(PlaceUpdateRequest $request, place $place)
     {
-        $place->update([
-            'title'=>$request->title,
-            'address'=>$request->address,
-            'latitude'=>$request->latitude,
-            'longitude'=>$request->longitude,
-        ]);
+        $place->update($request->validated());
+        if ($request->hasFile('cover')) {
+            $place->addMedia($request->file('cover'))->toMediaCollection('place_cover');
+        }
+        elseif($request->hasFile('logo')){
+            $place->addMedia($request->file('logo'))->toMediaCollection('place_logo');
+        }
         return redirect()->route('place.index')->withSuccess("Nice Job! You're venue has been successfully updated :) !");
     }
 
 
-    public function destroy(Place $place)
+    public function destroy(place $place)
     {
         $place->events()->detach();
         $place->delete();
