@@ -3,26 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event;
-use App\Models\News;
-use App\Models\Partner;
-use App\Models\Sponsor;
-use App\Models\Ticket;
-use App\Models\User;
-use App\Models\Vacancy;
+use App\Models\event;
+use App\Models\news;
+use App\Models\partner;
+use App\Models\sponsor;
+use App\Models\ticket;
+use App\Models\user;
+use App\Models\vacancy;
+use App\Notifications\CommentNotification;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        $event_count=Event::all()->count();
-        $ticket_count=Ticket::all()->count();
-        $sponsor_count=Sponsor::all()->count();
-        $partner_count=Partner::all()->count();
-        $vacancy_count=Vacancy::all()->count();
-        $news_count=News::all()->count();
-        $users_count=User::all()->count();
-        $events=Event::orderBy('id', 'asc')->paginate(6);
+        $event_count=event::all()->count();
+        $ticket_count=ticket::all()->count();
+        $sponsor_count=sponsor::all()->count();
+        $partner_count=partner::all()->count();
+        $vacancy_count=vacancy::all()->count();
+        $news_count=news::all()->count();
+        $users_count=user::all()->count();
+        $events=event ::orderBy('id', 'asc')->paginate(6);
+
         return view('admin.home.index',[
             'event_count'=>$event_count,
             'ticket_count'=>$ticket_count,
@@ -34,4 +36,6 @@ class HomeController extends Controller
             'events'=>$events,
         ]);
     }
+
+
 }
