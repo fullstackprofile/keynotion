@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\OtherType;
-use App\Models\User;
+use App\Models\otherType;
+use App\Models\user;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -13,9 +13,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $user=User::orderBy('created_at','desc')->paginate(15);
+        $user=user::orderBy('created_at','desc')->paginate(15);
 
-        return view('Admin.Users.index',[
+        return view('admin.users.index',[
             'users'=>$user
         ]);
     }
@@ -24,18 +24,18 @@ class UserController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $users = User::query()
+        $users = user::query()
             ->where('first_name', 'LIKE', "%{$search}%")
             ->orWhere('last_name', 'LIKE', "%{$search}%")
             ->orWhere('email', 'LIKE', "%{$search}%")
             ->paginate(15);
-        return view('Admin.Users.index')->with(array('users'=>$users));
+        return view('admin.users.index')->with(array('users'=>$users));
     }
 
     public function change_role(Request $request)
     {
         if (isset($request->role) && isset($request->user_id)){
-            $user = User::findOrFail($request->user_id);
+            $user = user::findOrFail($request->user_id);
             $user->role = $request->role;
             $user->save();
         }
