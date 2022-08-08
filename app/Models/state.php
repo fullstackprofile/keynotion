@@ -8,21 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperState
  */
-class State extends Model
+class state extends Model
 {
     use HasFactory;
 
     public function countries(){
 
-        return $this->belongsTo(Country::class,'country_id');
+        return $this->belongsTo(country::class,'country_id');
     }
 
     public function cities(){
 
-        return $this->hasMany(City::class,'state_id');
+        return $this->hasMany(city::class,'state_id');
     }
 
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 }
