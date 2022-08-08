@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Sponsor\SponsorStoreRequest;
 use App\Http\Requests\Sponsor\SponsorUpdateRequest;
 use App\Http\Requests\UpdateSponsorRequest;
-use App\Models\Attender;
-use App\Models\Sponsor;
+use App\Models\attender;
+use App\Models\sponsor;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -16,8 +16,8 @@ class SponsorController extends Controller
 
     public function index()
     {
-        $sponsor=Sponsor::orderBy('id','asc')->paginate(12);
-        return view('Admin.Sponsor.index',[
+        $sponsor=sponsor::orderBy('id','asc')->paginate(12);
+        return view('admin.sponsor.index',[
             'sponsors'=>$sponsor
         ]);
     }
@@ -25,15 +25,15 @@ class SponsorController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $sponsors = Sponsor::query()
+        $sponsors = sponsor::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->paginate(12);
-        return view('Admin.Sponsor.index')->with(array('sponsors'=>$sponsors));
+        return view('admin.sponsor.index')->with(array('sponsors'=>$sponsors));
     }
 
     public function create()
     {
-        return view('Admin.Sponsor.create');
+        return view('admin.sponsor.create');
     }
 
 
@@ -43,21 +43,21 @@ class SponsorController extends Controller
      */
     public function store(SponsorStoreRequest $request): mixed
     {
-        $sponsor = Sponsor::create($request->validated());
+        $sponsor = sponsor::create($request->validated());
         $sponsor->addMedia($request->file('logo'))->toMediaCollection('sponsor_logo');
         return redirect()->route('sponsor.index')->withSuccess("Nice Job! You're sponsor has been successfully created :) !");
     }
 
 
-    public function show(Sponsor $sponsor)
+    public function show(sponsor $sponsor)
     {
         //
     }
 
 
-    public function edit(Sponsor $sponsor)
+    public function edit(sponsor $sponsor)
     {
-        return view('Admin.Sponsor.edit',[
+        return view('admin.sponsor.edit',[
             'sponsors'=>$sponsor
         ]);
     }
@@ -67,7 +67,7 @@ class SponsorController extends Controller
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function update(SponsorUpdateRequest $request, Sponsor $sponsor)
+    public function update(SponsorUpdateRequest $request, sponsor $sponsor)
     {
         $sponsor->update($request->validated());
         if ($request->hasFile('logo')) {
@@ -77,7 +77,7 @@ class SponsorController extends Controller
     }
 
 
-    public function destroy(Sponsor $sponsor)
+    public function destroy(sponsor $sponsor)
     {
         $sponsor->events()->detach();
         $sponsor->delete();
