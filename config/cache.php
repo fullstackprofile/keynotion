@@ -92,6 +92,11 @@ return [
             'driver' => 'octane',
         ],
 
+        'cache_order' => [
+            'driver' => 'redis',
+            'connection' => 'cache_order_connection',
+            'lock_connection' => 'default',
+        ],
     ],
 
     /*
