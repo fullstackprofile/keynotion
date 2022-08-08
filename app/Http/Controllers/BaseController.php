@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PaginatedCollection;
-use App\Models\User;
+use App\Models\user;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,8 +16,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller as BaseRouteController;
 use Illuminate\Support\Collection;
-use Inertia\Inertia;
-use Inertia\Response;
 use JsonSerializable;
 
 abstract class BaseController extends BaseRouteController
@@ -29,9 +27,10 @@ abstract class BaseController extends BaseRouteController
     /**
      * @param JsonResource|array|null $resource
      * @param array $additional
+     * @param int $httpCode
      * @return mixed
      */
-    public function render(JsonResource|array|null $resource = null, array $additional = []): mixed
+    public function render(JsonResource|array|null $resource = null, array $additional = [], $httpCode = 200): mixed
     {
         $request = request();
         if ($resource instanceof JsonResource) {
@@ -65,7 +64,7 @@ abstract class BaseController extends BaseRouteController
             return $response;
         }
 
-        return response($response);
+        return response($response, $httpCode);
     }
 
     /**
@@ -95,9 +94,9 @@ abstract class BaseController extends BaseRouteController
     }
 
     /**
-     * @return Authenticatable|User|null
+     * @return Authenticatable|user|null
      */
-    public function getUser(): Authenticatable|User|null
+    public function getUser(): Authenticatable|user|null
     {
         return auth()->user();
     }
