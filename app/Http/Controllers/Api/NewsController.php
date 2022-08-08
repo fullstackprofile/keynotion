@@ -6,12 +6,11 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\News\NewsOneResource;
 use App\Http\Resources\News\NewsResource;
-use App\Models\News;
+use App\Models\news;
 use Illuminate\Http\Request;
 
 class NewsController  extends BaseController
 {
-
     /**
      * @param Request $request
      * @return mixed
@@ -21,7 +20,7 @@ class NewsController  extends BaseController
         return $this->render(
             $this->renderCollectionResponse(
                 $request,
-                News::query(),
+                news::query(),
                 NewsResource::class
             )
         );
@@ -29,10 +28,10 @@ class NewsController  extends BaseController
 
     /**
      * @param Request $request
-     * @param News $news
+     * @param news $news
      * @return mixed
      */
-    public function show(Request $request, News $news): mixed
+    public function show(Request $request, news $news): mixed
     {
         return $this->render(new NewsOneResource($news));
     }

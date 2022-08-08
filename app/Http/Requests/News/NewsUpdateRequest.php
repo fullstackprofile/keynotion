@@ -12,10 +12,12 @@ class NewsUpdateRequest extends NewsStoreRequest
         return [
             'title' => 'string',
             'description' => 'string',
+            'news_category_id'=>'exists:news_categories,id',
             'question' => 'array',
             'news_img' => 'file',
             'item.*.action' => 'string',
             'item.*.answer' => 'string',
+            'date'=>'date'
         ];
     }
 }

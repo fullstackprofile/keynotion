@@ -18,11 +18,12 @@ class NewsStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug'=>'unique:events,slug',
+            'slug'=>'unique:news,slug',
+            'news_category_id'=>'exists:news_categories,id',
             'description' => 'required:string',
             'question' => 'array',
             'news_img' => 'file',
-            'date'=>'required',
+            'date'=>'date',
             'item.*.action' => 'string',
             'item.*.answer' => 'string',
         ];
