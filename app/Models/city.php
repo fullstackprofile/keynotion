@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperCity
  */
-class City extends Model
+class city extends Model
 {
     use HasFactory;
     public function states(){
 
-        return $this->belongsTo(State::class,'state_id');
+        return $this->belongsTo(state::class,'state_id');
     }
 
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 
 }
