@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperCategory
  */
-class Category extends Model
+class category extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -16,6 +16,6 @@ class Category extends Model
         'slug',
     ];
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 }
