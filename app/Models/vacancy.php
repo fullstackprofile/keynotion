@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperEvent
  */
-class Vacancy extends Model
+class vacancy extends Model
 {
     use HasFactory;
 
