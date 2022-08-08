@@ -29,8 +29,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'exists:users'],
+            'email' => [ 'string', 'email', 'exists:users'],
             'password' => ['required', 'string'],
+            'cart_id' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
