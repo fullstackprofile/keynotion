@@ -25,6 +25,7 @@ class TicketStoreRequest extends FormRequest
             'currency'=>'required|max:11',
             'items' => 'required|array|exists:items,id',
             'event_id' => 'required|exists:events,id',
+            'attractive'=>'boolean',
         ];
     }
 }

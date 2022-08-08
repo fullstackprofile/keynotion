@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * @mixin IdeHelperTicket
  */
-class Ticket extends Model
+class ticket extends Model
 {
     use HasFactory;
 
@@ -23,6 +23,7 @@ class Ticket extends Model
         'price',
         'sale',
         'currency',
+        'attractive',
     ];
 
     /**
@@ -30,7 +31,7 @@ class Ticket extends Model
      */
     public function event(): BelongsTo
     {
-        return $this->belongsTo(Event::class, 'event_id', 'id');
+        return $this->belongsTo(event::class, 'event_id', 'id');
     }
 
     /**
@@ -38,16 +39,16 @@ class Ticket extends Model
      */
     public function items(): BelongsToMany
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(item::class);
     }
 
     public function type()
     {
-        return $this->belongsTo(Type::class,'type_id','id');
+        return $this->belongsTo(type::class,'type_id','id');
     }
 
     public function othertype()
     {
-        return $this->belongsTo(OtherType::class,'other_type_id','id');
+        return $this->belongsTo(otherType::class,'other_type_id','id');
     }
 }
