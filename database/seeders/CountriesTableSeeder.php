@@ -252,7 +252,7 @@ class CountriesTableSeeder extends Seeder
             array('id' => 233,'code' => 'UY','name' => "Uruguay",'phonecode' => 598),
             array('id' => 234,'code' => 'UZ','name' => "Uzbekistan",'phonecode' => 998),
             array('id' => 235,'code' => 'VU','name' => "Vanuatu",'phonecode' => 678),
-            array('id' => 236,'code' => 'VA','name' => "Vatican City State (Holy See)",'phonecode' => 39),
+            array('id' => 236,'code' => 'VA','name' => "Vatican city state (Holy See)",'phonecode' => 39),
             array('id' => 237,'code' => 'VE','name' => "Venezuela",'phonecode' => 58),
             array('id' => 238,'code' => 'VN','name' => "Vietnam",'phonecode' => 84),
             array('id' => 239,'code' => 'VG','name' => "Virgin Islands (British)",'phonecode' => 1284),
