@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create other type  for ticket')
+@section('title', 'admin - create other type  for ticket')
 @section('content')
 
 
@@ -13,6 +13,11 @@
                     <div class="alert alert-danger" role="alert">
                         <h4><i class="icon fa fa-check"></i>{{ session('success') }}</h4>
                     </div>
+                @endif
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div>{{$error}}</div>
+                    @endforeach
                 @endif
                 <div class="card-body bg-light">
                     <form action="{{route('other_type.store')}}" method="POST" enctype="multipart/form-data">

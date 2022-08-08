@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create news')
+@section('title', 'admin - create news')
 @section('content')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -34,15 +34,14 @@
                             <img id="file-ip-1-preview" class="card-img-top" src="../../assets/img/generic/13.jpg"
                                  alt="" height="400px">
                             <input name="news_img" type="file" id="upload-cover-image" accept="image/*"
-                                   onchange="showPreview(event);" style="margin: 7px">
+                                   onchange="showPreview(event);" style="margin: 7px" required>
                         </div>
                         {{----------------------------Start Date----------------------------------}}
                         <div class="col-sm-6 mb-3">
                             <label class="form-label" for="start-date"> Date <span style="color: red">*</span></label>
-                            <input class="form-control datetimepicker flatpickr-input" name="date"
-                                   id="start-date" type="text" placeholder="d/m/y"
-                                   data-options="{&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}"
-                                   readonly="readonly" required value="{{old('date')}}">
+                            <input type="date" name="date"
+                                    placeholder="d/m/y"
+                                 required value="{{old('date')}}">
                         </div>
                         {{---------------------------- Title----------------------------------}}
                         <div class="row gx-2">
@@ -60,7 +59,17 @@
                                 <textarea class="form-control" id="event-description" name="description" rows="6"
                                           required>{{old('description')}}</textarea>
                             </div>
-                            {{----------------------------Question----------------------------------}}
+                            {{----------------------------category----------------------------------}}
+                            <div class="mb-3">
+                                <label class="form-label" for="event-type">News Category<span
+                                        style="color: red">*</span></label>
+                                <select class="form-select" id="event-type" name="news_category_id" required>
+                                    @foreach($news_categories as $news_category)
+                                        <option value="{{$news_category['id']}}">{{$news_category['title']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{----------------------------question----------------------------------}}
                             <div class="col-12 mb-3 key_topic">
                                 <label class="form-label" for="event-description">News questions and answers<span
                                         style="color: red">*</span></label>
@@ -81,7 +90,8 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <button type="submit" class="btn btn-danger">Save News</button>
+
+                            <button type="submit" class="btn btn-danger">Save News></button>
                         </div>
                     </form>
                 </div>
@@ -99,7 +109,7 @@
             var counter = parseInt($(this).data('next-counter'));
             console.log(counter)
             html += '<div id="inputFormRow">';
-            html += '<label class="form-label">Question</label>';
+            html += '<label class="form-label">question</label>';
             html += ' <input type="text" name="item[' + counter + '][action]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">';
             html += '<label class="form-label">Answer</label>';
             html += '<textarea class="form-control  mb-3" name="item[' + counter + '][answer]" rows="6" required></textarea>';

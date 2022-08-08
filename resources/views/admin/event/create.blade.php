@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create event')
+@section('title', 'admin - create event')
 @section('content')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -37,7 +37,7 @@
                             <input name="cover_img" type="file" id="upload-cover-image" accept="image/*"
                                    onchange="showPreview(event);" style="margin: 7px">
                         </div>
-                        {{----------------------------Event Title----------------------------------}}
+                        {{----------------------------event Title----------------------------------}}
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">Event Title <span style="color: red">*</span></label>
@@ -48,25 +48,22 @@
                             </div>
                             {{----------------------------Start Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="start-date">Start Date <span style="color: red">*</span></label>
-                                <input class="form-control datetimepicker flatpickr-input" name="start_date"
-                                       id="start-date" type="text" placeholder="d/m/y"
-                                       data-options="{&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}"
-                                       readonly="readonly" required value="{{old('start_date')}}">
+                                <label class="form-label" for="start-date"> Date <span style="color: red">*</span></label>
+                                <input type="date" name="start_date"
+                                       placeholder="d/m/y"
+                                       required >
                             </div>
                             {{----------------------------End Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="end-date">End Date<span
-                                        style="color: red">*</span></label>
-                                <input class="form-control datetimepicker flatpickr-input" name="end_date" id="end-date"
-                                       type="text" placeholder="d/m/y"
-                                       data-options="{&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}"
-                                       readonly="readonly" required value="{{old('end_date')}}">
+                                <label class="form-label" for="start-date"> Date <span style="color: red">*</span></label>
+                                <input type="date" name="end_date"
+                                       placeholder="d/m/y"
+                                       required >
                             </div>
                             <div class="col-12">
                                 <div class="border-dashed-bottom my-3"></div>
                             </div>
-                            {{----------------------------Country City Adress----------------------------------}}
+                            {{----------------------------country city Adress----------------------------------}}
                             <div class="col-sm-3 mb-3">
                                 <label class="form-label" for="event-country">Country<span
                                         style="color: red">*</span></label>
@@ -92,7 +89,7 @@
                                 <input class="form-control" id="event-address" type="text" name="address"
                                        style="padding: 9px !important;" placeholder="Address" required value="{{old('address')}}">
                             </div>
-                            {{----------------------------Category----------------------------------}}
+                            {{----------------------------category----------------------------------}}
                             <div class="mb-3">
                                 <label class="form-label" for="event-type">Event Category<span
                                         style="color: red">*</span></label>
@@ -152,19 +149,21 @@
                                         style="color: red">*</span></label>
                                 @error('key_topics')
                                 <div>error {{ $message }}</div> @enderror
+                                <input name="key_topic_img" type="file" id="upload-cover-image" accept="image/*"
+                                       style="margin: 7px">
                                 <div id="inputFormRow">
                                     <label class="form-label">Title of topic</label>
                                     <input type="text" name="key_topics[0][title]" class="form-control m-input mb-3"
                                            placeholder="Enter title" autocomplete="off">
                                     <label class="form-label">Description of topic</label>
                                     <textarea class="form-control  mb-3" name="key_topics[0][description]"
-                                              rows="6" required></textarea>
+                                              rows="6" required id="textarea" ></textarea>
                                     <div class="input-group-append mb-3">
                                         <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
                                     </div>
                                 </div>
                                 <div id="newRow" class="mb-3"></div>
-                                <button id="addRow" type="button" class="btn btn-info mb-3" data-next-counter="1">Add
+                                <button id="addRow" type="button" class="btn btn-info mb-3" data-next-counter="1" >Add
                                     Key
                                     Topic
                                 </button>
@@ -195,10 +194,12 @@
                                         style="color: red">*</span></label>
                                 @error('vip_tour')
                                 <div>error {{ $message }}</div> @enderror
+                                <input name="vip_tour_img" type="file" id="upload-cover-image" accept="image/*"
+                                       style="margin: 7px">
                                 <div id="inputFormRow-vip">
                                     <label class="form-label" for="start-date">Start Date and Time</label>
                                     <input class="form-control  active mb-3" name="vip_tour[0][date]"
-                                           type="datetime-local" placeholder="d/m/y">
+                                           type="time" placeholder="time">
                                     <label class="form-label">Description </label>
                                     <input type="text" class="form-control m-input mb-3"
                                            name="vip_tour[0][description]">
@@ -248,7 +249,7 @@
                         </div>
 
                         <div class="col-4">
-                            <button type="submit" class="btn btn-danger">Save Event</button>
+                            <button type="submit" class="btn btn-danger" >Save Event</button>
                         </div>
                     </form>
                 </div>
@@ -257,7 +258,7 @@
 
     </div>
 
-    {{----------------------------Country State CIty----------------------------------}}
+    {{----------------------------country state CIty----------------------------------}}
 
     <script>
 
@@ -269,11 +270,11 @@
                     url: '{{ route('getStates') }}?country_id=' + countryId,
                     method: 'GET',
                 }).done(function (res) {
-                    $('#state').html('<option value="">Select State</option>');
+                    $('#state').html('<option value="">Select state</option>');
                     $.each(res, function (key, value) {
                         $('#state').append('<option value="' + value.id + '">' + value.name + '</option>');
                     });
-                    $('#city').html('<option value="">Select City</option>');
+                    $('#city').html('<option value="">Select city</option>');
 
                 });
             });
@@ -287,12 +288,14 @@
                     url: '{{ route('getCities') }}?state_id=' + stateId,
                     method: 'GET',
                 }).done(function (res) {
-                    $('#city').html('<option value="">Select City</option>');
+                    $('#city').html('<option value="">Select city</option>');
                     $.each(res, function (key, value) {
                         $('#city').append('<option value="' + value.id + '">' + value.name + '</option>');
                     });
                 });
             });
+
+
         });
     </script>
 
@@ -309,7 +312,7 @@
             html += '<label class="form-label">Title of topic</label>';
             html += '<input type="text" name="key_topics[' + counter + '][title]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">';
             html += '<label class="form-label">Description of topic</label>';
-            html += '<textarea class="form-control  mb-3"  name="key_topics[' + counter + '][description]" rows="6" required></textarea>';
+            html += '<textarea class="form-control  mb-3"  name="key_topics[' + counter + '][description]" rows="6" id="textarea" required></textarea>';
             html += '<div class="input-group-append mb-3">';
             html += '<button id="removeRow" type="button" class="btn btn-danger mb-3">Remove</button>';
             html += '</div>';
@@ -355,7 +358,7 @@
             console.log(counter_vip)
             html += '<div id="inputFormRow-vip">';
             html += '<label class="form-label" for="start-date">Start Date and Time</label>';
-            html += '<input class="form-control  active mb-3" name="vip_tour[' + counter_vip + '][date]" type="datetime-local" placeholder="d/m/y" >';
+            html += '<input class="form-control  active mb-3" name="vip_tour[' + counter_vip + '][date]" type="time" placeholder="d/m/y" >';
             html += '<label class="form-label">Description </label>';
             html += '<input type="text" class="form-control m-input mb-3" name="vip_tour[' + counter_vip + '][description]">';
             html += '<div class="input-group-append mb-3">';
@@ -380,6 +383,27 @@
                 preview.style.display = "block";
             }
         }
+
+            $('#textarea').keypress(function(e) {
+                var display = $('#textarea').val();
+
+                if (e.shiftKey === true) {
+                    if (e.which == 13) {
+                        //append a break
+                        $('#textarea').append("<br/>");
+
+                    }
+
+                } else {
+                    if (e.which == 13) {
+                        // submit to form using submit()
+                        $('span#display').html(display);
+
+                    }
+                }
+
+            });
+
     </script>
 
 

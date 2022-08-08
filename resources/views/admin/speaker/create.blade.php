@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create speaker')
+@section('title', 'admin - create speaker')
 @section('content')
     <style>
         .file_input{
@@ -45,6 +45,10 @@
                 <div class="col-lg-12">
                     <label class="form-label" for="profession">Heading</label>
                     <input class="form-control" id="profession" name="profession" type="text" >
+                </div>
+                <div class="col-lg-12">
+                    <label class="form-label" for="profession">Linkedin Link</label><span>If speaker has</span>
+                    <input class="form-control" id="profession" name="linkedin" type="text" >
                 </div>
                 <div class="col-lg-12 file_input">
                 <label>Speaker's Company Logo</label>

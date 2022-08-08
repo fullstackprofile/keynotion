@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create partner')
+@section('title', 'admin - create partner')
 @section('content')
     <style>
         .logo{

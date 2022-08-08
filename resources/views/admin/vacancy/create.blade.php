@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create vacancy')
+@section('title', 'admin - create vacancy')
 @section('content')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -29,7 +29,7 @@
                 <div class="card-body bg-light">
                     <form action="{{route('vacancy.store')}}" method="POST" >
                         @csrf
-                        {{----------------------------Vacancy Title----------------------------------}}
+                        {{----------------------------vacancy Title----------------------------------}}
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">Vacancy Title <span style="color: red">*</span></label>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'admin - create type for ticket')
+@section('title', 'admin - create category for news')
 @section('content')
 
 
@@ -7,7 +7,7 @@
         <div class="col-lg-12 pe-lg-2">
             <div class="card mb-3">
                 <div class="card-header">
-                    <h5 class="mb-0">Create Type for Ticket</h5>
+                    <h5 class="mb-0">Category Details for News</h5>
                 </div>
                 @if (session('success'))
                     <div class="alert alert-danger" role="alert">
@@ -15,16 +15,17 @@
                     </div>
                 @endif
                 <div class="card-body bg-light">
-                    <form action="{{route('type.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('news_category.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
-                                <label class="form-label" for="event-name">Type Title</label>
-                                <input class="form-control" name="title" id="event-name" type="text" placeholder="Type" required>
+                                <label class="form-label" for="event-name">Category Title</label>
+                                <input class="form-control" name="title" id="event-name" type="text" placeholder="Category Title" required>
                             </div>
+
                             <div class="col-4">
-                                <button type="submit" class="btn btn-danger">Save </button>
+                                <button type="submit" class="btn btn-danger">Save Category</button>
                             </div>
                         </div>
                     </form>

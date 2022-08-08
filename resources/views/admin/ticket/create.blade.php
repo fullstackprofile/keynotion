@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create ticket')
+@section('title', 'admin - create ticket')
 @section('content')
 
 
@@ -68,7 +68,7 @@
                                     <option value="£">£</option>
                                 </select>
                             </div>
-                            {{----------------------------Event----------------------------------}}
+                            {{----------------------------event----------------------------------}}
                             <div class="mb-3">
                                 <label class="form-label" for="event-type">Event<span
                                         style="color: red">*</span></label>
@@ -92,6 +92,12 @@
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Please select one or multiple</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="event-type">Have gradient or not ?<span
+                                        style="color: red">*</span></label>
+                                <input type="hidden" name="attractive" value="0">
+                                <input type="checkbox" name="attractive" value="1">
                             </div>
                             <br>
                             <div class="col-4">

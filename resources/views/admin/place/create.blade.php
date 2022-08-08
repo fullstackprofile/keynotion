@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - create venue')
+@section('title', 'admin - create venue')
 @section('content')
     <style>
         .file_input{
@@ -30,7 +30,7 @@
                     <label>The Venue Image</label>
                     <img id="file-ip-1-preview" class="card-img-top" src="../../assets/img/generic/13.jpg" alt="" style="width: 100% ; height: 100%;position:absolute;object-fit: cover">
                 </div>
-                <input  name="cover[]" type="file" id="upload-cover-image" accept="image/*" onchange="showPreview(event);" required="" style="margin-bottom: 10px" multiple>
+                <input  name="cover" type="file" id="upload-cover-image" value="" accept="image/*" onchange="showPreview(event);" required="" style="margin-bottom: 10px" >
 
                 <div class="col-lg-12">
                     <label class="form-label" for="full-name">Title</label>
