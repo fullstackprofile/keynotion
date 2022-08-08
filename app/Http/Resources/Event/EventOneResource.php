@@ -4,17 +4,19 @@ namespace App\Http\Resources\Event;
 
 use App\Http\Resources\Attender\AttenderResource;
 use App\Http\Resources\Partner\PartnerResource;
+use App\Http\Resources\Place\PlaceLogoResource;
 use App\Http\Resources\Place\PlaceResource;
 use App\Http\Resources\Speaker\SpeakerResource;
 use App\Http\Resources\Sponsor\SponsorResource;
-use App\Models\Event;
+use App\Models\event;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 /**
- * @mixin Event
+ * @mixin event
  */
 class EventOneResource extends JsonResource
 {
@@ -26,11 +28,13 @@ class EventOneResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
+            'start_date' => Carbon::parse(strtotime($this->start_date))->format('d F Y'),
+            'end_date' =>Carbon::parse(strtotime($this->end_date))->format('d F Y'),
+            'the_venue_logo' => PlaceLogoResource::collection($this->places),
             'small_description' => $this->small_description,
             'cover' => $this->getFirstMediaUrl('event_img'),
             'category'=>$this->category->title,
@@ -40,7 +44,9 @@ class EventOneResource extends JsonResource
             'speakers' => SpeakerResource::collection($this->speakers),
             'cover_about' => $this->getFirstMediaUrl('event_about_img'),
             'about'=>$this->about_info,
-            'key_topics'=>$this->key_topics,
+            'key_topics_img'=>$this->getFirstMediaUrl('event_key_topics_img'),
+            'key_topics'=> $this->key_topics,
+            'vip_tour_img'=>$this->getFirstMediaUrl('event_vip_tour_img'),
             'vip_tour'=>$this->vip_tour,
             'attenders'=>AttenderResource::collection($this->attenders),
             'key_takeaway'=>$this->key_takeaway,

@@ -3,14 +3,14 @@
 namespace App\Http\Resources\Event;
 
 use App\Http\Resources\Speaker\SpeakerResource;
-use App\Models\Event;
+use App\Models\event;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 /**
- * @mixin Event
+ * @mixin event
  */
 class EventResource extends JsonResource
 {
@@ -24,12 +24,12 @@ class EventResource extends JsonResource
     {
         return [
             [
-            'id' => $this->id,
-            'title' => $this->title,
-            'cover' => $this->getFirstMediaUrl('event_img'),
-                'category_id'=>$this->category->id,
-            'category'=>$this->category->title,
-                ]
+                'id' => $this->id,
+                'title' => $this->title,
+                'cover' => $this->getFirstMediaUrl('event_img'),
+                'category_id' => $this->category->id,
+                'category' => $this->category->title,
+            ]
         ];
     }
 }

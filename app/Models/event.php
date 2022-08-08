@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * @mixin IdeHelperEvent
  */
-class Event extends Model implements HasMedia
+class event extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
@@ -46,60 +46,62 @@ class Event extends Model implements HasMedia
      */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(category::class, 'category_id', 'id');
     }
 
     public function country(): BelongsTo
     {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
+        return $this->belongsTo(country::class, 'country_id', 'id');
     }
 
     public function state(): BelongsTo
     {
-        return $this->belongsTo(State::class, 'state_id', 'id');
+        return $this->belongsTo(state::class, 'state_id', 'id');
     }
 
     public function city(): BelongsTo
     {
-        return $this->belongsTo(City::class, 'city_id', 'id');
+        return $this->belongsTo(city::class, 'city_id', 'id');
     }
     /**
      * @return BelongsToMany
      */
     public function speakers(): BelongsToMany
     {
-        return $this->belongsToMany(Speaker::class);
+        return $this->belongsToMany(speaker::class);
     }
 
     public function attenders(): BelongsToMany
     {
-        return $this->belongsToMany(Attender::class);
+        return $this->belongsToMany(attender::class);
     }
 
     public function sponsors(): BelongsToMany
     {
-        return $this->belongsToMany(Sponsor::class);
+        return $this->belongsToMany(sponsor::class);
     }
 
     public function partners(): BelongsToMany
     {
-        return $this->belongsToMany(Partner::class);
+        return $this->belongsToMany(partner::class);
     }
 
     public function places(): BelongsToMany
     {
-        return $this->belongsToMany(Place::class);
+        return $this->belongsToMany(place::class);
     }
 
     public function tickets()
     {
-        return $this->belongsToMany(Ticket::class);
+        return $this->belongsToMany(ticket::class);
     }
 
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('event_img')->singleFile();
         $this->addMediaCollection('event_about_img')->singleFile();
+        $this->addMediaCollection('event_vip_tour_img')->singleFile();
+        $this->addMediaCollection('event_key_topics_img')->singleFile();
     }
 
 }
