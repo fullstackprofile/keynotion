@@ -18,7 +18,7 @@ class OtherTypeStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug'=>'unique:types,slug',
+            'slug'=>'unique:other_types,slug',
         ];
     }
 }

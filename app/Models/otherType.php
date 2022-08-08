@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperOtherType
  */
-class OtherType extends Model
+class otherType extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -18,6 +18,6 @@ class OtherType extends Model
     ];
 
     public function tickets(){
-        return $this->belongsToMany(Ticket::class);
+        return $this->belongsToMany(ticket::class);
     }
 }
