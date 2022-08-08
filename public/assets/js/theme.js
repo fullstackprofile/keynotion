@@ -641,7 +641,7 @@ var chatInit = function chatInit() {
   }); // change send button color on
 
   if ($chatEmojiarea) {
-    $chatEmojiarea.setAttribute('placeholder', 'Type your message');
+    $chatEmojiarea.setAttribute('placeholder', 'type your message');
     $chatEmojiarea.addEventListener(Events.KEYUP, function (e) {
       if (e.target.textContent.length <= 0) {
         $btnSend.classList.remove(ClassName.TEXT_PRIMARY);
@@ -922,7 +922,7 @@ var draggableInit = function draggableInit() {
       columns.forEach(function (column) {
         utils.hasClass(column, ClassNames.FORM_ADDED) && column.classList.remove(ClassNames.FORM_ADDED);
       });
-    }); // Place forms and other contents bottom of the sortable container
+    }); // place forms and other contents bottom of the sortable container
 
     sortable.on(Events.DRAG_STOP, function (_ref2) {
       var el = _ref2.data.source;
@@ -2553,295 +2553,295 @@ var leafletActiveUserInit = function leafletActiveUserInit() {
     lat: 51.409,
     "long": -2.647,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.68,
     "long": -1.49,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 50.259998,
     "long": -5.051,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 54.906101,
     "long": -1.38113,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.383331,
     "long": -1.466667,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.483002,
     "long": -2.2931,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.509865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.109865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.209865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.309865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.409865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.609865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.709865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.809865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 51.909865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.109865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.209865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.309865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.409865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.509865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.609865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.709865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.809865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.909865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.519865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.529865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.539865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.549865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 52.549865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.109865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.209865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.319865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.329865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.409865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.559865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.619865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.629865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.639865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.649865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.669865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.669865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.719865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.739865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.749865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.759865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.769865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.769865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.819865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.829865,
     "long": -0.118092,
     name: 'Richard Hendricks',
-    street: '37 Seafield Place',
+    street: '37 Seafield place',
     location: 'London'
   }, {
     lat: 53.483959,
@@ -2912,13 +2912,13 @@ var leafletActiveUserInit = function leafletActiveUserInit() {
     lat: 46.7128,
     "long": 74.006,
     name: 'Elizabeth C. Lyons',
-    street: '4553 Kenwood Place',
+    street: '4553 Kenwood place',
     location: 'Fort Lauderdale'
   }, {
     lat: 40.7128,
     "long": 74.1181,
     name: 'Elizabeth C. Lyons',
-    street: '4553 Kenwood Place',
+    street: '4553 Kenwood place',
     location: 'Fort Lauderdale'
   }, {
     lat: 14.235,
@@ -2960,13 +2960,13 @@ var leafletActiveUserInit = function leafletActiveUserInit() {
     lat: 23.4425,
     "long": 58.4438,
     name: 'Samuel R. Bailey',
-    street: '2883 Raoul Wallenberg Place',
+    street: '2883 Raoul Wallenberg place',
     location: 'Cheshire'
   }, {
     lat: 23.5425,
     "long": 58.3438,
     name: 'Samuel R. Bailey',
-    street: '2883 Raoul Wallenberg Place',
+    street: '2883 Raoul Wallenberg place',
     location: 'Cheshire'
   }, {
     lat: -37.8927369333,
@@ -4571,14 +4571,14 @@ var events = [{
   title: 'Boot Camp',
   start: "".concat(currentYear, "-").concat(currentMonth, "-01 10:00:00"),
   end: "".concat(currentYear, "-").concat(currentMonth, "-03 16:00:00"),
-  description: "Boston Harbor Now in partnership with the Friends of Christopher Columbus Park, the Wharf District Council and the City of Boston is proud to announce the New Year's Eve Midnight Harbor Fireworks! This beloved nearly 40-year old tradition is made possible by the generous support of local waterfront organizations and businesses and the support of the City of Boston and the Office of Mayor Marty Walsh.",
+  description: "Boston Harbor Now in partnership with the Friends of Christopher Columbus Park, the Wharf District Council and the city of Boston is proud to announce the New Year's Eve Midnight Harbor Fireworks! This beloved nearly 40-year old tradition is made possible by the generous support of local waterfront organizations and businesses and the support of the city of Boston and the Office of Mayor Marty Walsh.",
   className: 'bg-soft-success',
   location: 'Boston Harborwalk, Christopher Columbus Park, </br> Boston, MA 02109, United States',
   organizer: 'Boston Harbor Now'
 }, {
   title: 'Crain\'s New York Business ',
   start: "".concat(currentYear, "-").concat(currentMonth, "-11"),
-  description: "Crain's 2020 Hall of Fame. Sponsored Content By Crain's Content Studio. Crain's Content Studio Presents: New Jersey: Perfect for Business. Crain's Business Forum: Letitia James, New York State Attorney General. Crain's NYC Summit: Examining racial disparities during the pandemic",
+  description: "Crain's 2020 Hall of Fame. Sponsored Content By Crain's Content Studio. Crain's Content Studio Presents: New Jersey: Perfect for Business. Crain's Business Forum: Letitia James, New York state Attorney General. Crain's NYC Summit: Examining racial disparities during the pandemic",
   className: 'bg-soft-primary'
 }, {
   title: 'Conference',
@@ -4622,7 +4622,7 @@ var events = [{
   start: "".concat(currentYear, "-").concat(currentMonth, "-14 10:00:00"),
   description: 'PeaceX is an international peace and amity organisation that aims at casting a pall at the striking issues surmounting the development of peoples and is committed to impacting the lives of young people all over the world.'
 }, {
-  title: 'Event With Url',
+  title: 'event With Url',
   start: "".concat(currentYear, "-").concat(currentMonth, "-23"),
   description: 'Sample example of a event with url. Click the event, will redirect to the given link.',
   className: 'bg-soft-success',
@@ -5581,7 +5581,7 @@ var productShareDoughnutInit = function productShareDoughnutInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                             Echarts Active Users                           */
+/*                             Echarts Active users                           */
 
 /* -------------------------------------------------------------------------- */
 
@@ -5754,7 +5754,7 @@ var audienceChartInit = function audienceChartInit() {
     var perTemp = "\n      <div class=\"d-flex align-items-center ms-2\">\n        <span class=\"fas fa-caret-".concat(percentage < 0 ? 'down' : 'up', " text-").concat(percentage < 0 ? 'danger' : 'success', "\"></span>\n        <h6 class=\"fs--2 mb-0 ms-1 fw-semi-bold\">").concat(Math.abs(percentage).toFixed(2), " %</h6>\n      </div>\n    ");
     var currentDate = new Date(params[0].axisValue);
     var prevDate = new Date(new Date().setDate(currentDate.getDate() - 7));
-    return "<div>\n          <p class='mb-0 fs--2 text-600'>".concat(window.dayjs(params[0].axisValue).format('MMM DD'), " vs ").concat(window.dayjs(prevDate).format('MMM DD'), "</p>\n          <div class=\"d-flex align-items-center\">\n            <p class='mb-0 text-600 fs--1'>\n              Users: <span class='text-800 fw-semi-bold fs--1'>").concat(params[0].data, "</span>\n            </p>\n            ").concat(perTemp, "\n          </div>\n        </div>");
+    return "<div>\n          <p class='mb-0 fs--2 text-600'>".concat(window.dayjs(params[0].axisValue).format('MMM DD'), " vs ").concat(window.dayjs(prevDate).format('MMM DD'), "</p>\n          <div class=\"d-flex align-items-center\">\n            <p class='mb-0 text-600 fs--1'>\n              users: <span class='text-800 fw-semi-bold fs--1'>").concat(params[0].data, "</span>\n            </p>\n            ").concat(perTemp, "\n          </div>\n        </div>");
   };
 
   var getDefaultOptions = function getDefaultOptions(data1, data2) {
@@ -7361,7 +7361,7 @@ var linePaymentChartInit = function linePaymentChartInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                                Session By Country Map                      */
+/*                                Session By country Map                      */
 
 /* -------------------------------------------------------------------------- */
 
@@ -8260,7 +8260,7 @@ var mostLeadsInit = function mostLeadsInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                             Echarts Real Time Users                        */
+/*                             Echarts Real Time users                        */
 
 /* -------------------------------------------------------------------------- */
 
@@ -8275,7 +8275,7 @@ var realTimeUsersChartInit = function realTimeUsersChartInit() {
     var axisData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
     var _tooltipFormatter3 = function _tooltipFormatter3(params) {
-      return "\n      <div>\n          <h6 class=\"fs--1 text-700 mb-0\"><span class=\"fas fa-circle me-1 text-info\"></span>\n            Users : ".concat(params[0].value, "\n          </h6>\n      </div>\n      ");
+      return "\n      <div>\n          <h6 class=\"fs--1 text-700 mb-0\"><span class=\"fas fa-circle me-1 text-info\"></span>\n            users : ".concat(params[0].value, "\n          </h6>\n      </div>\n      ");
     };
 
     var getDefaultOptions = function getDefaultOptions() {
@@ -8738,8 +8738,8 @@ var salesByPosLocationInit = function salesByPosLocationInit() {
   var $echartsRadarSalesByPosLocation = document.querySelector(ECHART_RADAR_SALES_BY_POS_LOCATION);
 
   function getformatter(params) {
-    //const indicators = ['Marketing','Sales', 'Dev', 'Support', 'Tech', 'Admin']
-    return "<strong > ".concat(params.name, " </strong>\n    <div class=\"fs--1 text-600\">\n      <strong >Marketing</strong>: ").concat(params.value[0], "  <br>\n      <strong>Sales</strong>: ").concat(params.value[1], "  <br>\n      <strong>Dev</strong>: ").concat(params.value[2], "  <br>\n      <strong>Support</strong>: ").concat(params.value[3], "  <br>\n      <strong>Tech</strong>: ").concat(params.value[4], "  <br>\n      <strong>Admin</strong>: ").concat(params.value[5], "  <br>\n    </div>");
+    //const indicators = ['Marketing','Sales', 'Dev', 'Support', 'Tech', 'admin']
+    return "<strong > ".concat(params.name, " </strong>\n    <div class=\"fs--1 text-600\">\n      <strong >Marketing</strong>: ").concat(params.value[0], "  <br>\n      <strong>Sales</strong>: ").concat(params.value[1], "  <br>\n      <strong>Dev</strong>: ").concat(params.value[2], "  <br>\n      <strong>Support</strong>: ").concat(params.value[3], "  <br>\n      <strong>Tech</strong>: ").concat(params.value[4], "  <br>\n      <strong>admin</strong>: ").concat(params.value[5], "  <br>\n    </div>");
   }
 
   if ($echartsRadarSalesByPosLocation) {
@@ -8802,7 +8802,7 @@ var salesByPosLocationInit = function salesByPosLocationInit() {
             name: 'Marketing',
             max: 70
           }, {
-            name: 'Admin',
+            name: 'admin',
             max: 70
           }, {
             name: 'Tech',
@@ -8969,7 +8969,7 @@ var sessionByBrowserChartInit = function sessionByBrowserChartInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                                Session By Country Map                      */
+/*                                Session By country Map                      */
 
 /* -------------------------------------------------------------------------- */
 
@@ -9590,7 +9590,7 @@ var sessionByCountryMapInit = function sessionByCountryMapInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                                Session By Country                          */
+/*                                Session By country                          */
 
 /* -------------------------------------------------------------------------- */
 
@@ -10438,7 +10438,7 @@ var trafficChannelChartInit = function trafficChannelChartInit() {
 };
 /* -------------------------------------------------------------------------- */
 
-/*                             Echarts Users By Time                          */
+/*                             Echarts users By Time                          */
 
 /* -------------------------------------------------------------------------- */
 
@@ -10537,7 +10537,7 @@ var usersByTimeChartInit = function usersByTimeChartInit() {
           }
         },
         series: [{
-          name: 'Users By Time',
+          name: 'users By Time',
           type: 'heatmap',
           data: data,
           label: {
