@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - update The Venue')
+@section('title', 'admin - update The Venue')
 @section('content')
     <style>
         .file_input{
@@ -57,7 +57,6 @@
                     </div>
                 </div>
                 <div id="map" style="height:400px; width: 100%;" class="my-3">
-
                 </div>
                 <div class="col-4">
                     <button type="submit" class="btn btn-danger">Save The Venue</button>

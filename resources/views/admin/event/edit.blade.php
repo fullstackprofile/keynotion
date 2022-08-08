@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - update event')
+@section('title', 'admin - update event')
 @section('content')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -45,26 +45,22 @@
                                 <input class="form-control" name="title" id="event-name" value="{{$event['title']}}"
                                        type="text" placeholder="Event Title" >
                             </div>
+                            {{----------------------------Start Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="start-date">Start Date</label>
-                                <input class="form-control datetimepicker flatpickr-input"
-                                       value="{{$event['start_date']}}" name="start_date" id="start-date" type="text"
-                                       placeholder="d/m/y"
-                                       data-options="{&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}"
-                                       readonly="readonly" >
+                                <label class="form-label" for="start-date"> start Date <span style="color: red">*</span></label>
+                                <input type="date" name="start_date"
+                                       placeholder="{{$event['start_date']}}" value="{{$event['start_date']}}">
                             </div>
+                            {{----------------------------End Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="end-date">End Date</label>
-                                <input class="form-control datetimepicker flatpickr-input"
-                                       value="{{$event['end_date']}}" name="end_date" id="end-date" type="text"
-                                       placeholder="d/m/y"
-                                       data-options="{&quot;dateFormat&quot;:&quot;d/m/y&quot;,&quot;disableMobile&quot;:true}"
-                                       readonly="readonly" >
+                                <label class="form-label" for="start-date">end  Date <span style="color: red">*</span></label>
+                                <input type="date" name="end_date"
+                                       placeholder="{{$event['end_date']}}" value="{{$event['end_date']}}">
                             </div>
                             <div class="col-12">
                                 <div class="border-dashed-bottom my-3"></div>
                             </div>
-                            {{----------------------------Country City Address----------------------------------}}
+                            {{----------------------------country city Address----------------------------------}}
                             <div class="col-sm-3 mb-3">
                                 <label class="form-label" for="event-country">Country<span
                                         style="color: red">*</span></label>
@@ -98,10 +94,10 @@
                                 <input class="form-control" id="event-address" type="text" name="address"
                                        placeholder="Address" required value="{{$event['address']}}">
                             </div>
-                            {{----------------------------Category----------------------------------}}
+                            {{----------------------------category----------------------------------}}
                             <div class="mb-3">
                                 <label class="form-label" for="event-type">Event Category</label>
-                                <select class="form-select" id="event-type" name="category">
+                                <select class="form-select" id="event-type" name="category_id">
                                     @foreach($categories as $category)
                                         <option value="{{$category['id']}}"
                                                 @if($category['id'] == $event['category_id'])  selected
@@ -161,14 +157,17 @@
                             <div class="col-12 mb-3 key_topic">
                                 <label class="form-label" for="event-description">Key Topics<span style="color: red">*</span></label>
                                 @error('key_topics') <div>error {{ $message }}</div> @enderror
-                                @foreach($event['key_topics'] as $key_number => $key)
+                                <img id="file-ip-1-preview" class="card-img-top" src="{{$event->getFirstMediaUrl('event_key_topics_img')}}" alt=""
+                                     style="width: 10%">
+                                <input name="key_topic_img" type="file" id="upload-cover-image" accept="image/*" style="margin: 7px">
+                                @foreach($event['key_topics'] as $key_number => $key )
                                 <div id="inputFormRow">
                                     <label class="form-label">Title of topic</label>
                                     <input type="text" name="key_topics[{{$key_number}}][title]" class="form-control m-input mb-3"
                                            placeholder="Enter title" autocomplete="off" value="{{$key['title']}}">
                                     <label class="form-label">Description of topic</label>
                                     <textarea class="form-control  mb-3" name="key_topics[{{$key_number}}][description]"
-                                              rows="6"  >{{$key['description']}}</textarea>
+                                              rows="6"  id="textarea">{{$key['description']}}</textarea>
                                     <div class="input-group-append mb-3">
                                         <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
                                     </div>
@@ -201,11 +200,14 @@
                             <div class="col-12 mb-3 key_topic">
                                 <label class="form-label" for="event-description">Vip Tour<span style="color: red">*</span></label>
                                 @error('vip_tour')<div>error {{ $message }}</div> @enderror
+                                <img id="file-ip-1-preview" class="card-img-top" src="{{$event->getFirstMediaUrl('event_vip_tour_img')}}" alt=""
+                                     style="width: 10%">
+                                <input name="vip_tour_img" type="file" id="upload-cover-image" accept="image/*" style="margin: 7px">
                                 @foreach($event['vip_tour'] as $vip_tour => $key)
                                 <div id="inputFormRow-vip">
                                     <label class="form-label" for="start-date">Start Date and Time</label>
                                     <input class="form-control  active mb-3" name="vip_tour[{{$vip_tour}}][date]"
-                                           type="datetime-local" placeholder="d/m/y" value="{{$key['date']}}">
+                                           type="time" placeholder="time" value="{{$key['date']}}">
                                     <label class="form-label">Description </label>
                                     <input type="text" class="form-control m-input mb-3"
                                            name="vip_tour[{{$vip_tour}}][description]" value="{{$key['description']}}">
@@ -278,7 +280,7 @@
         </div>
 
     </div>
-    {{----------------------------Country State CIty----------------------------------}}
+    {{----------------------------country state CIty----------------------------------}}
     <script>
 
         $(document).ready(function () {
@@ -289,11 +291,11 @@
                     url: '{{ route('getStates') }}?country_id=' + countryId,
                     method: 'GET',
                 }).done(function (res) {
-                    $('#state').html('<option value="">Select State</option>');
+                    $('#state').html('<option value="">Select state</option>');
                     $.each(res, function (key, value) {
                         $('#state').append('<option value="' + value.id + '">' + value.name + '</option>');
                     });
-                    $('#city').html('<option value="">Select City</option>');
+                    $('#city').html('<option value="">Select city</option>');
 
                 });
             });
@@ -307,7 +309,7 @@
                     url: '{{ route('getCities') }}?state_id=' + stateId,
                     method: 'GET',
                 }).done(function (res) {
-                    $('#city').html('<option value="">Select City</option>');
+                    $('#city').html('<option value="">Select city</option>');
                     $.each(res, function (key, value) {
                         $('#city').append('<option value="' + value.id + '">' + value.name + '</option>');
                     });
@@ -334,7 +336,7 @@
             html += '<label class="form-label">Title of topic</label>';
             html += '<input type="text" name="key_topics[' + counter + '][title]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">';
             html += '<label class="form-label">Description of topic</label>';
-            html += '<textarea class="form-control  mb-3"  name="key_topics[' + counter + '][description]" rows="6" required></textarea>';
+            html += '<textarea class="form-control  mb-3"  name="key_topics[' + counter + '][description]" rows="6" id="textarea"  required></textarea>';
             html += '<div class="input-group-append mb-3">';
             html += '<button id="removeRow" type="button" class="btn btn-danger mb-3">Remove</button>';
             html += '</div>';
@@ -379,7 +381,7 @@
             console.log(counter_vip)
             html += '<div id="inputFormRow-vip">';
             html += '<label class="form-label" for="start-date">Start Date and Time</label>';
-            html += '<input class="form-control  active mb-3" name="vip_tour[' + counter_vip + '][date]" type="datetime-local" placeholder="d/m/y" >';
+            html += '<input class="form-control  active mb-3" name="vip_tour[' + counter_vip + '][date]" type="time" placeholder="time  " >';
             html += '<label class="form-label">Description </label>';
             html += '<input type="text" class="form-control m-input mb-3" name="vip_tour[' + counter_vip + '][description]">';
             html += '<div class="input-group-append mb-3">';
@@ -395,7 +397,25 @@
         $(document).on('click', '#removeRow-vip', function () {
             $(this).closest('#inputFormRow-vip').remove();
         });
+        $('#textarea').keypress(function(e) {
+            var display = $('#textarea').val();
 
+            if (e.shiftKey === true) {
+                if (e.which == 13) {
+                    //append a break
+                    $('#textarea').append("<br/>");
+
+                }
+
+            } else {
+                if (e.which == 13) {
+                    // submit to form using submit()
+                    $('span#display').html(display);
+
+                }
+            }
+
+        });
 
     </script>
 

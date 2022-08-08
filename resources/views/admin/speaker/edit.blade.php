@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - edit speaker')
+@section('title', 'admin - edit speaker')
 @section('content')
     <style>
         .file_input{
@@ -48,6 +48,10 @@
                 <div class="col-lg-12 mb-3">
                     <label class="form-label" for="profession">Heading</label>
                     <input class="form-control" id="profession" name="profession" value="{{$speakers['profession']}}" type="text" >
+                </div>
+                <div class="col-lg-12">
+                    <label class="form-label" for="profession">Linkedin Link</label><span>If speaker has</span>
+                    <input class="form-control" id="profession" name="linkedin" type="text" value="{{$speakers['linkedin']}}">
                 </div>
                 <label class="mb-3">Speaker's Company Logo</label>
                 <div class="card cover-image mb-3 col-lg-12" style="width: 250px;height: 100px;position: relative">
