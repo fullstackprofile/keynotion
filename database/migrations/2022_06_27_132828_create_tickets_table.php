@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('price')->nullable();
             $table->float('sale')->nullable();
             $table->string('currency')->nullable();
+            $table->boolean('attractive')->default(0);
             $table->timestamps();
         });
     }

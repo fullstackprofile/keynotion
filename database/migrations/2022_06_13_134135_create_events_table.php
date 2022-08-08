@@ -14,8 +14,8 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->string('slug')->nullable();
             $table->string('title')->nullable();
-            $table->string('start_date')->nullable();
-            $table->string('end_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->string('address')->nullable();
             $table->foreignId('city_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('state_id')->nullable()->constrained()->nullOnDelete();
