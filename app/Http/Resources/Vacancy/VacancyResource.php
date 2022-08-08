@@ -3,13 +3,13 @@
 namespace App\Http\Resources\Vacancy;
 
 
-use App\Models\Vacancy;
+use App\Models\vacancy;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin Vacancy
+ * @mixin vacancy
  */
 class VacancyResource extends JsonResource
 {

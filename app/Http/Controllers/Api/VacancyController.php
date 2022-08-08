@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Vacancy\VacancyResource;
-use App\Models\Vacancy;
+use App\Models\vacancy;
 use Illuminate\Http\Request;
 
 class VacancyController extends BaseController
@@ -19,7 +19,7 @@ class VacancyController extends BaseController
         return $this->render(
             $this->renderCollectionResponse(
                 $request,
-                Vacancy::query(),
+                vacancy::query(),
                 VacancyResource::class
             )
         );

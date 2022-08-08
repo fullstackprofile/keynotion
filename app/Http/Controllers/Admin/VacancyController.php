@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Vacancy\VacancyStoreRequest;
 use App\Http\Requests\Vacancy\VacancyUpdateRequest;
-use App\Models\Vacancy;
+use App\Models\vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
@@ -14,8 +14,8 @@ class VacancyController extends Controller
 
     public function index()
     {
-        $vacancies=Vacancy::orderBy('id','asc')->paginate(15);
-        return view('Admin.Vacancy.index',[
+        $vacancies=vacancy::orderBy('id','asc')->paginate(15);
+        return view('admin.vacancy.index',[
             'vacancies'=>$vacancies
         ]);
     }
@@ -23,53 +23,53 @@ class VacancyController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $vacancies = Vacancy::query()
+        $vacancies = vacancy::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->paginate(15);
-        return view('Admin.Vacancy.index')->with(array('vacancies'=>$vacancies));
+        return view('admin.vacancy.index')->with(array('vacancies'=>$vacancies));
     }
 
     public function create():View
     {
-        return view('Admin.Vacancy.create');
+        return view('admin.vacancy.create');
     }
 
 
     public function store(VacancyStoreRequest $request)
     {
-        $vacancy = Vacancy::create($request->validated());
+        $vacancy = vacancy::create($request->validated());
 
-        return redirect()->route('vacancy.index')->withSuccess("Nice Job! You're Vacancy 1st type  has been successfully created :) !");
+        return redirect()->route('vacancy.index')->withSuccess("Nice Job! You're vacancy 1st type  has been successfully created :) !");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Vacancy  $vacancy
+     * @param  \App\Models\vacancy  $vacancy
      * @return \Illuminate\Http\Response
      */
-    public function show(Vacancy $vacancy)
+    public function show(vacancy $vacancy)
     {
         //
     }
 
 
-    public function edit(Vacancy $vacancy)
+    public function edit(vacancy $vacancy)
     {
-        return view('Admin.Vacancy.edit',[
+        return view('admin.vacancy.edit',[
             'vacancy'=>$vacancy
         ]);
     }
 
 
-    public function update(VacancyUpdateRequest $request, Vacancy $vacancy)
+    public function update(VacancyUpdateRequest $request, vacancy $vacancy)
     {
         $vacancy->update($request->validated());
         return redirect()->route('vacancy.index')->withSuccess("Nice Job! You're vacancy has been successfully updated :) !");
     }
 
 
-    public function destroy(Vacancy $vacancy)
+    public function destroy(vacancy $vacancy)
     {
         $vacancy->delete();
         return redirect()->back()->withSuccess(" You're vacancy has been successfully deleted !");
