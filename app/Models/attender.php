@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperAttender
  */
-class Attender extends Model
+class attender extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,6 +17,6 @@ class Attender extends Model
         ];
 
     public function events(){
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 }
