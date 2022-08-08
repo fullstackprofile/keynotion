@@ -29,4 +29,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
     }
 
+    private function serviceContainers(): void
+    {
+        $this->app->bind('cart', function () {
+            return new CartService;
+        });
+    }
+
 }
