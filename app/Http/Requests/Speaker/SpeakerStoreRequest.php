@@ -23,6 +23,7 @@ class SpeakerStoreRequest extends FormRequest
             'company_logo' => 'file',
             'profession'=>'required',
             'company'=>'required',
+            'linkedin'=>'string'
         ];
     }
 }

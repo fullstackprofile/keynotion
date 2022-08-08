@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * @mixin IdeHelperSpeaker
  */
-class Speaker extends Model implements HasMedia
+class speaker extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
@@ -22,6 +22,7 @@ class Speaker extends Model implements HasMedia
         'slug',
         'company',
         'profession',
+        'linkedin',
     ];
 
     /**
@@ -29,7 +30,7 @@ class Speaker extends Model implements HasMedia
      */
     public function events(): BelongsToMany
     {
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(event::class);
     }
 
     public function registerMediaCollections(): void
