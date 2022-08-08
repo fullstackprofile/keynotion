@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - All Vacancies')
+@section('title', 'admin - All Vacancies')
 @section('content')
     <div class="card mb-3">
         <div class="card-header border-bottom">

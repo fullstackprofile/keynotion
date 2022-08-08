@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-@section('title', 'Admin - Main')
+@section('title', 'admin - Main')
 @section('content')
     <div class="row g-3 mb-3">
         <div class="col-xxl-8 col-lg-12">
             <div class="card h-100">
-                <div class="bg-holder bg-card" style="background-image:url(/assets/img/icons/spot-illustrations/corner-3.png);"></div>
+                <div class="bg-holder bg-card" style=""></div>
                 <!--/.bg-holder-->
                 <div class="card-header z-index-1">
                     <h3 class="text-primary mb-3">Welcome to Key-notion Admin Panel! </h3>
@@ -14,7 +14,7 @@
         </div>
         <div class="col-xxl-4 col-lg-12">
             <div class="card overflow-hidden" style="min-width: 12rem">
-                <div class="bg-holder bg-card" style="background-image:url(/assets/img/icons/spot-illustrations/corner-1.png);"></div>
+                <div class="bg-holder bg-card" ></div>
                 <!--/.bg-holder-->
                 <div class="card-body position-relative">
                     <h4>Users</h4>

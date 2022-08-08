@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - Users')
+@section('title', 'admin - users')
 @section('content')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -9,7 +9,7 @@
                 <div class="col-12 mb-3">
                     <div class="row justify-content-center justify-content-sm-between">
                         <div class="col-sm-auto text-center">
-                            <h5 class="d-inline-block">2nd Type For Ticket</h5>
+                            <h5 class="d-inline-block">Users</h5>
                         </div>
                         <div  class="col-sm-auto text-center">
                             <div class="search-box" data-list="{&quot;valueNames&quot;:[&quot;title&quot;]}">

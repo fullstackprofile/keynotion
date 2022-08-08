@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Admin - Events')
+@section('title', 'admin - Events')
 @section('content')
     <div class="col-12 mb-3">
         <div class="row justify-content-center justify-content-sm-between">
@@ -34,6 +34,14 @@
                             <h6 class="fs-0 mb-0"><a href="{{route('event.edit' , $event['id'])}}">{{$event['title']}}</a></h6>
                             <p class="text-1000 mb-0">{{$event['start_date']}} - {{$event['end_date']}}</p>{{$event->country->name}} , {{$event->city->name}}, {{$event['address']}}<div class="border-dashed-bottom my-3"></div>
                         </div>
+                        <form action="{{route('event.destroy' , $event['id'])}}" method="post"
+                              style="display: inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn p-0 ms-2 delete-btn" type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                <span class="text-500 fas fa-trash-alt"></span>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 @endforeach
