@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperItem
  */
-class Item extends Model
+class item extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,6 +17,6 @@ class Item extends Model
     ];
 
     public function tickets(){
-        return $this->belongsToMany(Ticket::class);
+        return $this->belongsToMany(ticket::class);
     }
 }

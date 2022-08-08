@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Item\ItemStoreRequest;
 use App\Http\Requests\Item\ItemUpdateRequest;
-use App\Models\Item;
+use App\Models\item;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -14,8 +14,8 @@ class ItemController extends Controller
 
     public function index()
     {
-        $items=Item::orderBy('id','asc')->paginate(15);
-        return view('Admin.Item.index',[
+        $items=item::orderBy('id','asc')->paginate(15);
+        return view('admin.item.index',[
             'items'=>$items
         ]);
     }
@@ -23,16 +23,16 @@ class ItemController extends Controller
     {
         $search = $request->input('search','NULL');
 
-        $items = Item::query()
+        $items = item::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->paginate(15);
-        return view('Admin.Item.index')->with(array('items'=>$items));
+        return view('admin.item.index')->with(array('items'=>$items));
     }
 
 
     public function create()
     {
-        return view('Admin.Item.create');
+        return view('admin.item.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
-        $item = Item::create($request->validated());
+        $item = item::create($request->validated());
 
         return redirect()->route('item.create')->withSuccess("Nice Job! You're item has been successfully created :) !");
     }
@@ -51,18 +51,18 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(item $item)
     {
         //
     }
 
 
-    public function edit(Item $item)
+    public function edit(item $item)
     {
-        return view('Admin.Item.edit',[
+        return view('admin.item.edit',[
             'items'=>$item
         ]);
     }
@@ -71,17 +71,17 @@ class ItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(ItemUpdateRequest $request, Item $item)
+    public function update(ItemUpdateRequest $request, item $item)
     {
         $item->update($request->validated());
         return redirect()->route('item.index')->withSuccess("Nice Job! You're item has been successfully updated :) !");
     }
 
 
-    public function destroy(Item $item)
+    public function destroy(item $item)
     {
         $item->delete();
         return redirect()->back()->withSuccess(" You're item has been successfully deleted !");
