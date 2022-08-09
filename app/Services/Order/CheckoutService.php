@@ -77,7 +77,6 @@ class CheckoutService
             $orderChild = OrderChild::create([
                 'order_id' => $order->id,
                 'restaurant_id' => $restaurantId,
-
             ]);
             $data->each(function (ticket $product) use ($orderChild, $order) {
                 $price = ! empty($product->sale_price) ? $product->sale_price : $product->price;
