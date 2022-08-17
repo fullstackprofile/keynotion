@@ -38,13 +38,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Company name</th>
-                                <th scope="col">Job title</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Corporate email</th>
-                                <th scope="col">Country</th>
-                                <th scope="col">Summit name</th>
-                                <th scope="col">Comment</th>
-                                <th scope="col">How learn?</th>
+                                <th>View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,13 +48,16 @@
                                     <td>{{$brochure['name']}}</td>
                                     <td>{{$brochure['surname']}}</td>
                                     <td>{{$brochure['company_name']}}</td>
-                                    <td>{{$brochure['job_title']}}</td>
-                                    <td>{{$brochure['phone']}}</td>
-                                    <td>{{$brochure['corporate_email']}}</td>
-                                    <td>{{$brochure['country']}}</td>
-                                    <td>{{$brochure['summit_name']}}</td>
-                                    <td>{{$brochure['comment']}}</td>
-                                    <td>{{$brochure['learn']}}</td>
+                                    <td>
+                                        <a href="{{route('brochure.show' , $brochure['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

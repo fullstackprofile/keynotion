@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('surname')->nullable();
             $table->string('company_name')->nullable();
             $table->string('job_title')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('corporate_email')->nullable();
             $table->string('country')->nullable();
             $table->string('summit_name')->nullable();
             $table->longText('comments')->nullable();
-            $table->string('package')->nullable();
+            $table->string('package_name')->nullable();
             $table->timestamps();
         });
     }

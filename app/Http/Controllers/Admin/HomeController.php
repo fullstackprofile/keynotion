@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\event;
 use App\Models\news;
+use App\Models\Order;
 use App\Models\partner;
 use App\Models\sponsor;
+use App\Models\testimonial;
 use App\Models\ticket;
 use App\Models\user;
 use App\Models\vacancy;
@@ -23,6 +25,8 @@ class HomeController extends Controller
         $vacancy_count=vacancy::all()->count();
         $news_count=news::all()->count();
         $users_count=user::all()->count();
+        $testimonial_count=testimonial::all()->count();
+        $orders_count=Order::all()->count();
         $events=event ::orderBy('id', 'asc')->paginate(6);
 
         return view('admin.home.index',[
@@ -34,6 +38,8 @@ class HomeController extends Controller
             'news_count'=>$news_count,
             'users_count'=>$users_count,
             'events'=>$events,
+            'testimonial_count'=>$testimonial_count,
+            'orders_count'=>$orders_count,
         ]);
     }
 

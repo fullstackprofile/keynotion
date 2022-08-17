@@ -31,11 +31,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th class="text" scope="col">Email</th>
-                                <th class="text" scope="col">Phone Number</th>
-                                <th class="text" scope="col">Company</th>
-                                <th class="text" scope="col">Interested in</th>
-                                <th class="text" scope="col">Event Name</th>
-                                <th class="text" scope="col">Question</th>
+                                <th>View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,11 +40,16 @@
                                     <td>{{$question['id']}}</td>
                                     <td>{{$question['name']}}</td>
                                     <td>{{$question['email']}}</td>
-                                    <td>{{$question['phone']}}</td>
-                                    <td>{{$question['company']}}</td>
-                                    <td>{{$question['interested']}}</td>
-                                    <td>{{$question['event']}}</td>
-                                    <td>{{$question['question']}}</td>
+                                    <td>
+                                        <a href="{{route('questions.show' , $question['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

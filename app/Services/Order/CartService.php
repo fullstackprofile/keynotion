@@ -53,14 +53,18 @@ class CartService
     /**
      * @param int $productId
      * @param float $quantity
+     * @param int $price
+     * @param string $title
      *
      * @throws InvalidArgumentException
      */
-    public function addItem(int $productId, float $quantity)
+    public function addItem(int $productId, float $quantity,int $price,string $title)
     {
         $this->updateCurrentCart($this->getCurrentCart()->put($productId, [
             'ticket_id' => $productId,
+            'price'=> $price,
             'quantity' => $quantity,
+            'title' => $title,
         ]));
     }
 
@@ -101,10 +105,9 @@ class CartService
         $cart = self::makeCart($cart);
 
         $cartData = arrayToObject([
-            'price' => 0,
-            'tax_price' => 0,
-            'discount_price' => 0,
-            'total_price' => 0,
+            'subtotal' => 0,
+            'vat' => 0,
+            'total' => 0,
         ]);
 
         $cartData->items = $cart;
@@ -154,18 +157,18 @@ class CartService
     {
         return $cart->map(fn($cart) => arrayToObject($cart));
 
-//        $products = ticket::query()->whereIn('id', $cart->pluck('product_id'))->get();
-//
-//        return $cart->map(function ($cart) use ($products) {
-//            $product = $products->where('id', $cart->product_id)->first();
-//            if ($product) {
-//                $product->quantity = $cart->quantity;
-//
-//                return $product;
-//            }
-//
-//            return null;
-//        })->filter();
+        $tickets = ticket::query()->whereIn('id', $cart->pluck('ticket_id'))->get();
+
+        return $cart->map(function ($cart) use ($tickets) {
+            $ticket = $tickets->where('id', $cart->ticket_id)->first();
+            if ($ticket) {
+                $ticket->quantity = $cart->quantity;
+
+                return $ticket;
+            }
+
+            return null;
+        })->filter();
     }
 
     /**

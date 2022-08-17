@@ -7,7 +7,8 @@ use App\Models\appliedSpeaker;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class AppliedSpeakerController extends Controller
+class AppliedSpeakersController extends Controller
+
 {
     public function index():View
     {
@@ -26,4 +27,18 @@ class AppliedSpeakerController extends Controller
             ->paginate(15);
         return view('admin.appliedspeakers.index')->with(array('applied_speakers'=>$applied_speaker));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\appliedSpeaker  $applied_speaker
+     * @return \Illuminate\Http\Response
+     */
+    public function show(appliedSpeaker $applied_speaker):mixed
+    {
+        return view('admin.appliedspeakers.show', [
+            'applied_speaker' => $applied_speaker
+        ]);
+    }
+
 }

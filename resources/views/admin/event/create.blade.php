@@ -35,7 +35,7 @@
                             <img id="file-ip-1-preview" class="card-img-top" src="../../assets/img/generic/13.jpg"
                                  alt="" height="400px">
                             <input name="cover_img" type="file" id="upload-cover-image" accept="image/*"
-                                   onchange="showPreview(event);" style="margin: 7px">
+                                   onchange="showPreview(event);" style="margin: 7px" required>
                         </div>
                         {{----------------------------event Title----------------------------------}}
                         <div class="row gx-2">
@@ -48,14 +48,14 @@
                             </div>
                             {{----------------------------Start Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="start-date"> Date <span style="color: red">*</span></label>
+                                <label class="form-label" for="start-date"> Start Date <span style="color: red">*</span></label>
                                 <input type="date" name="start_date"
                                        placeholder="d/m/y"
                                        required >
                             </div>
                             {{----------------------------End Date----------------------------------}}
                             <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="start-date"> Date <span style="color: red">*</span></label>
+                                <label class="form-label" for="start-date">End Date <span style="color: red">*</span></label>
                                 <input type="date" name="end_date"
                                        placeholder="d/m/y"
                                        required >
@@ -150,7 +150,7 @@
                                 @error('key_topics')
                                 <div>error {{ $message }}</div> @enderror
                                 <input name="key_topic_img" type="file" id="upload-cover-image" accept="image/*"
-                                       style="margin: 7px">
+                                       style="margin: 7px " required>
                                 <div id="inputFormRow">
                                     <label class="form-label">Title of topic</label>
                                     <input type="text" name="key_topics[0][title]" class="form-control m-input mb-3"
@@ -195,7 +195,7 @@
                                 @error('vip_tour')
                                 <div>error {{ $message }}</div> @enderror
                                 <input name="vip_tour_img" type="file" id="upload-cover-image" accept="image/*"
-                                       style="margin: 7px">
+                                       style="margin: 7px" required>
                                 <div id="inputFormRow-vip">
                                     <label class="form-label" for="start-date">Start Date and Time</label>
                                     <input class="form-control  active mb-3" name="vip_tour[0][date]"

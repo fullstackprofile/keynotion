@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->decimal('latitude',8,6)->nullable();
             $table->decimal('longitude', 9,6)->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

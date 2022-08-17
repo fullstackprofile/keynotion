@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Cart\CheckoutController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\EventQuestionController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SponsorshipRequestController;
@@ -34,7 +35,7 @@ Route::get('/past/events', [EventController::class, 'showPast']);
 Route::apiResources(['vacancies' => VacancyController::class]);
 Route::apiResources(['news' => NewsController::class]);
 Route::apiResources(['testimonials' => TestimonialController::class]);
-
+Route::apiResources(['order' => OrderController::class]);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index']);
@@ -57,6 +58,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'storeLogin']);
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
     Route::post('/reset-password', [AuthController::class, 'reset']);
+    Route::get('/news_home', [NewsController::class, 'showHome']);
+    Route::post('order/store',[OrderController::class,'store']);
 });
 
 Route::middleware(AuthWhenHasBearerSanctum::class, )->group(function () {

@@ -7,7 +7,7 @@ use App\Models\eventQuestion;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class EventQuestionController extends Controller
+class EventQuestionsController extends Controller
 {
     public function index():View
     {
@@ -26,5 +26,19 @@ class EventQuestionController extends Controller
             ->paginate(15);
         return view('admin.eventquestions.index')->with(array('questions'=>$question));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\eventQuestion  $eventQuestion
+     * @return \Illuminate\Http\Response
+     */
+    public function show(eventQuestion $eventQuestion):mixed
+    {
+        return view('admin.eventquestions.show', [
+            'eventQuestion' => $eventQuestion
+        ]);
+    }
+
 
 }

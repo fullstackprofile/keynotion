@@ -16,11 +16,11 @@ class sponsorship extends Model
         'surname',
         'company_name',
         'job_title',
-        'phone',
+        'phone_number',
         'corporate_email',
         'country',
         'summit_name',
         'comments',
-        'package',
+        'package_name',
     ];
 }

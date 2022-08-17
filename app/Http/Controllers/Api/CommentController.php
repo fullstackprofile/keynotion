@@ -34,12 +34,15 @@ class CommentController extends BaseController
      */
     public function index(Request $request): mixed
     {
+
         return $this->render(
-            $this->renderCollectionResponse(
-                $request,
-                comment::query()
-                    ->where('approve', '=', 1),
-                CommentResource::class
+            CommentResource::collection(comment::query()
+                ->when(
+                    $request->has('news_id'), fn($builder) => $builder->where('news_id', '=', $request->news_id)
+                )
+                ->where('approve', '=', 1)
+                ->take(3)
+                ->get()
             )
         );
     }

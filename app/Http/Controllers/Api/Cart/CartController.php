@@ -31,7 +31,7 @@ class CartController extends BaseController
      */
     public function store(OrderCartUpdateRequest $request): mixed
     {
-       Cart::setCartKey($request->cart_id)->addItem($request->ticket_id, $request->quantity);
+       Cart::setCartKey($request->cart_id)->addItem($request->ticket_id, $request->quantity,$request->price,$request->title);
         return $this->getCart($request->cart_id);
     }
 

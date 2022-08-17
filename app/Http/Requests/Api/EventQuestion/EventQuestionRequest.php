@@ -26,7 +26,7 @@ class EventQuestionRequest extends FormRequest
         return [
             'email'=>'required:event_questions,email',
             'name'=>'required|string',
-            'tel'=>'required|string',
+            'number'=>'required|string',
             'message'=>'required|string',
         ];
     }

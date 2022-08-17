@@ -28,7 +28,7 @@
                         <table class="table table-hover table-striped overflow-hidden">
                             <thead>
                             <tr>
-                                <th scope="col">Partner's Name</th>
+                                <th scope="col">Partner's link</th>
                                 <th scope="col">Partner's logo</th>
                                 <th class="text-end" scope="col">Actions</th>
                             </tr>

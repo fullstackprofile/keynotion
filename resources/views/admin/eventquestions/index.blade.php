@@ -31,8 +31,6 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th class="text" scope="col">Email</th>
-                                <th class="text" scope="col">Tel</th>
-                                <th class="text" scope="col">Message</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,8 +39,16 @@
                                     <td>{{$question['id']}}</td>
                                     <td>{{$question['name']}}</td>
                                     <td>{{$question['email']}}</td>
-                                    <td>{{$question['tel']}}</td>
-                                    <td>{{$question['message']}}</td>
+                                    <td>
+                                        <a href="{{route('event_questions.show' , $question['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

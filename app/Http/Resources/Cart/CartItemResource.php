@@ -17,18 +17,18 @@ class CartItemResource extends JsonResource
     {
         return [
             //temporary delete below line
+            'title' => $this->title,
             'ticket_id' => $this->ticket_id,
-
+            'price' => $this->price,
             'quantity' => $this->quantity,
             //todo fix
             //after model fix below lines
             /*
             'id' => $this->id,
             'type' => $this->type,
-            'name' => $this->name,
             'slug' => $this->slug,
             'short_description' => $this->short_description,
-            'price' => $this->price,
+
             'sale_price' => $this->sale_price,
             'cover' => $this->getImageUrl('gallery'),
             */

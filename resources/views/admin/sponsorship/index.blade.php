@@ -38,13 +38,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Company name</th>
-                                <th scope="col">Job title</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Corporate email</th>
-                                <th scope="col">Country</th>
-                                <th scope="col">Summit name</th>
-                                <th scope="col">Comment</th>
-                                <th scope="col">Package</th>
+                                <th>View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,13 +48,16 @@
                                     <td>{{$sponsorship['name']}}</td>
                                     <td>{{$sponsorship['surname']}}</td>
                                     <td>{{$sponsorship['company_name']}}</td>
-                                    <td>{{$sponsorship['job_title']}}</td>
-                                    <td>{{$sponsorship['phone']}}</td>
-                                    <td>{{$sponsorship['corporate_email']}}</td>
-                                    <td>{{$sponsorship['country']}}</td>
-                                    <td>{{$sponsorship['summit_name']}}</td>
-                                    <td>{{$sponsorship['comments']}}</td>
-                                    <td>{{$sponsorship['package']}}</td>
+                                    <td>
+                                        <a href="{{route('sponsorship.show' , $sponsorship['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

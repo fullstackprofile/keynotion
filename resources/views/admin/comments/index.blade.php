@@ -31,8 +31,6 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th class="text" scope="col">Email</th>
-                                <th class="text" scope="col">Comment</th>
-                                <th class="text" scope="col">Website</th>
                                 <th class="text" scope="col">Actions</th>
                             </tr>
                             </thead>
@@ -42,8 +40,6 @@
                                     <td>{{$comment['id']}}</td>
                                     <td>{{$comment['name']}}</td>
                                     <td>{{$comment['email']}}</td>
-                                    <td>{{$comment['comment']}}</td>
-                                    <td>{{$comment['website']}}</td>
                                     <td>
                                         @if($comment['approve']=="0")
                                         <form action="{{route('comment_approve')}}" method="POST">
@@ -54,6 +50,16 @@
                                         @else
                                                 <span class="far fa-check-circle" style="font-size: 25px;color: green"></span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{route('comments.show' , $comment['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
                                     </td>
                                 </tr>
                             @endforeach

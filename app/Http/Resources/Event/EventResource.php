@@ -23,13 +23,11 @@ class EventResource extends JsonResource
     public function toArray($request)
     {
         return [
-            [
                 'id' => $this->id,
                 'title' => $this->title,
                 'cover' => $this->getFirstMediaUrl('event_img'),
                 'category_id' => $this->category->id,
                 'category' => $this->category->title,
-            ]
         ];
     }
 }

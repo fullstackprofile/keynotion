@@ -17,10 +17,9 @@ class CartResource extends JsonResource
     {
         return [
             'items' => !empty($this->items) ? CartItemResource::collection($this->items) : [],
-            'price' => $this->price,
-            'tax_price' => $this->tax_price,
-            'discount_price' => $this->discount_price,
-            'total_price' => $this->discount_price,
+            'subtotal' => $this->price,
+            'vat' => $this->tax_price,
+            'total' => $this->discount_price,
         ];
     }
 }

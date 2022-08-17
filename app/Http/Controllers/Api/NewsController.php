@@ -36,4 +36,18 @@ class NewsController  extends BaseController
         return $this->render(new NewsOneResource($news));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function showHome(Request $request): mixed
+    {
+        return $this->render(
+            NewsResource::collection(news::query()
+                ->orderBy('date' , 'ASC')
+                ->take(3)
+                ->get()
+            )
+        );
+    }
 }

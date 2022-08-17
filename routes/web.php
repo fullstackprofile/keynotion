@@ -1,14 +1,15 @@
 <?php
-
-use App\Http\Controllers\Admin\AppliedSpeakerController;
-use App\Http\Controllers\Admin\BrochureController;
+use App\Http\Controllers\Admin\AppliedSpeakersController;
+use App\Http\Controllers\Admin\BrochureRequestController;
 use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\EventQuestionController;
+use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\EventQuestionsController;
 use App\Http\Controllers\Admin\MarkAsRead;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\QuestionController;
-use App\Http\Controllers\Admin\SponsorshipController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\QuestionsController;
+use App\Http\Controllers\Admin\SponsorshipRequestController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\VacancyController;
@@ -53,6 +54,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('admin')->prefix('admin-panel')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home_page');
     Route::post('change_role', [\App\Http\Controllers\Admin\UserController::class, 'change_role']);
+    Route::post('change_status', [\App\Http\Controllers\Admin\OrderController::class, 'change_status']);
+
     Route::resource('users', UserController::class);
     Route::resource('event', EventController::class);
     Route::resource('category', CategoryController::class);
@@ -69,13 +72,16 @@ Route::middleware('admin')->prefix('admin-panel')->group(function () {
     Route::resource('vacancy', VacancyController::class);
     Route::resource('news', NewsController::class);
     Route::resource('testimonial', TestimonialController::class);
+    Route::resource('orders', OrderController::class);
+    Route::resource('applied_speakers',AppliedSpeakersController::class);
+    Route::resource('comments',CommentController::class);
+    Route::resource('brochure',BrochureRequestController::class);
+    Route::resource('sponsorship',SponsorshipRequestController::class);
+    Route::resource('event_questions',EventQuestionsController::class);
+    Route::resource('questions',QuestionsController::class);
+    Route::resource('coupons',CouponController::class);
+
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers');
-    Route::get('/comments', [CommentController::class, 'index'])->name('comments');
-    Route::get('/applied_speakers', [AppliedSpeakerController::class, 'index'])->name('applied_speakers');
-    Route::get('/brochure', [BrochureController::class, 'index'])->name('brochures');
-    Route::get('/sponsorship', [SponsorshipController::class, 'index'])->name('sponsorships');
-    Route::get('/event_questions', [EventQuestionController::class, 'index'])->name('event_questions');
-    Route::get('/questions_cont', [QuestionController::class, 'index'])->name('questions');
     Route::post('approve', [CommentController::class, 'approve'])->name('comment_approve');
     Route::post('mark', [MarkAsRead::class, 'mark'])->name('mark');
     Route::get('get-states', [EventController::class, 'getStates'])->name('getStates');
@@ -96,12 +102,12 @@ Route::middleware('admin')->prefix('admin-panel')->group(function () {
     Route::get('search_news_category', [NewsCategoryController::class, 'search'])->name('search_news_category');
     Route::get('search_category', [CategoryController::class, 'search'])->name('search_category');
     Route::get('search_comment', [CommentController::class, 'search'])->name('search_comment');
-    Route::get('search_applied_speaker', [AppliedSpeakerController::class, 'search'])->name('search_applied_speaker');
-    Route::get('search_brochure', [BrochureController::class, 'search'])->name('search_brochure');
-    Route::get('search_sponsorship', [SponsorshipController::class, 'search'])->name('search_sponsorship');
-    Route::get('search_event_questions', [EventQuestionController::class, 'search'])->name('search_event_questions');
-    Route::get('search_questions', [QuestionController::class, 'search'])->name('search_questions');
-
+    Route::get('search_applied_speaker', [AppliedSpeakersController::class, 'search'])->name('search_applied_speaker');
+    Route::get('search_brochure', [BrochureRequestController::class, 'search'])->name('search_brochure');
+    Route::get('search_sponsorship', [SponsorshipRequestController::class, 'search'])->name('search_sponsorship');
+    Route::get('search_event_questions', [EventQuestionsController::class, 'search'])->name('search_event_questions');
+    Route::get('search_questions', [QuestionsController::class, 'search'])->name('search_questions');
+    Route::get('search_coupon', [CouponController::class, 'search'])->name('search_coupon');
 });
 
 

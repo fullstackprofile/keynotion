@@ -44,7 +44,7 @@
                                 <label class="form-label" for="event-type">2nd type<span
                                         style="color: red">*</span></label>
                                 <select class="form-select" id="event-type" name="other_type_id">
-                                    <option >Select 2nd type</option>
+                                    <option value="0" >Select 2nd type</option>
                                     @foreach($other_types as $other_type)
                                         <option value="{{$other_type['id']}}">{{$other_type['title']}}</option>
                                     @endforeach

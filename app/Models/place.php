@@ -23,6 +23,7 @@ class place extends Model implements HasMedia
         'company',
         'latitude',
         'longitude',
+        'link'
     ];
 
     public function events(){

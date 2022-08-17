@@ -41,8 +41,8 @@
                                onchange="showPreview(event);" style="margin: 7px">
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
-                                <label class="form-label" for="event-name">Partner's Name</label>
-                                <input class="form-control" name="name" id="event-name" type="text" placeholder="Who should attend" required>
+                                <label class="form-label" for="event-name">Partner's Link</label>
+                                <input class="form-control" name="name" id="event-name" type="text" placeholder="" required>
                             </div>
                             <div class="col-4">
                                 <button type="submit" class="btn btn-danger">Save </button>

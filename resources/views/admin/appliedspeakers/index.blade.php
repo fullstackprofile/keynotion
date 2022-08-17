@@ -38,13 +38,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Company name</th>
-                                <th scope="col">Job title</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Corporate email</th>
-                                <th scope="col">Country</th>
-                                <th scope="col">Summit name</th>
-                                <th scope="col">Presentation Proposal</th>
-                                <th scope="col">How learn?</th>
+                                <th scope="col">View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,13 +48,16 @@
                                     <td>{{$applied_speaker['name']}}</td>
                                     <td>{{$applied_speaker['surname']}}</td>
                                     <td>{{$applied_speaker['company_name']}}</td>
-                                    <td>{{$applied_speaker['job_title']}}</td>
-                                    <td>{{$applied_speaker['phone']}}</td>
-                                    <td>{{$applied_speaker['corporate_email']}}</td>
-                                    <td>{{$applied_speaker['country']}}</td>
-                                    <td>{{$applied_speaker['summit_name']}}</td>
-                                    <td>{{$applied_speaker['presentation_proposal']}}</td>
-                                    <td>{{$applied_speaker['learn']}}</td>
+                                    <td>
+                                        <a href="{{route('applied_speakers.show' , $applied_speaker['id'])}}"
+                                           style="text-decoration: none">
+                                            <button class="btn p-0" type="button" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit">
+                                            </button>
+                                            <span class="fas fa-chevron-circle-right"></span>
+                                        </a>
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

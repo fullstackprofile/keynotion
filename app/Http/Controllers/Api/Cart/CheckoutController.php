@@ -18,7 +18,6 @@ class CheckoutController extends BaseController
     public function store(OrderCheckoutStoreRequest $request)
     {
         $checkout = (new CheckoutService())->make($request, $this->getUser())->pay();
-
         return $checkout->redirect();
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class CommentController extends Controller
@@ -28,11 +27,18 @@ class CommentController extends Controller
         return view('admin.comments.index')->with(array('comments'=>$comment));
     }
 
-    public function approve(Request $request){
-        $commentId = $request->input('commentId');
-        if($commentId){
-            DB::table('comments')->where('id', $commentId)->update(['approve'=>1 ]);
-        }
-        return redirect()->route('comments');
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function show(comment $comment):mixed
+    {
+        return view('admin.comments.show', [
+            'comment' => $comment
+        ]);
     }
+
+
 }

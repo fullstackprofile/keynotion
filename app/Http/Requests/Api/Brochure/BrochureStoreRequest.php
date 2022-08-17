@@ -33,7 +33,7 @@ class BrochureStoreRequest extends FormRequest
             'country'=>'required|string',
             'summit_name'=>'required|string',
             'comment'=>'required|string',
-            'learn'=>'required|string',
+            'learn'=>'string',
             'other'=>'string',
         ];
     }

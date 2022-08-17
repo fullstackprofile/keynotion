@@ -15,7 +15,7 @@ class eventQuestion extends Model
     protected $fillable = [
         'name',
         'email',
-        'tel',
+        'number',
         'message',
     ];
 }

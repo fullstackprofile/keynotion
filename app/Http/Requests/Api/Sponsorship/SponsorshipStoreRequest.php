@@ -28,12 +28,12 @@ class SponsorshipStoreRequest extends FormRequest
             'surname'=>'required|string',
             'company_name'=>'required|string',
             'job_title'=>'required|string',
-            'phone'=>'required|string',
+            'phone_number'=>'required|string',
             'corporate_email'=>'required:applied_speakers,email',
             'country'=>'required|string',
             'summit_name'=>'required|string',
             'comments'=>'required|string',
-            'package'=>'required|string',
+            'package_name'=>'required|string',
         ];
     }
 }

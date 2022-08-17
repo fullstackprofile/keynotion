@@ -23,7 +23,7 @@
                        onchange="showPreview(event);" style="margin: 7px" value="{{$sponsors['logo']}}">
                 <div class="row gx-2">
                     <div class="col-12 mb-3">
-                        <label class="form-label" for="event-name">Sponsor Name</label>
+                        <label class="form-label" for="event-name">Sponsor Link</label>
                         <input class="form-control" name="name" id="event-name" type="text" placeholder="Who should attend" required  value="{{$sponsors['name']}}">
                     </div>
                 <div class="col-4">

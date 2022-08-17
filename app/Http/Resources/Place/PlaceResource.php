@@ -22,6 +22,7 @@ class PlaceResource extends JsonResource
             'address' => $this->address,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
+            'link' => $this->link,
             'cover' => $this->getFirstMediaUrl('place_cover'),
             'logo' => $this->getFirstMediaUrl('place_logo'),
         ];

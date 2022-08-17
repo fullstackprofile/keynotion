@@ -48,6 +48,10 @@
                     <label class="form-label" for="full-name">Address </label>
                     <input class="form-control" id="full_name" type="text"  name="address" value="{{$places['address']}}">
                 </div>
+                <div class="col-lg-12 mb-5">
+                    <label class="form-label" for="full-name">Link </label>
+                    <input class="form-control" id="full_name" type="text"  name="link" value="{{$places['link']}}">
+                </div>
                 <div class="row">
                     <div class="col-5">
                         <input type="text" class="form-control" placeholder="latitude" name="latitude" id="lat" value="{{$places['latitude']}}">

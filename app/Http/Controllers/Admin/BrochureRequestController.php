@@ -7,7 +7,7 @@ use App\Models\brochure;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class BrochureController extends Controller
+class BrochureRequestController extends Controller
 {
     public function index():View
     {
@@ -26,4 +26,18 @@ class BrochureController extends Controller
             ->paginate(15);
         return view('admin.brochure.index')->with(array('brochures'=>$brochure));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\brochure  $brochure
+     * @return \Illuminate\Http\Response
+     */
+    public function show(brochure $brochure):mixed
+    {
+        return view('admin.brochure.show', [
+            'brochure' => $brochure
+        ]);
+    }
+
 }

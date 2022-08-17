@@ -45,6 +45,10 @@
                     <label class="form-label" for="full-name">Address </label>
                     <input class="form-control" id="full_name" type="text"  name="address">
                 </div>
+                <div class="col-lg-12 mb-5">
+                    <label class="form-label" for="full-name">Link </label>
+                    <input class="form-control" id="full_name" type="text"  name="link">
+                </div>
                 <div class="row">
                     <div class="col-5">
                         <input type="text" class="form-control" placeholder="latitude" name="latitude" id="lat">
@@ -98,5 +102,5 @@
                 })
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBia2np0v7hx4c2QyL36D2lzUAtCjpa-0k&callback=initMap" type="text/javascript"></script>
 @endsection

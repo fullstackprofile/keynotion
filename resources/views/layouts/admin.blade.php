@@ -109,46 +109,60 @@
                                 </div>
                             </a>
                             <ul class="nav collapse" id="notification">
-                                <li class="nav-item"><a class="nav-link" href="{{route('comments')}}" data-bs-toggle=""
+                                <li class="nav-item"><a class="nav-link" href="{{route('comments.index')}}" data-bs-toggle=""
                                                         aria-expanded="false">
                                         <div class="d-flex align-items-center"><span
                                                 class="nav-link-text ps-1">Comments</span>
                                         </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('applied_speakers')}}"
+                                <li class="nav-item"><a class="nav-link" href="{{route('applied_speakers.index')}}"
                                                         data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Applied Speakers</span>
 
                                         </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('brochures')}}" data-bs-toggle=""
+                                <li class="nav-item"><a class="nav-link" href="{{route('brochure.index')}}" data-bs-toggle=""
                                                         aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Brochure Request</span>
 
                                         </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('sponsorships')}}"
+                                <li class="nav-item"><a class="nav-link" href="{{route('sponsorship.index')}}"
                                                         data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sponsorship Request</span>
 
                                         </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('event_questions')}}"
+                                <li class="nav-item"><a class="nav-link" href="{{route('event_questions.index')}}"
                                                         data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Questions from event page</span>
 
                                         </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('questions')}}" data-bs-toggle=""
+                                <li class="nav-item"><a class="nav-link" href="{{route('questions.index')}}" data-bs-toggle=""
                                                         aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Questions from contact us page</span>
 
                                         </div>
+                                    </a><!-- more inner pages-->
+                                </li>
+                            </ul><!-- parent pages-->
+                            <a class="nav-link dropdown-indicator" href="#order" role="button"
+                               data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                                <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                            class="far fa-credit-card"></span></span><span
+                                        class="nav-link-text ps-1">Orders</span></div>
+                            </a>
+                            <ul class="nav collapse" id="order">
+                                <li class="nav-item"><a class="nav-link" href="{{route('orders.index')}}"
+                                                        data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center"><span
+                                                class="nav-link-text ps-1">Listing</span></div>
                                     </a><!-- more inner pages-->
                                 </li>
                             </ul><!-- parent pages-->
@@ -532,7 +546,39 @@
                                     </a><!-- more inner pages-->
                                 </li>
                             </ul>
+                            <a class="nav-link dropdown-indicator" href="#coupon" role="button"
+                               data-bs-toggle="collapse" aria-expanded="false" aria-controls="user">
+                                <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                            class="fas fa-sticky-note"></span></span><span class="nav-link-text ps-1">Coupons</span>
+                                </div>
+                            </a>
+                            <ul class="nav collapse" id="coupon">
+                                <li class="nav-item"><a class="nav-link" href="{{route('coupons.index')}}"
+                                                        data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Coupons Listing</span>
+                                        </div>
+                                    </a><!-- more inner pages-->
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('coupons.create')}}"
+                                                        data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create</span>
+                                        </div>
+                                    </a><!-- more inner pages-->
+                                </li>
+                            </ul>
+
+                                <li style="margin-top: 20px">
+                            <a class="" href="{{ route('logout') }}" style="text-decoration: none;color: black;"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -564,17 +610,17 @@
                                             <div class="nav flex-column">
                                                 <p class="nav-link text-700 mb-0 fw-bold">Notifications</p>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('comments')}}">Comments</a>
+                                                   href="{{route('comments.index')}}">Comments</a>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('applied_speakers')}}">Applied Speakers</a>
+                                                   href="{{route('applied_speakers.index')}}">Applied Speakers</a>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('brochures')}}">Brochure Request </a>
+                                                   href="{{route('brochure.index')}}">Brochure Request </a>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('sponsorships')}}">Sponsorship Request </a>
+                                                   href="{{route('sponsorship.index')}}">Sponsorship Request </a>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('event_questions')}}">Questions from event page </a>
+                                                   href="{{route('event_questions.index')}}">Questions from event page </a>
                                                 <a class="nav-link py-1 link-600 fw-medium"
-                                                   href="{{route('questions')}}">Questions from contact us page </a>
+                                                   href="{{route('questions.index')}}">Questions from contact us page </a>
                                             </div>
                                         </div>
                                     </div>
@@ -738,6 +784,29 @@
                                 <a class="nav-link py-1 link-600 fw-medium" href="{{route('subscribers')}}">Listing</a>
                             </div>
                         </div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="documentations">Coupons</a>
+                        <div class="dropdown-menu dropdown-caret dropdown-menu-card border-0 mt-0"
+                             aria-labelledby="documentations">
+                            <div class="bg-white dark__bg-1000 rounded-3 py-2">
+                                <p class="nav-link text-700 mb-0 fw-bold">Coupons</p>
+                                <a class="nav-link py-1 link-600 fw-medium" href="{{route('coupons.create')}}">Create
+                                    </a>
+                                <a class="nav-link py-1 link-600 fw-medium" href="{{route('coupons.index')}}">
+                                    listing</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="margin: 8px; ">
+                        <a class="" href="{{ route('logout') }}" style="text-decoration: none;color: black"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </div>

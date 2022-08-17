@@ -17,6 +17,7 @@ class PlaceStoreRequest extends FormRequest
             'logo'=>'required|file',
             'latitude'=>'required',
             'longitude'=>'required',
+            'link'=>'required'
         ];
     }
 }

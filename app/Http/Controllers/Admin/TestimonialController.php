@@ -39,7 +39,7 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TestimonialStoreRequest $request): \Illuminate\Http\Response
+    public function store(TestimonialStoreRequest $request): mixed
     {
         $testimonial = testimonial::create($request->validated());
         $testimonial->addMedia($request->file('logo'))->toMediaCollection('testimonial_logo');
