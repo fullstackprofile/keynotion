@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Admin;
 use App\Models\event;
 use App\Models\news;
 use App\Models\Order;
@@ -18,7 +19,7 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(Admin::class);
     }
 
     public function index()

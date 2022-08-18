@@ -23,7 +23,7 @@ class EventQuestionController extends BaseController
     {
         $question = eventQuestion::create($request->validated());
         /** @var User $admin */
-        $admin = User::where('role', 'admin')->orWhere('email','info@key-notion.com')->get()->each(function (User $user) use ($question) {
+        $admin = User::where('email','info@key-notion.com')->get()->each(function (User $user) use ($question) {
             $user->notify( new EventQuestionNotification($question));
         });
         return response($question, 201);

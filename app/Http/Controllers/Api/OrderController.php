@@ -10,16 +10,19 @@ use App\Models\news;
 use App\Models\Order;
 use App\Models\User;
 use App\Notifications\OrderNotification;
+use App\Notifications\ReceiveNotification;
 use App\Notifications\Subscribers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Notification;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class OrderController extends BaseController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -29,10 +32,10 @@ class OrderController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param OrderStoreRequest $request
+     * @return Response
      */
-    public function store(OrderStoreRequest $request)
+    public function store(OrderStoreRequest $request):Response
     {
         $order = Order::create($request->validated());
         $order->order_items()->create([
@@ -65,10 +68,16 @@ class OrderController extends BaseController
 
 
         $user = $order->company;
-
-
         $user->notify(new OrderNotification($order));
-        return response($order, 201);
+
+
+        /** @var User $admin */
+
+        $admin = User::where('email','Registration@key-notion.com')->get()->each(function (User $user) use ($order) {
+            $user->notify( new ReceiveNotification($order));
+        });
+
+        return $this->render(new OrderOneResource($order),[], ResponseAlias::HTTP_CREATED);
     }
 
     /**

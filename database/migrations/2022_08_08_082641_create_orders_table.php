@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('order_number')->nullable();
-            $table->float('Subtotal')->nullable();
-            $table->float('VAT')->nullable();
-            $table->float('Total')->nullable();
+            $table->string('Subtotal')->nullable();
+            $table->string('VAT')->nullable();
+            $table->string('Total')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('status')->default('processing');
             $table->timestamps();

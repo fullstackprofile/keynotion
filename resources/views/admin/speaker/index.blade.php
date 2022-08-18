@@ -32,7 +32,7 @@
                                 <th scope="col">Company logo</th>
                                 <th scope="col">Full Name</th>
                                 <th scope="col">Company</th>
-                                <th scope="col">Lead</th>
+                                <th scope="col">Position</th>
                                 <th class="text-end" scope="col">Actions</th>
                             </tr>
                             </thead>

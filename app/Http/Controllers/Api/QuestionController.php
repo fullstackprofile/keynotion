@@ -23,7 +23,7 @@ class QuestionController extends BaseController
 
         $question = question::create($request->validated());
         /** @var User $admin */
-        $admin = User::where('role', 'admin')->orWhere('email','info@key-notion.com')->get()->each(function (User $user) use ($question) {
+        $admin = User::where('email','info@key-notion.com')->get()->each(function (User $user) use ($question) {
             $user->notify( new QuestionNotification($question));
         });
 

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @mixin IdeHelperCompanyDetails
+ */
 class CompanyDetails extends Model
 {
     use HasFactory,Notifiable;

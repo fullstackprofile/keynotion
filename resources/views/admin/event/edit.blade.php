@@ -144,7 +144,7 @@
                             </div>
                             {{----------------------------About Information----------------------------------}}
                             <div class="col-12 mb-3">
-                                <label class="form-label" for="event-description">About Information<span style="color: red">*</span></label>
+                                <label class="form-label" for="event-description">Event Detailed Description<span style="color: red">*</span></label>
                                 <br>
                                 <img id="file-ip-1-preview" class="card-img-top" src="{{$event->getFirstMediaUrl('event_about_img')}}" alt=""
                                      style="width: 10%">

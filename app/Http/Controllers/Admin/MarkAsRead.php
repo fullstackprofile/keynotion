@@ -14,6 +14,6 @@ class MarkAsRead extends Controller
         if($commId){
             DB::table('notifications')->where('id', $commId)->update(['read_at' => $now]);
         }
-        return redirect()->route('home_page');
+        return redirect()->back();
     }
 }

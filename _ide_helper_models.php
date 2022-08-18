@@ -12,17 +12,139 @@
 
 namespace App\Models{
 /**
+ * App\Models\CompanyDetails
+ *
+ * @property int $id
+ * @property int|null $order_id
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $company_name
+ * @property string|null $country_region
+ * @property string|null $street_address
+ * @property string|null $town_city
+ * @property string|null $postcode_zip
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $vat_number
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \App\Models\Order|null $order
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereCountryRegion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails wherePostcodeZip($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereStreetAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereTownCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereVatNumber($value)
+ */
+	class IdeHelperCompanyDetails {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Coupon
+ *
+ * @property int $id
+ * @property string|null $code
+ * @property string|null $discount
+ * @property string|null $percent_amount
+ * @property string|null $user
+ * @property string|null $email
+ * @property string|null $creation_date
+ * @property string|null $expiration_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreationDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereExpirationDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePercentAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUser($value)
+ */
+	class IdeHelperCoupon {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Delegate
+ *
+ * @property int $id
+ * @property int|null $order_id
+ * @property string|null $full_name
+ * @property string|null $job_title
+ * @property string|null $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \App\Models\Order|null $order
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereJobTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereUpdatedAt($value)
+ */
+	class IdeHelperDelegate {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Order
  *
  * @property int $id
+ * @property int $order_number
+ * @property string|null $Subtotal
+ * @property string|null $VAT
+ * @property string|null $Total
+ * @property string|null $payment_method
+ * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\CompanyDetails|null $company
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Delegate[] $delegaters
+ * @property-read int|null $delegaters_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderItem[] $order_items
+ * @property-read int|null $order_items_count
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereSubtotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereVAT($value)
  */
 	class IdeHelperOrder {}
 }
@@ -32,13 +154,26 @@ namespace App\Models{
  * App\Models\OrderItem
  *
  * @property int $id
+ * @property int|null $order_id
+ * @property int|null $ticket_id
+ * @property string|null $ticket_title
+ * @property int|null $quantity
+ * @property string|null $currency
+ * @property float|null $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order|null $order
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCurrency($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTicketId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTicketTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
  */
 	class IdeHelperOrderItem {}
@@ -359,7 +494,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string $email
- * @property string $tel
+ * @property string $number
  * @property string $message
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -371,7 +506,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereMessage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereTel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|eventQuestion whereUpdatedAt($value)
  */
 	class IdeHelpereventQuestion {}
@@ -514,6 +649,7 @@ namespace App\Models{
  * @property string|null $address
  * @property string|null $latitude
  * @property string|null $longitude
+ * @property string|null $link
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\event[] $events
@@ -527,6 +663,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|place whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|place whereLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereLongitude($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|place whereUpdatedAt($value)
@@ -630,12 +767,12 @@ namespace App\Models{
  * @property string|null $surname
  * @property string|null $company_name
  * @property string|null $job_title
- * @property string|null $phone
+ * @property string|null $phone_number
  * @property string|null $corporate_email
  * @property string|null $country
  * @property string|null $summit_name
  * @property string|null $comments
- * @property string|null $package
+ * @property string|null $package_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship newModelQuery()
@@ -649,8 +786,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereJobTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePackage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePackageName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|sponsorship wherePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereSummitName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereSurname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|sponsorship whereUpdatedAt($value)
@@ -714,7 +851,7 @@ namespace App\Models{
  * @property string $testimonial
  * @property string $full_name
  * @property string $heading
- * @property string|null $profession
+ * @property string $profession
  * @property string $company
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

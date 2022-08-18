@@ -50,7 +50,6 @@ class CartController extends BaseController
     private function getCart(string $cartId)
     {
         $cart = Cart::getPublicCart($cartId);
-
         return $this->render($cart ? new CartResource($cart) : []);
     }
 }

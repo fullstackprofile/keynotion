@@ -49,6 +49,12 @@ return [
             'lock_connection' => null,
         ],
 
+        'cache_order_database' => [
+            'driver' => 'database',
+            'table' => 'cache',
+            'lock_connection' => 'default',
+        ],
+
         'file' => [
             'driver' => 'file',
             'path' => storage_path('framework/cache/data'),

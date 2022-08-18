@@ -1835,7 +1835,7 @@
                     /**
          * Get the currently authenticated user.
          *
-         * @return \App\Models\user|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function user()
@@ -1870,7 +1870,7 @@
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\Models\user|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1950,7 +1950,7 @@
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\Models\user|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -2002,7 +2002,7 @@
          *
          * @param string $password
          * @param string $attribute
-         * @return \App\Models\user|null 
+         * @return \App\Models\User|null 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -2026,7 +2026,7 @@
                     /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\Models\user 
+         * @return \App\Models\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -2140,7 +2140,7 @@
                     /**
          * Return the currently cached user.
          *
-         * @return \App\Models\user|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -2186,7 +2186,7 @@
                     /**
          * Determine if the current user is authenticated. If not, throw an exception.
          *
-         * @return \App\Models\user 
+         * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -4013,50 +4013,6 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
-         * Remove all items from the cache.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function flush()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->flush();
-        }
-                    /**
-         * Get the Filesystem instance.
-         *
-         * @return \Illuminate\Filesystem\Filesystem 
-         * @static 
-         */ 
-        public static function getFilesystem()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getFilesystem();
-        }
-                    /**
-         * Get the working directory of the cache.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getDirectory()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getDirectory();
-        }
-                    /**
-         * Get the cache key prefix.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getPrefix()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getPrefix();
-        }
-                    /**
          * Get a lock instance.
          *
          * @param string $name
@@ -4067,7 +4023,7 @@
          */ 
         public static function lock($name, $seconds = 0, $owner = null)
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
                         return $instance->lock($name, $seconds, $owner);
         }
                     /**
@@ -4080,8 +4036,53 @@
          */ 
         public static function restoreLock($name, $owner)
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
                         return $instance->restoreLock($name, $owner);
+        }
+                    /**
+         * Remove all items from the cache.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function flush()
+        {
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        return $instance->flush();
+        }
+                    /**
+         * Get the underlying database connection.
+         *
+         * @return \Illuminate\Database\SQLiteConnection 
+         * @static 
+         */ 
+        public static function getConnection()
+        {
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        return $instance->getConnection();
+        }
+                    /**
+         * Specify the name of the connection that should be used to manage locks.
+         *
+         * @param \Illuminate\Database\ConnectionInterface $connection
+         * @return \Illuminate\Cache\DatabaseStore 
+         * @static 
+         */ 
+        public static function setLockConnection($connection)
+        {
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        return $instance->setLockConnection($connection);
+        }
+                    /**
+         * Get the cache key prefix.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getPrefix()
+        {
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        return $instance->getPrefix();
         }
          
     }
@@ -16870,13 +16871,15 @@
          *
          * @param int $productId
          * @param float $quantity
+         * @param string $price
+         * @param string $title
          * @throws InvalidArgumentException
          * @static 
          */ 
-        public static function addItem($productId, $quantity)
+        public static function addItem($productId, $quantity, $price, $title)
         {
                         /** @var \App\Services\Order\CartService $instance */
-                        return $instance->addItem($productId, $quantity);
+                        return $instance->addItem($productId, $quantity, $price, $title);
         }
                     /**
          * 

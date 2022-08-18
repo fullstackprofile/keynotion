@@ -21,7 +21,7 @@ class SponsorshipRequestController extends Controller
     {
         $sponsorship = sponsorship::create($request->validated());
         /** @var User $admin */
-        $admin = User::where('role', 'admin')->orWhere('email','sponsorship@key-notion.com')->get()->each(function (User $user) use ($sponsorship) {
+        $admin = User::where('email','sponsorship@key-notion.com')->get()->each(function (User $user) use ($sponsorship) {
             $user->notify(new SponsorshipRequestNotification($sponsorship));
         });
         return response($sponsorship, 201);

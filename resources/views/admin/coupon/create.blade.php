@@ -34,11 +34,11 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">User Full Name</label>
-                                <input class="form-control" name="user" id="event-name" type="text" placeholder="Who should attend" required>
+                                <input class="form-control" name="user" id="event-name" type="text" required>
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">User's email</label>
-                                <input class="form-control" name="email" id="event-name" type="text" placeholder="Who should attend" required>
+                                <input class="form-control" name="email" id="event-name" type="text"  required>
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label class="form-label" for="start-date"> Start Date <span style="color: red">*</span></label>

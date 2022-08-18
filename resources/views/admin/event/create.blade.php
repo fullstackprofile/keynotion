@@ -135,7 +135,7 @@
                             </div>
                             {{----------------------------About Information----------------------------------}}
                             <div class="col-12 mb-3">
-                                <label class="form-label" for="event-description">About Information<span
+                                <label class="form-label" for="event-description">Event Detailed Description<span
                                         style="color: red">*</span></label>
                                 <br>
                                 <input name="about_img" type="file" id="upload-cover-image" accept="image/*"

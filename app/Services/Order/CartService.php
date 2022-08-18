@@ -2,6 +2,7 @@
 
 namespace App\Services\Order;
 
+use App\Models\ticket;
 use App\Models\User;
 use Cache;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -53,12 +54,12 @@ class CartService
     /**
      * @param int $productId
      * @param float $quantity
-     * @param int $price
+     * @param string $price
      * @param string $title
      *
      * @throws InvalidArgumentException
      */
-    public function addItem(int $productId, float $quantity,int $price,string $title)
+    public function addItem(int $productId, float $quantity,string $price,string $title)
     {
         $this->updateCurrentCart($this->getCurrentCart()->put($productId, [
             'ticket_id' => $productId,
@@ -103,11 +104,17 @@ class CartService
         }
 
         $cart = self::makeCart($cart);
+        $subTotal = 0;
+        $vat = 0;
+
+        $cart->each(function($ticket) use(&$subTotal){
+            $subTotal +=$ticket->price * $ticket->quantity ;
+        });
 
         $cartData = arrayToObject([
-            'subtotal' => 0,
-            'vat' => 0,
-            'total' => 0,
+            'subtotal' =>$subTotal,
+            'vat' => $vat,
+            'total' => $subTotal + $vat,
         ]);
 
         $cartData->items = $cart;

@@ -23,7 +23,7 @@ class BrochureController extends BaseController
     {
         $brochure = brochure::create($request->validated());
         /** @var User $admin */
-        $admin = User::where('role', 'admin')->orWhere('email','agenda@key-notion.com')->get()->each(function (User $user) use ($brochure) {
+        $admin = User::where('email','agenda@key-notion.com')->get()->each(function (User $user) use ($brochure) {
             $user->notify(new BrochureRequestNotification($brochure));
         });
         return response($brochure, 201);

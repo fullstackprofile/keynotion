@@ -5,7 +5,7 @@
         <div class="bg-holder d-none d-lg-block bg-card" ></div>
         <!--/.bg-holder-->
         <div class="card-body position-relative">
-            <h3 class="p-3">Brochure Request Details</h3>
+            <h3 class="p-3">Sponsorship Request Details</h3>
             <h5> Full Name: {{$sponsorship->name}}  {{$sponsorship->surname}}</h5>
             <p class="fs--1"></p>
             <h5>Company  Name: {{$sponsorship->company_name}}</h5>

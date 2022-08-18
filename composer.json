@@ -39,6 +39,11 @@
         }
     },
     "scripts": {
+        "ide": [
+            "@php artisan ide-helper:generate -M",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:models -M"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

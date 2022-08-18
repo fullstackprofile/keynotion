@@ -39,5 +39,7 @@ class EmailVerificationController extends BaseController
         return [
             'message'=>'Email has been verified'
         ];
+
+
     }
 }

@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-lg-12 mb-3">
-                    <label class="form-label" for="profession">Heading</label>
+                    <label class="form-label" for="profession">Position</label>
                     <input class="form-control" id="profession" name="profession" value="{{$speakers['profession']}}" type="text" >
                 </div>
                 <div class="col-lg-12">

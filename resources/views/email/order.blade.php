@@ -474,7 +474,7 @@
                                             <td>
                                                 <h2 class="content-table-h3" style="width: 100%; max-width: 700px;">
                                                     [Order # {{$order->order_number}}]
-                                                    (May 27, 2022)</h2>
+                                                    {{ \Carbon\Carbon::parse(strtotime($order->created_at))->format('d F, Y')}}</h2>
                                             </td>
                                         </tr>
                                     </table>
@@ -496,18 +496,19 @@
                                                         <th>Price</th>
                                                     </tr>
                                                     <tr class="product-body" style="background: #FAFAFA;">
+                                                        @foreach($order->order_items as $order_item)
                                                         <td class="pl-3">
                                                             <p>Ticket:
-                                                                <span>World CG and Retail Forum- Livestream</span>
+                                                                <span>{{$order_item->ticket_title}}</span>
                                                             </p>
-                                                            <p>Price: <span>Livestream</span></p>
                                                         </td>
                                                         <td>
-                                                            <p class="quantity-border">3</p>
+                                                            <p class="quantity-border">{{$order_item->quantity}}</p>
                                                         </td>
                                                         <td>
-                                                            <p>€2,397.00</p>
+                                                            <p>{{$order_item->currency}}{{$order_item->price}}</p>
                                                         </td>
+                                                        @endforeach
                                                     </tr>
                                                 </table>
                                             </td>
@@ -528,7 +529,7 @@
                                                                         <p>Subtotal:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>€2,397.00</p>
+                                                                        <p>{{$order->Subtotal}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -536,7 +537,7 @@
                                                                         <p>VAT:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>€503.37</p>
+                                                                        <p>{{$order->VAT}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -544,7 +545,7 @@
                                                                         <p>Payment method:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>Invoice - Direct Bank Transfer</p>
+                                                                        <p>{{$order->payment_method}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -552,7 +553,7 @@
                                                                         <p>Total:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>€2,900.37</p>
+                                                                        <p>{{$order->Total}}</p>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -566,6 +567,7 @@
 
                                 </td>
                             </tr>
+                            @foreach($order->delegaters as $delegator)
                             <tr>
                                 <td>
                                     <table class="content-table-without-border"
@@ -580,18 +582,17 @@
                                                        cellspacing="0" cellpadding="0" border="0">
                                                     <tr>
                                                         <th>
-                                                            <p><b>Name of Attendee1: </b>User - User1</p>
+                                                            <p><b>Name of Attendee: </b>{{$delegator->full_name}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th>
-                                                            <p><b>Job Title of Attendee1: </b>User - User</p>
+                                                            <p><b>Job Title of Attendee: </b>{{$delegator->job_title}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th>
-                                                            <p><b>Email of
-                                                                    Attendee1: </b><span>user@gmail.com</span>
+                                                            <p><b>Email of Attendee: </b><span>{{$delegator->email}}</span>
                                                             </p>
                                                         </th>
                                                     </tr>
@@ -602,78 +603,7 @@
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <table class="content-table-without-border"
-                                           style=" background: #FAFAFA;margin-top: 20px;padding: 5px;max-width: 700px"
-                                           width="95%" align="center"
-                                           cellspacing="0" cellpadding="0" border="0">
-                                        <tr>
-                                            <td>
-                                                <table class="without-border-table-body"
-                                                       style="max-width: 636px"
-                                                       width="100%" align="center"
-                                                       cellspacing="0" cellpadding="0" border="0">
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Name of Attendee1: </b>User - User2</p>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Job Title of Attendee1: </b>User - User</p>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Email of
-                                                                    Attendee1: </b><span>user@gmail.com</span>
-                                                            </p>
-                                                        </th>
-                                                    </tr>
-
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="content-table-without-border"
-                                           style=" background: #FAFAFA;margin-top: 20px;padding: 5px;max-width: 700px"
-                                           width="95%" align="center"
-                                           cellspacing="0" cellpadding="0" border="0">
-                                        <tr>
-                                            <td>
-                                                <table class="without-border-table-body"
-                                                       style="max-width: 636px"
-                                                       width="100%" align="center"
-                                                       cellspacing="0" cellpadding="0" border="0">
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Name of Attendee1: </b>User - User3</p>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Job Title of Attendee1: </b>User - User</p>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <p><b>Email of
-                                                                    Attendee1: </b><span>user@gmail.com</span>
-                                                            </p>
-                                                        </th>
-                                                    </tr>
-
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+                            @endforeach
                             <tr>
                                 <td>
                                     <h2 class="content-table-with-border-h3" style="width:100%;max-width:700px;">
@@ -690,42 +620,42 @@
                                                        cellspacing="0" cellpadding="0" border="0">
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">User - User</p>
+                                                            <p class="pl-3">{{$order->company->first_name}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">User</p>
+                                                            <p class="pl-3">{{$order->company->last_name}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">User</p>
+                                                            <p class="pl-3">{{$order->company->country_region}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">User</p>
+                                                            <p class="pl-3">{{$order->company->street_address}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">0006</p>
+                                                            <p class="pl-3">{{$order->company->town_city}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3">Armenia</p>
+                                                            <p class="pl-3">{{$order->company->postcode_zip}}</p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3"><span>123456789</span></p>
+                                                            <p class="pl-3"><span>{{$order->company->phone}}</span></p>
                                                         </th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-align-left">
-                                                            <p class="pl-3"><span>user@gmail.com</span>
+                                                            <p class="pl-3"><span>{{$order->company->email}}</span>
                                                             </p>
                                                         </th>
                                                     </tr>
