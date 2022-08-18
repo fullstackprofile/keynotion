@@ -183,7 +183,7 @@ class CartService
      */
     private function cache(): Repository
     {
-        return Cache::driver('cache_order');
+        return Cache::store('database');
     }
 
     /**
