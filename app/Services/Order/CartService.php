@@ -53,18 +53,18 @@ class CartService
 
     /**
      * @param int $productId
-     * @param float $quantity
+     * @param float $count
      * @param string $price
      * @param string $title
      *
      * @throws InvalidArgumentException
      */
-    public function addItem(int $productId, float $quantity,string $price,string $title)
+    public function addItem(int $productId, float $count,string $price,string $title)
     {
         $this->updateCurrentCart($this->getCurrentCart()->put($productId, [
             'ticket_id' => $productId,
             'price'=> $price,
-            'quantity' => $quantity,
+            'count' => $count,
             'title' => $title,
         ]));
     }
@@ -108,7 +108,7 @@ class CartService
         $vat = 0;
 
         $cart->each(function($ticket) use(&$subTotal){
-            $subTotal +=$ticket->price * $ticket->quantity ;
+            $subTotal +=$ticket->price * $ticket->count ;
         });
 
         $cartData = arrayToObject([
@@ -169,7 +169,7 @@ class CartService
         return $cart->map(function ($cart) use ($tickets) {
             $ticket = $tickets->where('id', $cart->ticket_id)->first();
             if ($ticket) {
-                $ticket->quantity = $cart->quantity;
+                $ticket->count = $cart->count;
 
                 return $ticket;
             }

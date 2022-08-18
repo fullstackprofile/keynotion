@@ -20,7 +20,7 @@ class CartItemResource extends JsonResource
             'title' => $this->title,
             'ticket_id' => $this->ticket_id,
             'price' => $this->price,
-            'quantity' => $this->quantity,
+            'count' => $this->count,
             //todo fix
             //after model fix below lines
             /*
