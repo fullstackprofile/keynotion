@@ -137,6 +137,7 @@ class CartService
 
         $cartItems->each(function ($ticket) use (&$subTotal) {
             $subTotal += $ticket->price * $ticket->count;
+            
         });
 
         $total = ($subTotal + $vat);
