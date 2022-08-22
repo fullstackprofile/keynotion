@@ -41,13 +41,8 @@ class CouponNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->coupon['user'] )
-            ->line('You have new Coupon')
-            ->line('Congrats !')
-            ->line('Your Discount is')
-            ->line($this->coupon['discount'])
-            ->line('You can use it for any event ');
-
+            ->line('Hi Dear' )
+            ->view('email.coupon',['coupon'=>$this->coupon]);
     }
 
 }

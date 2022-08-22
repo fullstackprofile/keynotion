@@ -16872,24 +16872,26 @@
          * @param int $productId
          * @param int $count
          * @param string $price
-         * @param string $title
          * @throws InvalidArgumentException
          * @static 
          */ 
-        public static function addItem($productId, $count, $price, $title)
+        public static function addItem($productId, $count, $price)
         {
                         /** @var \App\Services\Order\CartService $instance */
-                        return $instance->addItem($productId, $count, $price, $title);
+                        return $instance->addItem($productId, $count, $price);
         }
                     /**
          * 
          *
+         * @param \App\Models\Coupon $coupon
+         * @return void 
+         * @throws InvalidArgumentException
          * @static 
          */ 
         public static function setCoupon($coupon)
         {
                         /** @var \App\Services\Order\CartService $instance */
-                        return $instance->setCoupon($coupon);
+                        $instance->setCoupon($coupon);
         }
                     /**
          * 
