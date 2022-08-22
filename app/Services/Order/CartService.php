@@ -134,16 +134,12 @@ class CartService
         $cartItems = self::makeCart($cart->get($this->cartItemKey(), collect()));
         $subTotal = 0;
         $vat = 0;
-
         $cartItems->each(function ($ticket) use (&$subTotal) {
             $subTotal += $ticket->price * $ticket->count;
-            
         });
 
         $total = ($subTotal + $vat);
-
         $discountTotal = 0;
-
         if ($coupon) {
             if ($coupon->percent_amount === '%') {
                 $discountTotal = ($total * $coupon->discount) / 100;
@@ -152,7 +148,6 @@ class CartService
             }
             $total = ($discountTotal > $total || $discountTotal < 0) ? 0 : $total - $discountTotal;
         }
-
         $cartData = arrayToObject([
             'discount_total' => $discountTotal,
             'subtotal' => $subTotal,
