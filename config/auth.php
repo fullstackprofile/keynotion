@@ -108,4 +108,8 @@ return [
 
     'password_timeout' => 10800,
 
+    'verification_code_timeout' => 300,
+
+    'verification_cool_down_after_seconds' => 60
+
 ];

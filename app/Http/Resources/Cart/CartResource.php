@@ -10,7 +10,7 @@ class CartResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
 
@@ -18,6 +18,7 @@ class CartResource extends JsonResource
     {
         return [
             'items' => !empty($this->items) ? CartItemResource::collection($this->items) : [],
+            'discount_total' => $this->discount_total,
             'subtotal' => $this->subtotal,
             'vat' => $this->vat,
             'total' => $this->total,

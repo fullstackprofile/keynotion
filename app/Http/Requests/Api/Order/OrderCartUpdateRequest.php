@@ -25,9 +25,8 @@ class OrderCartUpdateRequest extends FormRequest
     public function rules()
     {
         return collect([
-            'title'=>'required|string',
             'ticket_id' => 'required|exists:tickets,id',
-            'quantity' => 'required|min:1',
+            'count' => 'required',
             'price'=>'required',
         ])->when(! auth()->check(), function (Collection $collection) {
             return $collection->put('cart_id', 'required');

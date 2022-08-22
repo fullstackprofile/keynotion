@@ -2,6 +2,7 @@
 
 namespace App\Services\Order;
 
+use App\Models\Coupon;
 use App\Models\ticket;
 use App\Models\User;
 use Cache;
@@ -53,20 +54,41 @@ class CartService
 
     /**
      * @param int $productId
-     * @param float $count
+     * @param int $count
      * @param string $price
-     * @param string $title
      *
      * @throws InvalidArgumentException
      */
-    public function addItem(int $productId, float $count,string $price,string $title)
+    public function addItem(int $productId, int $count, string $price): void
     {
-        $this->updateCurrentCart($this->getCurrentCart()->put($productId, [
+        $cart = $this->getCurrentCart();
+        /** @var Collection $cartData */
+        $cartData = $cart->get($this->cartItemKey(), collect());
+
+        $cartData->put($productId, [
             'ticket_id' => $productId,
-            'price'=> $price,
+            'price' => $price,
             'count' => $count,
-            'title' => $title,
-        ]));
+        ]);
+        $cart->put($this->cartItemKey(), $cartData);
+
+        $this->updateCurrentCart($cart);
+    }
+
+    /**
+     * @param Coupon $coupon
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setCoupon(Coupon $coupon): void
+    {
+
+        $cart = $this->getCurrentCart();
+        /** @var Collection $coupon */
+
+        $cart->put('coupon', $coupon);
+
+        $this->updateCurrentCart($cart);
     }
 
     /**
@@ -103,22 +125,41 @@ class CartService
             return null;
         }
 
-        $cart = self::makeCart($cart);
+        /** @var Coupon $coupon */
+        $coupon = $cart->get('coupon');
+        $discount = 0;
+        if ($coupon) {
+        }
+
+        $cartItems = self::makeCart($cart->get($this->cartItemKey(), collect()));
         $subTotal = 0;
         $vat = 0;
 
-        $cart->each(function($ticket) use(&$subTotal){
-            $subTotal +=$ticket->price * $ticket->count ;
+        $cartItems->each(function ($ticket) use (&$subTotal) {
+            $subTotal += $ticket->price * $ticket->count;
         });
 
+        $total = ($subTotal + $vat);
+
+        $discountTotal = 0;
+
+        if ($coupon) {
+            if ($coupon->percent_amount === '%') {
+                $discountTotal = ($total * $coupon->discount) / 100;
+            } else {
+                $discountTotal = $coupon->discount;
+            }
+            $total = ($discountTotal > $total || $discountTotal < 0) ? 0 : $total - $discountTotal;
+        }
+
         $cartData = arrayToObject([
-            'subtotal' =>$subTotal,
+            'discount_total' => $discountTotal,
+            'subtotal' => $subTotal,
             'vat' => $vat,
-            'total' => $subTotal + $vat,
+            'total' => $total,
         ]);
 
-        $cartData->items = $cart;
-
+        $cartData->items = $cartItems;
         return $cartData;
     }
 
@@ -128,6 +169,7 @@ class CartService
      *
      * @throws InvalidArgumentException
      */
+
     private function getCurrentCart(?string $customCrtKey = null): Collection
     {
         return $this->cache()->get($this->getCurrentCartKey($customCrtKey), collect([]));
@@ -141,16 +183,28 @@ class CartService
     public function removeItem(int $productId)
     {
         $cart = $this->getCurrentCart();
-        $cart->offsetUnset($productId);
+        $cartData = $cart->get($this->cartItemKey(), collect());
+
+        $cartData->offsetUnset($productId);
+        $cart->put($this->cartItemKey(), $cartData);
 
         $this->updateCurrentCart($cart);
     }
 
-    public function removeCart()
+    public function removeCart(): void
     {
         $this->cache()->forget($this->getCurrentCartKey());
     }
 
+    private function cartItemKey(): string
+    {
+        return 'cart_item';
+    }
+
+    /**
+     * @return bool
+     * @throws InvalidArgumentException
+     */
     public function isEmpty(): bool
     {
         return $this->getCurrentCart()->isEmpty();
@@ -170,10 +224,8 @@ class CartService
             $ticket = $tickets->where('id', $cart->ticket_id)->first();
             if ($ticket) {
                 $ticket->count = $cart->count;
-
                 return $ticket;
             }
-
             return null;
         })->filter();
     }

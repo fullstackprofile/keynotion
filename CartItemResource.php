@@ -2,8 +2,6 @@
 
 namespace App\Http\Resources\Cart;
 
-use App\Models\event;
-use App\Models\ticket;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,16 +15,23 @@ class CartItemResource extends JsonResource
      */
     public function toArray($request)
     {
-        $ticket=ticket::where('id',$this->ticket_id)->first();
-        $event=event::where('id',$ticket->event_id)->first();
-
         return [
+            //temporary delete below line
+            'title' => $this->title,
             'ticket_id' => $this->ticket_id,
-            'title'=>$event->title,
-            'type'=>$ticket->type->title,
-            'other_type'=>$ticket->othertype->title,
             'price' => $this->price,
             'count' => $this->count,
+            //todo fix
+            //after model fix below lines
+            /*
+            'id' => $this->id,
+            'type' => $this->type,
+            'slug' => $this->slug,
+            'short_description' => $this->short_description,
+
+            'sale_price' => $this->sale_price,
+            'cover' => $this->getImageUrl('gallery'),
+            */
         ];
     }
 }

@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Requests\Api\Auth\UpdateUserRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
+use App\Services\VerificationService;
 use Auth;
+use Cart;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
+use Psr\SimpleCache\InvalidArgumentException;
 use Str;
-use Cart;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AuthController extends BaseController
 {
@@ -52,6 +55,9 @@ class AuthController extends BaseController
     /**
      * @param RegisterRequest $request
      * @return Response
+     *
+     * @throws ValidationException
+     * @throws InvalidArgumentException
      */
     public function storeRegister(RegisterRequest $request): Response
     {
@@ -69,13 +75,57 @@ class AuthController extends BaseController
             Cart::copyCart($request->cart_id);
         }
 
-        //Cart::copyCart();
+        VerificationService::sendVerifyCode( $request['email']);
 
-        $res = [
+        event(new Registered($user));
+
+        return $this->render([
             'user' => $user,
             'token' => $token
-        ];
-        return response($res, 201);
+        ], [], ResponseAlias::HTTP_CREATED);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws InvalidArgumentException
+     * @throws ValidationException
+     */
+    public function verifyCode(Request $request): mixed
+    {
+        $verified = VerificationService::verifyVerificationCode($request->email, $request->code);
+        if ($verified) {
+            /** @var User $user */
+            $user = User::whereEmail($request->email)->first();
+            if ($user) {
+                $user->markEmailAsVerified();
+            }
+        }
+
+        return $this->render(
+
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     *
+     * @throws InvalidArgumentException
+     * @throws ValidationException
+     */
+    public function resendCode(Request $request): mixed
+    {
+        $resend =  VerificationService::resendVerifyVerification($request->email);
+        /** @var User $user */
+        $user = User::whereEmail($request->email)->first();
+        if($user){
+            $user->sendEmailVerificationNotification();
+        }
+
+        return $this->render([
+            'expire_seconds' => $resend['expire_seconds'] ?? 0
+        ]);
     }
 
     /**

@@ -11,9 +11,9 @@ use Illuminate\Notifications\Notifiable;
  */
 class Coupon extends Model
 {
-    use HasFactory , Notifiable;
+    use HasFactory, Notifiable;
 
-    protected $fillable=[
+    protected $fillable = [
         'code',
         'discount',
         'user',

@@ -16870,16 +16870,26 @@
          * 
          *
          * @param int $productId
-         * @param float $quantity
+         * @param int $count
          * @param string $price
          * @param string $title
          * @throws InvalidArgumentException
          * @static 
          */ 
-        public static function addItem($productId, $quantity, $price, $title)
+        public static function addItem($productId, $count, $price, $title)
         {
                         /** @var \App\Services\Order\CartService $instance */
-                        return $instance->addItem($productId, $quantity, $price, $title);
+                        return $instance->addItem($productId, $count, $price, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setCoupon($coupon)
+        {
+                        /** @var \App\Services\Order\CartService $instance */
+                        return $instance->setCoupon($coupon);
         }
                     /**
          * 
@@ -16931,6 +16941,8 @@
                     /**
          * 
          *
+         * @return bool 
+         * @throws InvalidArgumentException
          * @static 
          */ 
         public static function isEmpty()

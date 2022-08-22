@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\VerificationService;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -27,12 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        VerifyEmail::toMailUsing(function ($notifiable, $url) {
-
+        VerifyEmail::toMailUsing(function ($user, $verificationUrl) {
             return (new MailMessage)
-                ->subject('Verify Email Address')
-                ->line('Click the button below to verify your email address.')
-                ->action('Verify Email Address', $url);
+                ->subject(__('Verify Email Address'))
+                ->line('or put confirmation number in site')
+                ->line(VerificationService::getCacheData($user->email)['code'] ?? null)
+                ->line(__('If you did not create an account, no further action is required.!'));
         });
     }
 }
