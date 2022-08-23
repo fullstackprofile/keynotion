@@ -31,7 +31,7 @@ Route::apiResources(['tickets' => TicketController::class]);
 Route::get('/ticket_related', [TicketController::class, 'show']);
 Route::get('/past/events', [EventController::class, 'showPast']);
 Route::apiResources(['vacancies' => VacancyController::class]);
-Route::apiResources(['news' => NewsController::class]);
+//Route::apiResources(['news' => NewsController::class]);
 Route::apiResources(['testimonials' => TestimonialController::class]);
 Route::apiResources(['order' => OrderController::class]);
 

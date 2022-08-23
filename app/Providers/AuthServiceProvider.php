@@ -27,7 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
+        VerifyEmail::$createUrlCallback = function ($notifiable){
+            return '';
+        };
         VerifyEmail::toMailUsing(function ($user, $verificationUrl) {
             return (new MailMessage)
                 ->subject(__('Verify Email Address'))

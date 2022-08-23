@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Coupon;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class CouponStoreRequest extends FormRequest
 {
@@ -10,7 +11,7 @@ class CouponStoreRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'code' => uniqid(),
+            'code' =>  Str::random(8),
         ]);
     }
 

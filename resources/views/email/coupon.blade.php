@@ -11,9 +11,9 @@
             background: #801d44;
             background: linear-gradient(90deg, #623D90 0.59%, #9F0B00 100%);
             border-radius: 6px 6px 6px 6px;
-            padding: 10px;
             text-align: center;
             display: flex;
+            padding: 30px 0;
         }
         .coupon_discount{
             width: 100%;
@@ -60,7 +60,7 @@
             .coupon_code {
                 /* width: 35%; */
                 background-color: white;
-                /* height: 100%; */
+                 height: auto;
                 border-left: 5px dashed #801d44;
             }
             .coupon_code>p{
@@ -70,21 +70,28 @@
             }
             .coupon_body{
                 margin-left: 4px;
+                height: auto;
+            }
+            .coupon{
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body style="background: #FFFFFB; font-family: 'Gilroy', sans-serif;">
-
-<div class="coupon" style="padding: 30px 0;"  align="center" cellspacing="0" cellpadding="0" border="0">
+<p>Hi dear ` {{$coupon->user}}</p>
+<p>You have new coupon from Key-notion , you can use it for any event</p>
+<div class="coupon"  align="center" cellspacing="0" cellpadding="0" border="0">
 
     <div class="coupon_body">
         <div class="coupon_discount">
             <p class="coupon_coupon">Discount Coupon</p>
         </div>
         <div class="coupon_number">
-            <p>Code: 63033f3a1f7b8	</p>
+            <p>Code: {{$coupon->code}}	</p>
+            <p>Expired Date: {{$coupon->expiration_date}} </p>
         </div>
+
     </div>
 
     <div class="coupon_code">
@@ -92,7 +99,7 @@
             SAVE
         </p>
         <p >
-            10%
+            {{$coupon->discount}}{{$coupon->percent_amount}}
         </p>
     </div>
 </div>
