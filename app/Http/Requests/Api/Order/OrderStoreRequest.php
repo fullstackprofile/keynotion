@@ -38,10 +38,6 @@ class OrderStoreRequest extends FormRequest
             'Total'=>'required',
             'payment_method'=>'required|string',
             'order_id'=>'exists:orders,id',
-            'ticket_id'=>'required|exists:tickets,id',
-            'ticket_title'=>'required|string',
-            'quantity'=>'required|int',
-            'price'=>'required',
             'first_name'=>'required|string',
             'last_name'=>'required|string',
             'company_name'=>'required|string',
@@ -51,8 +47,14 @@ class OrderStoreRequest extends FormRequest
             'postcode_zip'=>'required|string',
             'phone'=>'required|string',
             'email'=>'required|string',
-            'full_name'=>'required|string',
-            'job_title'=>'required|string',
+            'order_items'=>'required|array',
+            'order_items.*.ticket_id'=>'required|exists:tickets,id',
+            'order_items.*.quantity'=>'required',
+            'order_items.*.price'=>'required',
+            'delegaters'=>'required|array',
+            'delegaters.*.full_name'=>'required',
+            'delegaters.*.job_title'=>'required',
+            'delegaters.*.email'=>'required',
         ];
     }
 }
