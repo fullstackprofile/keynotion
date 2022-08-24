@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('ticket_id')->nullable()->constrained()->nullOnDelete();
             $table->string('ticket_title')->nullable();
             $table->integer('quantity')->nullable();
-            $table->string('currency')->nullable();
             $table->float('price')->nullable();
             $table->timestamps();
         });

@@ -34,14 +34,13 @@ class OrderStoreRequest extends FormRequest
         return [
             'order_number'=>'unique:orders,order_number',
             'Subtotal'=>'required',
-            'VAT'=>'required',
+            'VAT'=>'string',
             'Total'=>'required',
             'payment_method'=>'required|string',
             'order_id'=>'required',
             'ticket_id'=>'required|exists:tickets,id',
             'ticket_title'=>'required|string',
             'quantity'=>'required|int',
-            'currency'=>'required|string',
             'price'=>'required',
             'first_name'=>'required|string',
             'last_name'=>'required|string',
@@ -52,7 +51,6 @@ class OrderStoreRequest extends FormRequest
             'postcode_zip'=>'required|string',
             'phone'=>'required|string',
             'email'=>'required|string',
-            'vat_number'=>'required|string',
             'full_name'=>'required|string',
             'job_title'=>'required|string',
         ];

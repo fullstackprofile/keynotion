@@ -40,7 +40,6 @@ class OrderOneResource extends JsonResource
                 'postcode_zip'=>$this->company->postcode_zip,
                 'phone'=>$this->company->phone,
                 'email'=>$this->company->email,
-                'vat_number'=>$this->company->vat_number,
             ],
             'delegators' => DelegateResource::collection($this->delegaters),
             'order_items' => OrderItemResource::collection($this->order_items),

@@ -27,7 +27,6 @@ class OrderItemResource extends JsonResource
             'ticket_id'=>$this->ticket_id,
             'ticket_title'=>$this->ticket_title,
             'quantity'=>$this->quantity,
-            'currency'=>$this->currency,
             'price'=>$this->price,
         ];
     }

@@ -43,7 +43,6 @@ class OrderController extends BaseController
             'ticket_id' => $request->ticket_id,
             'ticket_title' => $request->ticket_title,
             'quantity' => $request->quantity,
-            'currency' => $request->currency,
             'price' => $request->price,
         ]);
         $order->company()->create([
@@ -57,7 +56,6 @@ class OrderController extends BaseController
             'postcode_zip' => $request->postcode_zip,
             'phone' => $request->phone,
             'email' => $request->email,
-            'vat_number' => $request->vat_number,
         ]);
         $order->delegaters()->create([
             'order_id' => $order->id,
