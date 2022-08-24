@@ -37,7 +37,7 @@ class OrderStoreRequest extends FormRequest
             'VAT'=>'string',
             'Total'=>'required',
             'payment_method'=>'required|string',
-            'order_id'=>'required',
+            'order_id'=>'exists:orders,id',
             'ticket_id'=>'required|exists:tickets,id',
             'ticket_title'=>'required|string',
             'quantity'=>'required|int',
