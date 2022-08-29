@@ -41,8 +41,8 @@ class OrderOneResource extends JsonResource
                 'phone'=>$this->company->phone,
                 'email'=>$this->company->email,
             ],
-            'delegators' => DelegateResource::collection($this->delegaters),
             'order_items' => OrderItemResource::collection($this->order_items),
+            'delegators' => DelegateResource::collection($this->delegaters),
         ];
     }
 }

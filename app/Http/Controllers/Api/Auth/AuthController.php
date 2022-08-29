@@ -75,7 +75,7 @@ class AuthController extends BaseController
             Cart::copyCart($request->cart_id);
         }
 
-        VerificationService::sendVerifyCode( $request['email']);
+        VerificationService::sendVerifyCode($request['email']);
 
         event(new Registered($user));
 
@@ -102,9 +102,7 @@ class AuthController extends BaseController
             }
         }
 
-        return $this->render(
-
-        );
+        return $this->render();
     }
 
     /**
@@ -116,10 +114,10 @@ class AuthController extends BaseController
      */
     public function resendCode(Request $request): mixed
     {
-        $resend =  VerificationService::resendVerifyVerification($request->email);
+        $resend = VerificationService::resendVerifyVerification($request->email);
         /** @var User $user */
         $user = User::whereEmail($request->email)->first();
-        if($user){
+        if ($user) {
             $user->sendEmailVerificationNotification();
         }
 
@@ -141,15 +139,19 @@ class AuthController extends BaseController
     /**
      * @param Request $request
      * @return mixed
+     *
+     * @throws InvalidArgumentException
+     * @throws ValidationException
      */
     public function forgotPassword(Request $request): mixed
     {
         $request->validate(['email' => 'required|email']);
 
+        $resend = VerificationService::resendVerifyVerification('forgot_password_' . $request->email);
+
         $status = Password::sendResetLink(
             $request->only('email')
         );
-        $response = response()->json();
 
         return $status === Password::RESET_LINK_SENT
             ? $this->render(['email' => __($status)])
@@ -164,28 +166,27 @@ class AuthController extends BaseController
     public function reset(Request $request): JsonResponse
     {
         $request->validate([
-            'token' => ['required'],
-            'email' => ['required', 'email'],
+            'code' => ['required'],
+            'email' => ['required', 'email', 'exists:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
-                ])->save();
-
-                event(new PasswordReset($user));
-            }
-        );
-
-        if ($status != Password::PASSWORD_RESET) {
+        $user = User::whereEmail($request->email)->first();
+        if (!$user) {
             throw ValidationException::withMessages([
-                'email' => [__($status)],
+                'email' => [__('user does not exists')],
             ]);
         }
+
+        $code = VerificationService::getCacheData('forgot_password_' . $user->email)['code'] ?? null;
+
+        $status = VerificationService::verifyVerificationCode('forgot_password_' . $user->email,$request->code);
+
+        $user->forceFill([
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60),
+        ])->save();
+
         return response()->json(['status' => __($status)]);
     }
 
@@ -198,17 +199,17 @@ class AuthController extends BaseController
 
         if ($request->has('first_name')) {
             $this->getUser()->update([
-                'first_name'=>$request->first_name,
+                'first_name' => $request->first_name,
             ]);
-        }elseif ($request->has('last_name')){
+        } elseif ($request->has('last_name')) {
             $this->getUser()->update([
-                'last_name'=>$request->last_name,
-        ]);
-        }elseif ($request->has('email')){
-            $this->getUser()->update([
-                'email'=>$request->email,
+                'last_name' => $request->last_name,
             ]);
-        }else{
+        } elseif ($request->has('email')) {
+            $this->getUser()->update([
+                'email' => $request->email,
+            ]);
+        } else {
             $this->getUser()->update([
                 'password' => bcrypt($request['password']),
             ]);

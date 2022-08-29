@@ -15,6 +15,7 @@ class Delegate extends Model
     use HasFactory,Notifiable;
 
     protected $fillable = [
+        'ticket_id',
         'order_id',
         'full_name',
         'job_title',

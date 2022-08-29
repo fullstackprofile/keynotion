@@ -23,7 +23,7 @@ class Order extends Model
          'Total',
          'payment_method',
          'order_number',
-         'status'
+         'status',
      ];
 
     /**

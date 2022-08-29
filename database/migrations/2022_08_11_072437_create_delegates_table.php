@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('delegates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('ticket_id')->nullable()->constrained()->nullOnDelete();
             $table->string('full_name')->nullable();
             $table->string('job_title')->nullable();
             $table->string('email')->nullable();
