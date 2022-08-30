@@ -36,6 +36,7 @@ class OrderController extends BaseController
     public function store(OrderStoreRequest $request): Response
     {
         $order = Order::create($request->validated());
+        if ($order->status == null) $order->status= "Processing";
 
         $order->company()->create([
             'order_id' => $order->id,
@@ -101,4 +102,7 @@ class OrderController extends BaseController
     {
         return $this->render(new OrderOneResource($order));
     }
+
+
+
 }

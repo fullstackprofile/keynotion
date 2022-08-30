@@ -37,7 +37,7 @@ class OrderStoreRequest extends FormRequest
             'VAT'=>'string',
             'Total'=>'required',
             'payment_method'=>'required|string',
-            'status'=>'',
+            'status'=>'string',
             'first_name'=>'required|string',
             'last_name'=>'required|string',
             'company_name'=>'required|string',
