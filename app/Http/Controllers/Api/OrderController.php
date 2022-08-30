@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\Api\BillingAddress\UpdateBillingAddressRequest;
 use App\Http\Requests\Api\Order\OrderStoreRequest;
+use App\Http\Resources\BillingAddress\BillingAddressResource;
 use App\Http\Resources\Order\OrderOneResource;
+use App\Http\Resources\User\UserResource;
 use App\Models\Order;
 use App\Models\ticket;
 use App\Models\type;
@@ -37,6 +40,7 @@ class OrderController extends BaseController
     {
         $order = Order::create($request->validated());
         if ($order->status == null) $order->status= "Processing";
+        if ($request->has('user_id')) $order->user_id = $request->user_id;
 
         $order->company()->create([
             'order_id' => $order->id,
@@ -104,5 +108,34 @@ class OrderController extends BaseController
     }
 
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
 
+    public function billingAddress(Request $request)
+    {
+            return $this->render(
+                BillingAddressResource::collection(Order::query()
+                    ->when(
+                        $request->has('user_id'), fn($builder) => $builder->where('user_id', '=', $request->user_id)
+                    )
+                    ->get()
+                )
+            );
+    }
+
+    /**
+     * @param UpdateBillingAddressRequest $request
+     * @return mixed
+     */
+
+    public function updateBilling(Request  $request): mixed
+    {
+        $order=Order::where('user_id',$request->user_id)->with('company')->first();
+
+        $order->company->update($request->all());
+
+        return $this->render(new BillingAddressResource($order));
+    }
 }

@@ -214,7 +214,6 @@ class AuthController extends BaseController
                 'password' => bcrypt($request['password']),
             ]);
         }
-
         return $this->render(new UserResource($this->getUser()));
     }
 }

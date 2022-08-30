@@ -39,6 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/update-user', [AuthController::class, 'update']);
+    Route::get('/billing',[OrderController::class,'billingAddress']);
+    Route::post('/update/billing', [OrderController::class, 'updateBilling']);
 });
 
 Route::middleware('guest')->group(function () {

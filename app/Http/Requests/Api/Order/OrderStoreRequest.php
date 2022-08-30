@@ -38,6 +38,7 @@ class OrderStoreRequest extends FormRequest
             'Total'=>'required',
             'payment_method'=>'required|string',
             'status'=>'string',
+            'user_id'=>'exists:users,id',
             'first_name'=>'required|string',
             'last_name'=>'required|string',
             'company_name'=>'required|string',

@@ -28,6 +28,7 @@ class OrderOneResource extends JsonResource
             'Total' => $this->Total,
             'payment_method' => $this->payment_method,
             'status' => $this->status,
+            'user_id'=>$this->user_id,
             'created_at'=>$this->created_at->format('Y-m-d H:i:s'),
             'company'=> [
                 'order_id'=>$this->company->order_id,
