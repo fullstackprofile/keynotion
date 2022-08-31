@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\Api\BillingAddress\UpdateBillingAddressRequest;
 use App\Http\Requests\Api\Order\OrderStoreRequest;
 use App\Http\Resources\BillingAddress\BillingAddressResource;
+use App\Http\Resources\Order\OrderDetailsResource;
 use App\Http\Resources\Order\OrderOneResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\Order;
@@ -123,6 +124,23 @@ class OrderController extends BaseController
                     ->get()
                 )
             );
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+
+    public function orderDetails(Request $request)
+    {
+        return $this->render(
+            OrderDetailsResource::collection(Order::query()
+                ->when(
+                    $request->has('user_id'), fn($builder) => $builder->where('user_id', '=', $request->user_id)
+                )
+                ->get()
+            )
+        );
     }
 
     /**

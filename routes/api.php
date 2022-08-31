@@ -41,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/update-user', [AuthController::class, 'update']);
     Route::get('/billing',[OrderController::class,'billingAddress']);
     Route::post('/update/billing', [OrderController::class, 'updateBilling']);
+    Route::get('/order',[OrderController::class,'orderDetails']);
 });
 
 Route::middleware('guest')->group(function () {
