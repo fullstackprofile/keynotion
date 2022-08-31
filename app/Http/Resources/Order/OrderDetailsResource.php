@@ -23,7 +23,7 @@ class OrderDetailsResource extends JsonResource
     {
         $order_item=OrderItem::where('order_id',$this->id)->get();
 //        $ticket = ticket::whereId($order_item['ticket_id'])->with('event')->first();
-        
+
         return [
             'id'=>$this->id,
             'order_number'=>$this->order_number,
