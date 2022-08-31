@@ -21,15 +21,16 @@ class OrderDetailsResource extends JsonResource
      */
     public function toArray($request)
     {
-        $order_item=OrderItem::where('order_id',$this->id)->first();
-        $ticket = ticket::whereId($order_item['ticket_id'])->with('event')->first();
-
+        $order_item=OrderItem::where('order_id',$this->id)->get();
+//        $ticket = ticket::whereId($order_item['ticket_id'])->with('event')->first();
+        
         return [
             'id'=>$this->id,
             'order_number'=>$this->order_number,
             'created_at'=>Carbon::parse(strtotime($this->created_at))->format('d F Y'),
             'status'=>$this->status,
             'total'=>$this->Total,
+            'count'=>$order_item->SUM('quantity'),
             'order_items' => OrderItemResource::collection($this->order_items),
         ];
     }
