@@ -11,14 +11,14 @@
             <p class="fs--1">{{Carbon\Carbon::parse(strtotime($order['created_at']))->format('d F Y')}}</p>
             <div><strong class="me-2">Status: </strong>
                 <select id="select_status{{$order->id}}" style="background: white;">
-                    <option @if($order['status'] == 'pending Payment') selected @endif><h6>Pending Payment</h6></option>
+                    <option @if($order['status'] == 'Pending Payment') selected @endif><h6>Pending Payment</h6></option>
                     <option @if($order['status'] == 'processing') selected @endif><h6>Processing</h6></option>
-                    <option @if($order['status'] == 'on Hold') selected @endif><h6>On Hold</h6></option>
-                    <option @if($order['status'] == 'completed') selected @endif><h6>Completed</h6></option>
-                    <option @if($order['status'] == 'cancelled') selected @endif><h6>Cancelled</h6></option>
-                    <option @if($order['status'] == 'refunded') selected @endif><h6>Refunded</h6></option>
-                    <option @if($order['status'] == 'failed') selected @endif><h6>Failed</h6></option>
-                    <option @if($order['status'] == 'draft') selected @endif><h6>Draft</h6></option>
+                    <option @if($order['status'] == 'On Hold') selected @endif><h6>On Hold</h6></option>
+                    <option @if($order['status'] == 'Completed') selected @endif><h6>Completed</h6></option>
+                    <option @if($order['status'] == 'Cancelled') selected @endif><h6>Cancelled</h6></option>
+                    <option @if($order['status'] == 'Refunded') selected @endif><h6>Refunded</h6></option>
+                    <option @if($order['status'] == 'Failed') selected @endif><h6>Failed</h6></option>
+                    <option @if($order['status'] == 'Draft') selected @endif><h6>Draft</h6></option>
                 </select>
                 <script>
                     $('#select_status{{$order->id}}').change(() => {
