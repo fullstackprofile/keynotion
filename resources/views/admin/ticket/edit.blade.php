@@ -61,10 +61,7 @@
                                     <label class="form-label" for="event-name">Currency</label>
                                     <select class="form-select" id="event-type" name="currency" required>
                                         @if($ticket['currency']) <option selected>{{$ticket['currency']}}</option>@endif
-                                        <option value="$">$</option>
                                         <option value="€">€</option>
-                                        <option value="₽">₽</option>
-                                        <option value="£">£</option>
                                     </select>
                                 </div>
                             {{----------------------------event----------------------------------}}

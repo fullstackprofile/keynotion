@@ -66,7 +66,7 @@ class OrderController extends BaseController
                         'ticket_id' => $ticket->id,
                         'ticket_title' => $ticket->event->title,
                         'quantity' => $orderItems['quantity'],
-                        'price' => $ticket->price,
+                        'price' => $ticket->sale ?? $ticket->price ,
                     ]);
                 }
             });

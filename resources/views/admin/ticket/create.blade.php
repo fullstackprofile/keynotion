@@ -62,10 +62,7 @@
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">Currency</label>
                                 <select class="form-select" id="event-type" name="currency" required>
-                                    <option value="$">$</option>
                                     <option value="€">€</option>
-                                    <option value="₽">₽</option>
-                                    <option value="£">£</option>
                                 </select>
                             </div>
                             {{----------------------------event----------------------------------}}

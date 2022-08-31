@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources\Order;
 
+use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\ticket;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
@@ -19,11 +21,16 @@ class OrderDetailsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $order_item=OrderItem::where('order_id',$this->id)->first();
+        $ticket = ticket::whereId($order_item['ticket_id'])->with('event')->first();
+
         return [
+            'id'=>$this->id,
             'order_number'=>$this->order_number,
             'created_at'=>Carbon::parse(strtotime($this->created_at))->format('d F Y'),
             'status'=>$this->status,
             'total'=>$this->Total,
+            'order_items' => OrderItemResource::collection($this->order_items),
         ];
     }
 }
