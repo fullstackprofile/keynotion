@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('VAT')->nullable();
             $table->string('Total')->nullable();
             $table->string('payment_method')->nullable();
-            $table->string('status')->default('processing');
+            $table->string('status')->default('Processing');
             $table->timestamps();
         });
     }
