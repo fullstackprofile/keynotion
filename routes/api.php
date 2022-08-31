@@ -65,5 +65,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware(AuthWhenHasBearerSanctum::class,)->group(function () {
     Route::apiResource('cart', CartController::class)->only(['index', 'store', 'destroy']);
     Route::post('cart/coupon', [CartController::class, 'coupon']);
+    Route::delete('clear', [CartController::class, 'destroyCart']);
     Route::apiResource('checkout', CheckoutController::class)->only(['store']);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Order;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,7 +30,7 @@ class OrderOneResource extends JsonResource
             'payment_method' => $this->payment_method,
             'status' => $this->status,
             'user_id'=>$this->user_id,
-            'created_at'=>$this->created_at->format('Y-m-d H:i:s'),
+            'created_at'=>Carbon::parse(strtotime($this->created_at))->format('d F Y'),
             'company'=> [
                 'order_id'=>$this->company->order_id,
                 'first_name'=>$this->company->first_name,

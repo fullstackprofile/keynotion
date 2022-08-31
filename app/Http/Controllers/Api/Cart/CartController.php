@@ -53,6 +53,17 @@ class CartController extends BaseController
     }
 
     /**
+     * @param OrderCartIndexRequest $request
+     * @return mixed
+     */
+
+    public function destroyCart(OrderCartIndexRequest $request): mixed
+    {
+        Cart::setCartKey($request->cart_id)->removeCart();
+        return $this->getCart($request);
+    }
+
+    /**
      * @param Request $request
      * @return mixed
      * @throws InvalidArgumentException|ValidationException

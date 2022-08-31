@@ -196,24 +196,7 @@ class AuthController extends BaseController
      */
     public function update(UpdateUserRequest $request): mixed
     {
-
-        if ($request->has('first_name')) {
-            $this->getUser()->update([
-                'first_name' => $request->first_name,
-            ]);
-        } elseif ($request->has('last_name')) {
-            $this->getUser()->update([
-                'last_name' => $request->last_name,
-            ]);
-        } elseif ($request->has('email')) {
-            $this->getUser()->update([
-                'email' => $request->email,
-            ]);
-        } else {
-            $this->getUser()->update([
-                'password' => bcrypt($request['password']),
-            ]);
-        }
+        $this->getUser()->update($request->all());
         return $this->render(new UserResource($this->getUser()));
     }
 }
