@@ -46,7 +46,7 @@ class EventController extends BaseController
     {
         return $this->render(
             EventResource::collection(event::query()
-                ->whereDate('end_date', '<', date('d F Y'))
+                ->whereDate('end_date', '<', date('Y-m-d'))
                 ->get()
             )
         );
