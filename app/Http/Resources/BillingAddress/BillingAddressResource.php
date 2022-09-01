@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\BillingAddress;
 
-use App\Models\CompanyDetails;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,12 +17,11 @@ class BillingAddressResource extends JsonResource
      */
     public function toArray($request)
     {
-        $address=CompanyDetails::where('order_id',$this->id)->first();
         return [
-//            'country_region'=>$this->company->country_region,
-            'street_address'=>$address->street_address,
-            'town_city'=>$address->town_city,
-            'postcode_zip'=>$address->postcode_zip,
+            'country_region'=>$this->company->country_region,
+            'street_address'=>$this->company->street_address,
+            'town_city'=>$this->company->town_city,
+            'postcode_zip'=>$this->company->postcode_zip,
         ];
     }
 }
