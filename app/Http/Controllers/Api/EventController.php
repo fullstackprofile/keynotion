@@ -19,10 +19,9 @@ class EventController extends BaseController
     public function index(Request $request): mixed
     {
         return $this->render(
-            $this->renderCollectionResponse(
-                $request,
-                event::query(),
-                EventResource::class
+            EventResource::collection(event::query()
+                ->whereDate('end_date', '>', date('Y-m-d'))
+                ->get()
             )
         );
     }
@@ -51,5 +50,4 @@ class EventController extends BaseController
             )
         );
     }
-
 }
