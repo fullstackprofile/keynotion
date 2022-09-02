@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Sponsorship\SponsorshipStoreRequest;
 use App\Models\sponsorship;
-use App\Models\user;
+use App\Models\User;
 use App\Notifications\SponsorshipRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

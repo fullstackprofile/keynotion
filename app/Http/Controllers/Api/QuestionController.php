@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Api\Question\QuestionRequest;
 use App\Models\question;
-use App\Models\user;
+use App\Models\User;
 use App\Notifications\QuestionNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

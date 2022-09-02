@@ -6,7 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Brochure\BrochureStoreRequest;
 use App\Models\brochure;
-use App\Models\user;
+use App\Models\User;
 use App\Notifications\BrochureRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

@@ -6,7 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\EventQuestion\EventQuestionRequest;
 use App\Models\eventQuestion;
-use App\Models\user;
+use App\Models\User;
 use App\Notifications\EventQuestionNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

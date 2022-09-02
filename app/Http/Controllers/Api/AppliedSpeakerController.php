@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Api\ApplySpeaker\ApplySpeakerStoreRequest;
 use App\Models\appliedSpeaker;
-use App\Models\user;
+use App\Models\User;
 use App\Notifications\ApplySpeakerNotification;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Notification;
