@@ -529,7 +529,7 @@
                                                                         <p>Subtotal:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>{{$order->Subtotal}}</p>
+                                                                        <p>{{$order->subtotal}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -537,7 +537,7 @@
                                                                         <p>VAT:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>{{$order->VAT}}</p>
+                                                                        <p>{{$order->vat}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -545,7 +545,7 @@
                                                                         <p>Payment method:</p>
                                                                     </th>
                                                                     <td style="width: 60%;max-width: 320px">
-                                                                        <p>{{$order->payment_method}}</p>
+                                                                        <p>{{$order->gateway->name}}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

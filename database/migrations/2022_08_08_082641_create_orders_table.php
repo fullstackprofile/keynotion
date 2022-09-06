@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('gateway_id')->nullable()->constrained()->nullOnDelete();
             $table->integer('order_number')->nullable();
-            $table->string('Subtotal')->nullable();
-            $table->string('VAT')->nullable();
-            $table->string('Total')->nullable();
-            $table->string('payment_method')->nullable();
+            $table->string('subtotal')->nullable();
+            $table->string('vat')->nullable();
+            $table->string('total')->nullable();
             $table->string('status')->default('Processing');
             $table->timestamps();
         });

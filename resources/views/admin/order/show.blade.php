@@ -99,11 +99,11 @@
                     <table class="table table-sm table-borderless fs--1 text-end">
                         <tbody><tr>
                             <th class="text-900">Subtotal:</th>
-                            <td class="fw-semi-bold">{{$order->Subtotal}}</td>
+                            <td class="fw-semi-bold">{{$order->subtotal}}</td>
                         </tr>
                         <tr>
                             <th class="text-900">VAT</th>
-                            <td class="fw-semi-bold">{{$order->VAT}}</td>
+                            <td class="fw-semi-bold">{{$order->vat}}</td>
                         </tr>
                         <tr class="border-top">
                             <th class="text-900">Total:</th>

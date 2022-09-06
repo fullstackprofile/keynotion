@@ -33,12 +33,10 @@ class OrderStoreRequest extends FormRequest
     {
         return [
             'order_number'=>'unique:orders,order_number',
-            'Subtotal'=>'required',
-            'VAT'=>'string',
-            'Total'=>'required',
-            'payment_method'=>'required|string',
+            'coupon'=>'nullable|exists:coupon,code',
+            'gateway_id'=>'required|exists:gateways,id',
+            'payment_method_id'=>'required',
             'status'=>'string',
-            'user_id'=>'exists:users,id',
             'first_name'=>'required|string',
             'last_name'=>'required|string',
             'company_name'=>'required|string',

@@ -11,7 +11,6 @@ use App\Models\User;
 use App\Services\VerificationService;
 use Auth;
 use Cart;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,16 +19,20 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
+use Laravel\Cashier\Exceptions\CustomerAlreadyCreated;
 use Psr\SimpleCache\InvalidArgumentException;
 use Str;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AuthController extends BaseController
 {
+
     /**
      * @param LoginRequest $request
      * @return JsonResponse
+     *
      * @throws ValidationException
+     * @throws CustomerAlreadyCreated
      */
     public function storeLogin(LoginRequest $request): JsonResponse
     {
@@ -43,6 +46,8 @@ class AuthController extends BaseController
             if ($request->has('cart_id')) {
                 Cart::copyCart($request->cart_id);
             }
+
+            $user->generateStripeId();
 
             return response()->json(['token' => $token->plainTextToken]);
         } else {
@@ -180,7 +185,7 @@ class AuthController extends BaseController
 
         $code = VerificationService::getCacheData('forgot_password_' . $user->email)['code'] ?? null;
 
-        $status = VerificationService::verifyVerificationCode('forgot_password_' . $user->email,$request->code);
+        $status = VerificationService::verifyVerificationCode('forgot_password_' . $user->email, $request->code);
 
         $user->forceFill([
             'password' => Hash::make($request->password),

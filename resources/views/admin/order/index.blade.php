@@ -51,7 +51,7 @@
                                     <td>#{{$order['order_number']}}</td>
                                     <td>{{Carbon\Carbon::parse(strtotime($order['created_at']))->format('d F Y')}}</td>
                                     <td>{{$order['status']}}</td>
-                                    <td>{{$order['Total']}}</td>
+                                    <td>{{$order['total']}}</td>
                                     <td>
                                         <a href="{{route('orders.show' , $order['id'])}}"
                                            style="text-decoration: none">

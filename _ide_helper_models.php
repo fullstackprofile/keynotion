@@ -25,7 +25,6 @@ namespace App\Models{
  * @property string|null $postcode_zip
  * @property string|null $phone
  * @property string|null $email
- * @property string|null $vat_number
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
@@ -47,7 +46,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereStreetAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereTownCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyDetails whereVatNumber($value)
  */
 	class IdeHelperCompanyDetails {}
 }
@@ -91,6 +89,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int|null $order_id
+ * @property int|null $ticket_id
  * @property string|null $full_name
  * @property string|null $job_title
  * @property string|null $email
@@ -108,6 +107,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereJobTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereTicketId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Delegate whereUpdatedAt($value)
  */
 	class IdeHelperDelegate {}
@@ -115,20 +115,48 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Gateway
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $type
+ * @property string $class
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gateway whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperGateway {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Order
  *
  * @property int $id
- * @property int $order_number
- * @property string|null $Subtotal
- * @property string|null $VAT
- * @property string|null $Total
- * @property string|null $payment_method
+ * @property int|null $user_id
+ * @property int|null $gateway_id
+ * @property int|null $order_number
+ * @property string|null $subtotal
+ * @property string|null $vat
+ * @property string|null $total
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\CompanyDetails|null $company
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Delegate[] $delegaters
  * @property-read int|null $delegaters_count
+ * @property-read \App\Models\Gateway|null $gateway
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderItem[] $order_items
@@ -137,14 +165,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereGatewayId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereSubtotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereVAT($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereVat($value)
  */
 	class IdeHelperOrder {}
 }
@@ -158,7 +187,6 @@ namespace App\Models{
  * @property int|null $ticket_id
  * @property string|null $ticket_title
  * @property int|null $quantity
- * @property string|null $currency
  * @property float|null $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -167,7 +195,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCurrency($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem wherePrice($value)
@@ -195,8 +222,14 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $stripe_id
+ * @property string|null $pm_type
+ * @property string|null $pm_last_four
+ * @property string|null $trial_ends_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Cashier\Subscription[] $subscriptions
+ * @property-read int|null $subscriptions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
@@ -212,8 +245,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePmLastFour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePmType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStripeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class IdeHelperUser {}

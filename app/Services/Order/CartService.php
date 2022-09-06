@@ -128,8 +128,6 @@ class CartService
         /** @var Coupon $coupon */
         $coupon = $cart->get('coupon');
         $discount = 0;
-        if ($coupon) {
-        }
 
         $cartItems = self::makeCart($cart->get($this->cartItemKey(), collect()));
         $subTotal = 0;

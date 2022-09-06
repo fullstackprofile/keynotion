@@ -934,7 +934,6 @@
                                 <img class="rounded-circle" src="/assets/img/team/admin.png" alt=""/>
                             </div>
                         </a>
-
                     </li>
                 </ul>
             </nav>

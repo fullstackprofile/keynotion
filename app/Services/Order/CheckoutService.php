@@ -3,15 +3,12 @@
 namespace App\Services\Order;
 
 use App\Gateways\BaseGateway;
-use App\Http\Requests\API\Order\OrderCheckoutStoreRequest;
 use App\Models\Gateway;
 use App\Models\Order;
 use App\Models\OrderChild;
-use App\Models\ticket;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Collection;
 
 class CheckoutService
 {
@@ -25,20 +22,20 @@ class CheckoutService
     protected Builder|Order $order;
 
     /**
-     * @param  OrderCheckoutStoreRequest  $request
-     * @param  User  $user
-     * @return CheckoutService
+     * @param Order $order
+     * @param User $user
+     * @param int $gatewayId
+     * @param string|null $stripePaymentMethodId
+     * @return $this
      */
-    public function make(OrderCheckoutStoreRequest $request, User $user)
+    public function make(Order $order, User $user, int $gatewayId, ?string $stripePaymentMethodId = null): static
     {
         $this->user = $user;
-        $data = $request->validated();
-        $order = $this->makeOrder($data['items']);
 
         $this->makeGatewayClass(
             $order,
-            $data['gateway_id'],
-            $data['payment_card_id'] ?? null
+            $gatewayId,
+            $stripePaymentMethodId
         );
 
         return $this;
@@ -55,63 +52,27 @@ class CheckoutService
     }
 
     /**
-     * @return RedirectResponse
+     * @return mixed
      */
-    public function redirect(): RedirectResponse
+    public function redirect(): mixed
     {
-        return redirect()->to($this->gateway->redirectAfterPay());
+        return $this->gateway->redirectAfterPay();
     }
 
     /**
-     * @param  array  $items
-     * @return Order|Builder
+     * @param Order $order
+     * @param $gatewayId
+     * @param $paymentCardId
+     * @return void
      */
-    private function makeOrder(array $items): Order|Builder
-    {
-        $items = CartService::makeCart(collect($items));
-        $order = Order::query()->create([
-            'user_id' => $this->user->id,
-        ]);
-        $items->groupBy('restaurant_id')->each(function (Collection $data, $restaurantId) use ($order) {
-            /** @var OrderChild $orderChild */
-            $orderChild = OrderChild::create([
-                'order_id' => $order->id,
-                'restaurant_id' => $restaurantId,
-            ]);
-            $data->each(function (ticket $product) use ($orderChild, $order) {
-                $price = ! empty($product->sale_price) ? $product->sale_price : $product->price;
-
-                $orderChild->orderItems()->create([
-                    'order_id' => $order->id,
-                    'product_id' => $product->id,
-                    'qty' => $product->quantity,
-                    'unit_price' => $product->price,
-                    'sale_price' => $product->sale_price,
-                    'total_price' => $price * $product->quantity,
-                ]);
-            });
-            $orderChild->updateQuietly(['total_price' => $orderChild->orderItems()->sum('total_price')]);
-        });
-
-        $sum = $order->orderChildren()->sum('total_price');
-
-        $order->updateQuietly([
-            'amount' => $sum,
-        ]);
-
-        return $order;
-    }
-
-    private function makeGatewayClass(Order $order, $gatewayId, $paymentCardId = null)
+    private function makeGatewayClass(Order $order, $gatewayId, $paymentCardId = null): void
     {
         /** @var Gateway $gateway */
         $gateway = Gateway::whereId($gatewayId)->first();
         if ($gateway) {
             $this->gateway = $gateway->makeInstanceClass($this->user)->setOrder($order);
             if ($gateway->type == Gateway::TYPE_CC) {
-                $this->gateway->setPaymentCard(
-                    $this->user->paymentCards()->where('id', $paymentCardId)->first()
-                );
+                $this->gateway->setPaymentCard($paymentCardId);
             }
         }
     }
