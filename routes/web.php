@@ -43,7 +43,7 @@ Route::get('/artisan', function (\Illuminate\Http\Request $request) {
         return;
     }
 
-    $sss = \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed --force');
+    $sss = \Illuminate\Support\Facades\Artisan::call('cache:clear');
     return \Illuminate\Support\Facades\Artisan::output();
 });
 
