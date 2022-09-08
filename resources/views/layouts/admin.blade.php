@@ -568,7 +568,7 @@
                             </ul>
 
                                 <li style="margin-top: 20px">
-                            <a class="nav-link-text ps-1" href="{{ route('logout') }}"
+                            <a class="nav-link-text ps-1 nav-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
