@@ -20,7 +20,7 @@
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">Item Title</label>
-                                <input class="form-control" value="{{$items['title']}}" name="title" id="event-name" type="text" placeholder="Item   Title" required>
+                                <input class="form-control" value="{{$items['title']}}" name="title" id="event-name" type="text"  required>
                             </div>
 
                             <div class="col-4">

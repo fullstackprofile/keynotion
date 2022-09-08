@@ -21,7 +21,7 @@
                         <div class="row gx-2">
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="event-name">Item Title</label>
-                                <input class="form-control" name="title" id="event-name" type="text" placeholder="Who should attend" required>
+                                <input class="form-control" name="title" id="event-name" type="text" required>
                             </div>
                             <div class="col-4">
                                 <button type="submit" class="btn btn-danger">Save </button>
