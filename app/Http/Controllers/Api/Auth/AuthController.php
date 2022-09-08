@@ -203,5 +203,6 @@ class AuthController extends BaseController
     {
         $this->getUser()->update($request->all());
         return $this->render(new UserResource($this->getUser()));
+
     }
 }
