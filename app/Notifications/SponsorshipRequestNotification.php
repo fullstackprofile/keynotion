@@ -42,10 +42,7 @@ class SponsorshipRequestNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('You have new sponsorship request')
-            ->line($this->sponsorship['name'])
-            ->line($this->sponsorship['surname'])
-            ->line($this->sponsorship['comments']);
+            ->line('You have new sponsorship request');
     }
 
     /**

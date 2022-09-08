@@ -41,10 +41,7 @@ class EventQuestionNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('You have a question')
-            ->line($this->question['name'])
-            ->line($this->question['email'])
-            ->line($this->question['message']);
+            ->line('You have a question from event page');
     }
 
 

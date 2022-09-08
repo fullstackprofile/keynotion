@@ -42,9 +42,7 @@ class BrochureRequestNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('You have new brochure request')
-            ->line($this->brochure['name'] )
-            ->line($this->brochure['surname']);
+            ->line('You have new brochure request');
     }
 
 

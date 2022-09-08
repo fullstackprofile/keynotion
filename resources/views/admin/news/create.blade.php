@@ -49,7 +49,7 @@
                                 <label class="form-label" for="event-name">News Title <span style="color: red">*</span></label>
                                 @error('title')
                                 <div>error {{ $message }}</div> @enderror
-                                <input class="form-control" name="title" type="text" placeholder="Vacancy Title"
+                                <input class="form-control" name="title" type="text" placeholder="News Title"
                                        value="{{old('title')}}" required>
                             </div>
                             {{----------------------------Description----------------------------------}}
@@ -77,7 +77,7 @@
                                 <div>error {{ $message }}</div> @enderror
                                 <div id="inputFormRow">
                                     <label class="form-label">Question</label>
-                                    <input type="text" name="item[0][action]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">
+                                    <input type="text" name="item[0][action]" class="form-control m-input mb-3" placeholder="" autocomplete="off">
                                     <label class="form-label">Answer</label>
                                     <textarea class="form-control  mb-3" name="item[0][answer]"
                                               rows="6" required></textarea>
@@ -110,7 +110,7 @@
             console.log(counter)
             html += '<div id="inputFormRow">';
             html += '<label class="form-label">question</label>';
-            html += ' <input type="text" name="item[' + counter + '][action]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">';
+            html += ' <input type="text" name="item[' + counter + '][action]" class="form-control m-input mb-3" placeholder="" autocomplete="off">';
             html += '<label class="form-label">Answer</label>';
             html += '<textarea class="form-control  mb-3" name="item[' + counter + '][answer]" rows="6" required></textarea>';
             html += '<div class="input-group-append mb-3">';

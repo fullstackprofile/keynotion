@@ -43,10 +43,7 @@ class QuestionNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('You have a question')
-            ->line($this->question['name'])
-            ->line($this->question['email'])
-            ->line($this->question['question']);
+            ->line('You have a question from any question page');
     }
 
     /**

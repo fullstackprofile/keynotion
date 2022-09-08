@@ -111,7 +111,7 @@
             console.log(counter)
             html += '<div id="inputFormRow">';
             html += '<label class="form-label">question</label>';
-            html += ' <input type="text" name="item[' + counter + '][action]" class="form-control m-input mb-3" placeholder="Enter title" autocomplete="off">';
+            html += ' <input type="text" name="item[' + counter + '][action]" class="form-control m-input mb-3" placeholder="" autocomplete="off">';
             html += '<label class="form-label">Answer</label>';
             html += '<textarea class="form-control  mb-3" name="item[' + counter + '][answer]" rows="6" required></textarea>';
             html += '<div class="input-group-append mb-3">';

@@ -19,7 +19,7 @@ class AppliedSpeakerController extends BaseController
     public function storeApplySpeaker(ApplySpeakerStoreRequest $request):Response
     {
         $apply_speaker = AppliedSpeaker::create($request->validated());
-        $admin = User::where('role', 'admin')->get();
+        $admin = User::where('email', 'Registration@key-notion.com')->get();
         Notification::send($admin, new ApplySpeakerNotification($apply_speaker));
         return response($apply_speaker, 201);
     }
