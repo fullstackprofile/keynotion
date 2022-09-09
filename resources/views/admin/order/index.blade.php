@@ -41,6 +41,7 @@
                                 <th scope="col">Order</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
+                                <th scope="col"> Method</th>
                                 <th scope="col">Total</th>
                                 <th>View</th>
                             </tr>
@@ -52,6 +53,7 @@
                                     <td>{{Carbon\Carbon::parse(strtotime($order['created_at']))->format('d F Y')}}</td>
                                     <td>{{$order['status']}}</td>
                                     <td>{{$order['total']}}</td>
+                                    <td>{{$order->gateway->name}}</td>
                                     <td>
                                         <a href="{{route('orders.show' , $order['id'])}}"
                                            style="text-decoration: none">

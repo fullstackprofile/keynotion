@@ -22,7 +22,7 @@
             <p class="fs--1" ></p>
             <h5>Presentation Proposal: </h5>
             <p class="fs--1" style="font-size: 17px !important;">{{$brochure->comment}}</p>
-            <h5>How they learn about us? : </h5>
+            <h5>How did you learn about us? : </h5>
             <p class="fs--1" style="font-size: 17px !important">{{$brochure->learn}}</p>
         </div>
     </div>
